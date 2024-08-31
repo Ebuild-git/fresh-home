@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FavorisController;
@@ -60,7 +61,7 @@ Route::middleware(['check.country.cookie'])->group(function () {
     // Route du client
     Route::middleware(['auth'])->group(function () {
         Route::get('/change-password', [FrontController::class, 'change_password'])->name('change_password');
-      
+
         Route::get('/profile', [FrontController::class, 'profile'])->name('profile');
         Route::get('/orders', [FrontController::class, 'orders'])->name('orders');
 
@@ -71,8 +72,6 @@ Route::middleware(['check.country.cookie'])->group(function () {
         Route::get('/favoris/get', [FavorisController::class, 'get'])->name('favoris_get');
         Route::DELETE('/favoris/delete/{id}', [FavorisController::class, 'delete'])->name('favoris_delete');
     });
-
-    
 });
 
 
@@ -163,20 +162,22 @@ Route::middleware(['auth'])->group(function () {
         ->name('delete_personnel')
         ->middleware('role:admin');
 
-        Route::get('/admin/config-about', [AdminController::class, 'config_about'])
+    Route::get('/admin/config-about', [AdminController::class, 'config_about'])
         ->name('config-about')
         ->middleware('role:admin');
 
-        Route::post('/admin/config-about.store', [AdminController::class, 'config_about_store'])
+    Route::post('/admin/config-about.store', [AdminController::class, 'config_about_store'])
         ->name('config-about.post')
         ->middleware('role:admin');
+
+        Route::resource('banners', BannerController::class)->middleware('role:admin');
 
     Route::post('/admin/update-personnel-permissions', [AdminController::class, 'update_permission'])
         ->name('update-personnel-permissions')
         ->middleware('role:admin');
 
 
-        Route::get('/admin/delete-all-notifications', [AdminController::class, 'delete_all_notifications'])
+    Route::get('/admin/delete-all-notifications', [AdminController::class, 'delete_all_notifications'])
         ->name('delete-all-notifications');
 
 

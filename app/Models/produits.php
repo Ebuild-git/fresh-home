@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class produits extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
 
     public function vendus()
@@ -21,11 +21,7 @@ class produits extends Model
     {
         //recuperer le prix en fonction du pays selectioner
         $pays =  request()->cookie('countryName') ?? "TN";
-        if($pays == "TN"){
-            $prix = $this->prix;
-        }else{
-            $prix = $this->prix_fr;
-        }
+        $prix = $this->prix;
         if ($this->id_promotion) {
             $promotion = promotions::find($this->id_promotion);
             if ($promotion) {
@@ -37,29 +33,31 @@ class produits extends Model
         } else {
             return $prix;
         }
-
     }
 
 
-    public function getPrixVente(){
+    public function getPrixVente()
+    {
         $pays =  request()->cookie('countryName') ?? "TN";
-        if($pays == "TN"){
+        if ($pays == "TN") {
             return $this->prix;
-        }else{
+        } else {
             return $this->prix_fr;
         }
     }
 
 
-    public function Get_price_sans_tva($valeur_tva,$prix_unitaire){
-            $prix_sans_tva = $prix_unitaire / (1 + ($valeur_tva / 100));
-            return number_format($prix_sans_tva, 3, '.', '');
+    public function Get_price_sans_tva($valeur_tva, $prix_unitaire)
+    {
+        $prix_sans_tva = $prix_unitaire / (1 + ($valeur_tva / 100));
+        return number_format($prix_sans_tva, 3, '.', '');
     }
 
-    public function Get_valeur_tva($valeur_tva,$prix_unitaire){
+    public function Get_valeur_tva($valeur_tva, $prix_unitaire)
+    {
         $prix_sans_tva = $prix_unitaire / (1 + ($valeur_tva / 100));
-        return number_format($prix_unitaire-$prix_sans_tva, 3, '.', '');
-}
+        return number_format($prix_unitaire - $prix_sans_tva, 3, '.', '');
+    }
 
 
     public function inPromotion()
@@ -89,9 +87,10 @@ class produits extends Model
         $this->stock += $quantite;
         $this->save();
     }
-    
 
-    public function historique_stock(){
+
+    public function historique_stock()
+    {
         return $this->hasMany(historiques_stock::class, 'id_produit');
     }
 
@@ -108,13 +107,14 @@ class produits extends Model
 
 
 
-    public function FirstImage(){
+    public function FirstImage()
+    {
         if ($this->photo) {
             return Storage::url($this->photo);
-        }else{
+        } else {
             return "/icons/product-658b4db7e7df5.png";
         }
-    }   
+    }
 
 
     public function getPrice_with_autre_prix($quantite)
@@ -139,5 +139,4 @@ class produits extends Model
     {
         return $this->hasMany(autres_prix::class, 'id_produit');
     }
-
 }

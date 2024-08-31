@@ -13,12 +13,9 @@ class Devise extends Component
     /**
      * Create a new component instance.
      */
-   
 
-    public function __construct()
-    {
-        
-    }
+
+    public function __construct() {}
 
 
     /**
@@ -26,16 +23,9 @@ class Devise extends Component
      */
     public function render(): View|Closure|string
     {
-       
+
         $pays =  request()->cookie('countryName') ?? "TN";
-        if($pays == "TN"){
-            $devise = "DT";
-        }else{
-            $devise = "€";
-        }
+        $devise = "DT";
         return view('components.devise', ['devise' => $devise]);
     }
-
-
-    
 }

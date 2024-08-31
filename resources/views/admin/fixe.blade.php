@@ -230,6 +230,12 @@
                                     Page  à-propos
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('banners.index') }}">
+                                    <i class="bx bx-right-arrow-alt"></i>
+                                    Bannières
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 @endcan

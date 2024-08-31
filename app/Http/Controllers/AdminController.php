@@ -562,6 +562,8 @@ class AdminController extends Controller
     }
 
 
+   
+
 
     public function config_about(){
         $config = config::first();
@@ -611,7 +613,7 @@ class AdminController extends Controller
             }
             $config->about_video= $request->file('about_video')->store('about_video', 'public');
         }
-        
+
         if($config->save()){
             //flash message
             return redirect()->back()->with('success', 'Vos modifications ont été enregistrées.');

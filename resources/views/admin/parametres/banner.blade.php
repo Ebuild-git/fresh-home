@@ -27,7 +27,71 @@
             <div class="user-profile-page">
                 <div class="card radius-15">
                     <div class="card-body">
-                        @livewire('Banner')
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <table class="table">
+                                    <thead class="table-dark cusor">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Titre</th>
+                                            <th>Image</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($banners as $banner)
+                                            <tr>
+                                                <td>{{ $banner->id }}</td>
+                                                <td>{{ $banner->titre }}</td>
+                                                <td>
+                                                    <img src="{{ Storage::url($banner->photo)}}" width="40 " height="40 " class="rounded shadow" alt="">
+                                                </td>
+                                                <td class="text-end">
+                                                    <form action="{{ route('banners.destroy', $banner->id) }}" method="post" onsubmit="return confirm('��tes-vous s��r de vouloir supprimer cette bannière?')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger">
+                                                            Supprimer
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="4">
+                                                    <div class="p-3 text-center">
+                                                        Aucune bannière trouvée.
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-sm-4">
+                                <form action="{{ route('banners.store') }}" enctype="multipart/form-data" method="post">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="">Titre</label>
+                                        <input type="text" name="titre" class="form-control">
+                                        @error('titre')
+                                            <span class="text-danger small"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="">Image</label>
+                                        <input type="file" name="photo" class="form-control">
+                                        @error('photo')
+                                            <span class="text-danger small"> {{ $message }} </span>
+                                        @enderror
+                                    </div>
+                                    <button type="submit" class="btn btn-sm btn-dark">
+                                        Ajouter une bannière
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

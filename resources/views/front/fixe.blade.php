@@ -44,11 +44,11 @@
 <body>
 
     <!-- Topbar Section Start -->
-    <div class="topbar-section section bg-light">
+    <div class="topbar-section section bg-dark">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <p class="text-center my-2">Free shipping for orders over $59 !</p>
+                    <p class="text-center my-2 text-white">Free shipping for orders over $59 !</p>
                 </div>
             </div>
         </div>

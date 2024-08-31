@@ -94,7 +94,19 @@
                         <h3 class="product-title">
                             {{ $produit->nom }}
                         </h3>
-                        <div class="product-price">£50.00</div>
+                        <div class="product-price">
+                            @if ($produit->inPromotion())
+                                <span class="old">
+                                    {{ $produit->prix }}
+                                    <x-devise></x-devise>
+                                </span>
+                            @endif
+
+                            <span class="new">
+                                {{ $produit->getPrice() }}
+                                <x-devise></x-devise>
+                            </span>
+                        </div>
                         <div class="product-description">
                             <p>{{ $produit->description }}</p>
                         </div>

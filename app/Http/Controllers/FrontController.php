@@ -8,6 +8,7 @@ use App\Models\config;
 use App\Models\contenu_commande;
 use App\Models\favoris;
 use App\Mail\Commande as MailCommande;
+use App\Models\Banners;
 use App\Models\gouvernorats;
 use App\Models\notifications;
 use App\Models\produits;
@@ -21,7 +22,9 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
-        return view('front.index');
+        $banners = Banners::all();
+        return view('front.index')
+            ->with('banners', $banners);
     }
 
     public function login()
@@ -116,10 +119,10 @@ class FrontController extends Controller
         $produits = produits::query();
         if ($ordre) {
             if ($ordre == "price") {
-                $produits->orderBy('prix', 'desc');
+                $produits->orderBy('prix', 'asc');
             }
             if ($ordre == "price-desc") {
-                $produits->orderBy('prix', 'asc');
+                $produits->orderBy('prix', 'desc');
             }
             if ($ordre == "popularity") {
                 $produits->orderBy('created_at', 'desc');

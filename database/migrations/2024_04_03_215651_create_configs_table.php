@@ -27,6 +27,14 @@ return new class extends Migration
             $table->string('tiktok')->nullable();
             $table->string("matricule")->nullable();
             $table->string('email')->nullable()->default(null);
+
+            //page a propos
+            $table->string("about_cover")->nullable();
+            $table->string("about_image")->nullable();
+            $table->string("about_cover_video")->nullable();
+            $table->string("about_video")->nullable();
+            $table->string("about_titre")->nullable();
+            $table->text("about_description")->nullable();
             $table->timestamps();
         });
 

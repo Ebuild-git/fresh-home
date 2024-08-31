@@ -55,7 +55,6 @@
                                     <select class="nice-select" id="nice-select" onchange="nice_select()">
                                         <option value="menu_order" selected="selected">Tri par défaut</option>
                                         <option value="popularity">Trier par popularité</option>
-                                        <option value="rating">Trier par note moyenne</option>
                                         <option value="date">Trier par nouveauté</option>
                                         <option value="price">Trier par prix : du moins cher au plus cher</option>
                                         <option value="price-desc">Trier par prix : du plus cher au moins cher</option>

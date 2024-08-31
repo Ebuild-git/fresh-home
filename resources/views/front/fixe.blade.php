@@ -34,11 +34,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <style>
-        .cusor{
+        .cusor {
             cursor: pointer;
         }
     </style>
-
+    @livewireStyles
 </head>
 
 <body>
@@ -297,7 +297,7 @@
                     </div>
                 </form>
             </div>
-            <p class="search-description text-body-light mt-2"> 
+            <p class="search-description text-body-light mt-2">
                 <span># Tapez au moins 1 caractère pour rechercher</span>
                 <span># Appuyez sur Entrée pour rechercher ou ESC pour fermer</span>
             </p>
@@ -316,7 +316,7 @@
                 <button class="offcanvas-close">×</button>
             </div>
             <div class="body customScroll" id="liste-wishlist">
-                
+
             </div>
         </div>
     </div>
@@ -431,7 +431,7 @@
                     <div class="widget-about">
                         <img src="/assets/images/logo/logo-2.webp" alt="">
                         <p>
-                            {{ $infos->footer_text ?? ""}}
+                            {{ $infos->footer_text ?? '' }}
                         </p>
                     </div>
                 </div>
@@ -674,11 +674,13 @@
     <!-- Main Activation JS -->
     <script src="/assets/js/main.js"></script>
 
-    
-    <script src="/assets/js/wishlist.js"></script>
+
+    @auth
+        <script src="/assets/js/wishlist.js"></script>
+    @endauth
 
     @yield('scripts')
-
+    @livewireScripts
 </body>
 
 </html>

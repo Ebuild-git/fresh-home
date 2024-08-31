@@ -209,7 +209,7 @@
                         Settings
                     </li>
                     <li>
-                        <a href="{{ route('contact-admin') }}">
+                        <a href="javascript:;" class="has-arrow"> 
                             <div class="parent-icon icon-color-6">
                                 <i class="ri-settings-2-line"></i>
                             </div>
@@ -217,6 +217,20 @@
                                 Configurations
                             </div>
                         </a>
+                        <ul>
+                            <li>
+                                <a href="{{ route('contact-admin') }}">
+                                    <i class="bx bx-right-arrow-alt"></i>
+                                    Contacts
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('config-about') }}">
+                                    <i class="bx bx-right-arrow-alt"></i>
+                                    Page  à-propos
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 @endcan
                 @role('admin')

@@ -163,6 +163,14 @@ Route::middleware(['auth'])->group(function () {
         ->name('delete_personnel')
         ->middleware('role:admin');
 
+        Route::get('/admin/config-about', [AdminController::class, 'config_about'])
+        ->name('config-about')
+        ->middleware('role:admin');
+
+        Route::post('/admin/config-about.store', [AdminController::class, 'config_about_store'])
+        ->name('config-about.post')
+        ->middleware('role:admin');
+
     Route::post('/admin/update-personnel-permissions', [AdminController::class, 'update_permission'])
         ->name('update-personnel-permissions')
         ->middleware('role:admin');

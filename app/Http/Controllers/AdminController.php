@@ -561,4 +561,65 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Toutes les notifications ont été supprimées!');
     }
 
+
+
+    public function config_about(){
+        $config = config::first();
+        return view('admin.parametres.about', compact('config'));
+    }
+
+    public function config_about_store(Request $request){
+        $this->validate($request, [
+            'about_titre' =>'nullable|string',
+            'about_description' =>'nullable|string',
+            'about_cover' =>  'image|nullable|max:3024', 
+            'about_cover_video' =>  'image|nullable|max:3024', 
+            'about_video' =>  'file|mimetypes:video/mp4|max:30024', 
+            'photo_commande' =>  'image|nullable|max:3024', 
+            'about_image' =>  'image|nullable|max:3024', 
+        ]);
+
+        // update the user
+        $config = config::first();
+        $config->about_titre = $request->about_titre;
+        $config->about_description = $request->about_description;
+
+        if($request->file('about_cover')){
+            if ($config->about_cover) {
+                Storage::disk('public')->delete($config->about_cover);
+            }
+            $config->about_cover= $request->file('about_cover')->store('about_cover', 'public');
+        }
+
+        if($request->file('about_cover_video')){
+            if ($config->about_cover_video) {
+                Storage::disk('public')->delete($config->about_cover_video);
+            }
+            $config->about_cover_video= $request->file('about_cover_video')->store('about_cover_video', 'public');
+        }
+
+        if($request->file('about_image')){
+            if ($config->about_image) {
+                Storage::disk('public')->delete($config->about_image);
+            }
+            $config->about_image= $request->file('about_image')->store('about_image', 'public');
+        }
+
+        if($request->file('about_video')){
+            if ($config->about_video) {
+                Storage::disk('public')->delete($config->about_video);
+            }
+            $config->about_video= $request->file('about_video')->store('about_video', 'public');
+        }
+        
+        if($config->save()){
+            //flash message
+            return redirect()->back()->with('success', 'Vos modifications ont été enregistrées.');
+        } else{
+            //flash message
+            return redirect()->back()->with('danger', 'Vos modifications n\'ont pas été enregistrées.');
+        }
+    }
+
+
 }

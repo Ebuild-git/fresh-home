@@ -114,9 +114,29 @@ class FrontController extends Controller
         $ordre = $request->input('ordre') ?? null;
 
         $produits = produits::query();
+        if ($ordre) {
+            if ($ordre == "price") {
+                $produits->orderBy('prix', 'desc');
+            }
+            if ($ordre == "price-desc") {
+                $produits->orderBy('prix', 'asc');
+            }
+            if ($ordre == "popularity") {
+                $produits->orderBy('created_at', 'desc');
+            }
+        }
+        if ($id_categorie) {
+            $produits->where('id_categorie', $id_categorie);
+        }
+        if ($key) {
+            $produits->where('nom', 'like', '%' . $key . '%')
+                ->orWhere('reference', 'like', '%' . $key . '%')
+                ->orWhere('description', 'like', '%' . $key . '%');
+        }
+        $produits = $produits->paginate(25);
 
         $html = "";
-        $html .= view('components.shop-liste')->render();
+        $html .= view('components.shop-liste', compact('produits'))->render();
         return response()->json(
             [
                 'html' => $html,

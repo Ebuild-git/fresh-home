@@ -42,7 +42,8 @@
                     <div class="product-images vertical">
                         <button class="product-gallery-popup hintT-left" data-hint="Click to enlarge"
                             data-images='[
-                                    {"src": "/assets/images/product/single/2/product-zoom-1.webp", "w": 810, "h": 1080},
+                                    {"src": "{{ Storage::url($produit->photo) }}", "w": 810, "h": 1080},
+                                    
                                     {"src": "/assets/images/product/single/2/product-zoom-2.webp", "w": 810, "h": 1080},
                                     {"src": "/assets/images/product/single/2/product-zoom-3.webp", "w": 810, "h": 1080},
                                     {"src": "/assets/images/product/single/2/product-zoom-4.webp", "w": 810, "h": 1080},
@@ -51,38 +52,22 @@
                                 class="fas fa-expand"></i></button>
 
                         <div class="product-gallery-slider">
-                            <div class="product-zoom" data-image="/assets/images/product/single/2/product-zoom-1.webp">
-                                <img src="/assets/images/product/single/2/product-1.webp" alt="">
+                            <div class="product-zoom" data-image="{{ Storage::url($produit->photo) }}">
+                                <img src="{{ Storage::url($produit->photo) }}" alt="">
                             </div>
-                            <div class="product-zoom" data-image="/assets/images/product/single/2/product-zoom-2.webp">
-                                <img src="/assets/images/product/single/2/product-2.webp" alt="">
-                            </div>
-                            <div class="product-zoom" data-image="/assets/images/product/single/2/product-zoom-3.webp">
-                                <img src="/assets/images/product/single/2/product-3.webp" alt="">
-                            </div>
-                            <div class="product-zoom" data-image="/assets/images/product/single/2/product-zoom-4.webp">
-                                <img src="/assets/images/product/single/2/product-4.webp" alt="">
-                            </div>
-                            <div class="product-zoom" data-image="/assets/images/product/single/2/product-zoom-5.webp">
-                                <img src="/assets/images/product/single/2/product-5.webp" alt="">
-                            </div>
+                            @foreach (json_decode($produit->photos) ?? [] as $item)
+                                <div class="product-zoom" data-image="{{ Storage::url($item) }}">
+                            @endforeach
                         </div>
                         <div class="product-thumb-slider-vertical">
                             <div class="item">
-                                <img src="/assets/images/product/single/2/product-thumb-1.webp" alt="">
+                                <img src="{{ Storage::url($produit->photo) }}" alt="">
                             </div>
-                            <div class="item">
-                                <img src="/assets/images/product/single/2/product-thumb-2.webp" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="/assets/images/product/single/2/product-thumb-3.webp" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="/assets/images/product/single/2/product-thumb-4.webp" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="/assets/images/product/single/2/product-thumb-5.webp" alt="">
-                            </div>
+                            @foreach (json_decode($produit->photos) ?? [] as $item)
+                                <div class="item">
+                                    <img src="{{ Storage::url($item) }}" alt="">
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -114,12 +99,18 @@
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td class="label"><span>Quantity</span></td>
+                                        <td class="label">
+                                            <span>Quantité</span>
+                                        </td>
                                         <td class="value">
                                             <div class="product-quantity">
-                                                <span class="qty-btn minus"><i class="ti-minus"></i></span>
-                                                <input type="text" class="input-qty" value="1">
-                                                <span class="qty-btn plus"><i class="ti-plus"></i></span>
+                                                <span class="qty-btn minus">
+                                                    <i class="ti-minus"></i>
+                                                </span>
+                                                <input type="text" class="input-qty" id="input-qty" value="1">
+                                                <span class="qty-btn plus">
+                                                    <i class="ti-plus"></i>
+                                                </span>
                                             </div>
                                         </td>
                                     </tr>
@@ -127,12 +118,15 @@
                             </table>
                         </div>
                         <div class="product-buttons">
-                            <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark hintT-top"
-                                data-hint="Add to Wishlist">
-                                <i class="far fa-heart"></i>
-                            </a>
-                            <a href="#" class="btn btn-dark btn-outline-hover-dark"><i
-                                    class="fas fa-shopping-cart"></i>
+                            @auth
+                                <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark hintT-top"
+                                    data-hint="Add to Wishlist">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            @endauth
+                            <a href="javascript:void();" class="btn btn-dark btn-outline-hover-dark add-to-cart"
+                                data-id="{{ $produit->id }}">
+                                <i class="fas fa-shopping-cart"></i>
                                 Ajouter au panier
                             </a>
                         </div>

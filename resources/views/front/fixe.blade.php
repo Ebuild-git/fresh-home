@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.webp">
-
+    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
     <!-- CSS
  ============================================ -->
 
@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="/assets/css/plugins/slick.css">
     <link rel="stylesheet" href="/assets/css/style.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         .cusor {
@@ -90,8 +91,10 @@
                                     class="wishlist-count">0</span><i class="far fa-heart"></i></a>
                         </div>
                         <div class="header-cart">
-                            <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i
-                                    class="fas fa-shopping-cart"></i></a>
+                            <a href="#offcanvas-cart" class="offcanvas-toggle">
+                                <span class="cart-count">0</span>
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -139,8 +142,10 @@
                                     class="wishlist-count">0</span><i class="far fa-heart"></i></a>
                         </div>
                         <div class="header-cart">
-                            <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i
-                                    class="fas fa-shopping-cart"></i></a>
+                            <a href="#offcanvas-cart" class="offcanvas-toggle">
+                                <span class="cart-count">0</span>
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         </div>
                         <div class="mobile-menu-toggle d-xl-none">
                             <a href="#offcanvas-mobile-menu" class="offcanvas-toggle">
@@ -193,8 +198,10 @@
                                     class="wishlist-count">0</span><i class="far fa-heart"></i></a>
                         </div>
                         <div class="header-cart">
-                            <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i
-                                    class="fas fa-shopping-cart"></i></a>
+                            <a href="#offcanvas-cart" class="offcanvas-toggle">
+                                <span class="cart-count">0</span>
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         </div>
                         <div class="mobile-menu-toggle">
                             <a href="#offcanvas-mobile-menu" class="offcanvas-toggle">
@@ -247,8 +254,10 @@
                                     class="wishlist-count">0</span><i class="far fa-heart"></i></a>
                         </div>
                         <div class="header-cart">
-                            <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i
-                                    class="fas fa-shopping-cart"></i></a>
+                            <a href="#offcanvas-cart" class="offcanvas-toggle">
+                                <span class="cart-count">0</span>
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         </div>
                         <div class="mobile-menu-toggle">
                             <a href="#offcanvas-mobile-menu" class="offcanvas-toggle">
@@ -323,53 +332,32 @@
     <!-- OffCanvas Wishlist End -->
 
     <!-- OffCanvas Cart Start -->
-    <div id="offcanvas-cart" class="offcanvas offcanvas-cart">
+    <div id="offcanvas-cart" class="offcanvas offcanvas-cart panier-modal">
         <div class="inner">
             <div class="head">
                 <span class="title">Cart</span>
                 <button class="offcanvas-close">×</button>
             </div>
             <div class="body customScroll">
-                <ul class="minicart-product-list">
-                    <li>
-                        <a href="product-details.html" class="image"><img
-                                src="/assets/images/product/cart-product-1.webp" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Walnut Cutting Board</a>
-                            <span class="quantity-price">1 x <span class="amount">$100.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-details.html" class="image"><img
-                                src="/assets/images/product/cart-product-2.webp" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Lucky Wooden Elephant</a>
-                            <span class="quantity-price">1 x <span class="amount">$35.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="product-details.html" class="image"><img
-                                src="/assets/images/product/cart-product-3.webp" alt="Cart product Image"></a>
-                        <div class="content">
-                            <a href="product-details.html" class="title">Fish Cut Out Set</a>
-                            <span class="quantity-price">1 x <span class="amount">$9.00</span></span>
-                            <a href="#" class="remove">×</a>
-                        </div>
-                    </li>
-                </ul>
+
             </div>
             <div class="foot">
                 <div class="sub-total">
-                    <strong>Subtotal :</strong>
-                    <span class="amount">$144.00</span>
+                    <strong>Sous-total :</strong>
+                    <span class="amount">
+                        <span class="montant">0</span>
+                        <x-devise></x-devise>
+                    </span>
+
                 </div>
                 <div class="buttons">
-                    <a href="{{ route('cart') }}" class="btn btn-dark btn-hover-primary">view cart</a>
-                    <a href="{{ route('checkout') }}" class="btn btn-outline-dark">checkout</a>
+                    <a href="{{ route('cart') }}" class="btn btn-dark btn-hover-primary">
+                        Voir le panier
+                    </a>
+                    <a href="{{ route('checkout') }}" class="btn btn-outline-dark">
+                        Aller au paiement
+                    </a>
                 </div>
-                <p class="minicart-message">Free Shipping on All Orders Over $100!</p>
             </div>
         </div>
     </div>
@@ -399,8 +387,10 @@
                         </a>
                     </div>
                     <div class="header-cart">
-                        <a href="{{ route('cart') }}"><span class="cart-count">3</span><i
-                                class="fas fa-shopping-cart"></i></a>
+                        <a href="{{ route('cart') }}">
+                            <span class="cart-count">0</span>
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -413,7 +403,6 @@
         </div>
     </div>
     <!-- OffCanvas Search End -->
-
 
 
 
@@ -678,7 +667,7 @@
     @auth
         <script src="/assets/js/wishlist.js"></script>
     @endauth
-
+    <script src="/assets/js/cart.js"></script>
     @yield('scripts')
     @livewireScripts
 </body>

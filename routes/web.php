@@ -35,7 +35,6 @@ Route::middleware(['check.country.cookie'])->group(function () {
     Route::get('/login', [FrontController::class, 'login'])->name('login');
     Route::get('/shop', [FrontController::class, 'shop'])->name('shop');
     Route::get('/shop_live', [FrontController::class, 'shop_live'])->name('shop_live');
-    Route::get('/cart', [FrontController::class, 'cart'])->name('cart');
     Route::get('/about', [FrontController::class, 'about'])->name('about');
     Route::get('/produit/{id}/{slug}', [FrontController::class, 'produit'])->name('produit');
     Route::get('/password.reset/token', [FrontController::class, 'password_reset'])->name('password.reset');
@@ -43,11 +42,17 @@ Route::middleware(['check.country.cookie'])->group(function () {
     Route::get('/print/commande/{id}', [HomeController::class, 'print_commande'])->name('print_commande');
     Route::get('/print/commande2/{token}', [HomeController::class, 'print_commande2'])->name('print_commande2');
     Route::get('/print_bordereau', [HomeController::class, 'print_bordereau'])->name('print_bordereau');
-    Route::post('/client/ajouter_au_panier', [PanierController::class, 'add']);
-    Route::get('/client/count_panier', [PanierController::class, 'count_panier']);
-    Route::post('/client/ajouter_favoris', [FavorisController::class, 'add']);
     Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
     Route::get('/error-page', [FrontController::class, 'error_page'])->name('error-page');
+
+    Route::post('/client/ajouter_favoris', [FavorisController::class, 'add']);
+
+
+    //route de gestion du panier
+    Route::post('/client/ajouter_au_panier', [PanierController::class, 'add']);
+    Route::post('/client/cart/delete', [PanierController::class, 'delete']);
+    Route::get('/client/get', [PanierController::class, 'count_panier']);
+    Route::get('/cart', [PanierController::class, 'cart'])->name('cart');
 
 
     //gestion des contact et formulaires
@@ -127,6 +132,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('clients', [AdminController::class, 'clients'])
         ->name('clients')
         ->middleware('permission:clients_view');
+
     Route::get('/admin/export/clients', [AdminController::class, 'export_clients'])
         ->name('export_clients')
         ->middleware('permission:clients_view');
@@ -134,6 +140,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('contact-admin', [AdminController::class, 'contact_admin'])
         ->name('contact-admin')
         ->middleware('permission:setting_view');
+
+
     Route::post('contact-admin.post', [AdminController::class, 'contact_admin_update'])
         ->name('contact-admin.post')
         ->middleware('permission:setting_view');
@@ -170,7 +178,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('config-about.post')
         ->middleware('role:admin');
 
-        Route::resource('banners', BannerController::class)->middleware('role:admin');
+    Route::resource('banners', BannerController::class)->middleware('role:admin');
 
     Route::post('/admin/update-personnel-permissions', [AdminController::class, 'update_permission'])
         ->name('update-personnel-permissions')

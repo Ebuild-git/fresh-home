@@ -1,5 +1,5 @@
 let ordre = null;
-let id_categorie = null;
+let id_categorie = $("#IDcategorie").val();;
 let key = null;
 function fetch_shop() {
     $.get(
@@ -34,4 +34,7 @@ $(document).ready(function () {
         key = $(this).val();
         fetch_shop();
     });
+
+  
+
 });

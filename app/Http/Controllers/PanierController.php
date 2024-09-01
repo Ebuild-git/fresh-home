@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\produits;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PanierController extends Controller
 {
     public function add(Request $request)
     {
-       
+
 
         $id_produit = $request->input('id_produit');
-        $type = $request->input('type', 'produit');
         $quantite = $request->input('quantite', 1);
 
         $user = Auth::user();
@@ -25,19 +25,19 @@ class PanierController extends Controller
         //verifier que le produit existe et est disponible
         if (!$produit) {
             return response()->json([
-                'statut' => false,
+                'status' => false,
                 'message' => "Produit introuvable !",
             ]);
         }
 
-        if($produit->stock < $quantite){
+        if ($produit->stock < $quantite) {
             return response()->json([
-                'statut' => false,
+                'status' => false,
                 'message' => "Stock indisponible !",
             ]);
         }
 
-       
+
 
 
         $panier = session('panier_front', []);
@@ -55,14 +55,13 @@ class PanierController extends Controller
             $panier[] = [
                 'id_produit' => $id_produit,
                 'quantite' => $quantite,
-                'type' => $type,
             ];
         }
 
         session(['panier_front' => $panier]);
 
         return response()->json([
-            'statut' => true,
+            'status' => true,
             'message' => "Produit ajouté"
         ]);
     }
@@ -76,12 +75,80 @@ class PanierController extends Controller
         }
         // Récupérer le panier de la session
         $panier_temporaire = session('panier_front');
-        $total = count($panier_temporaire);
+
+        $produits = [];
+        $montant = 0;
+        foreach ($panier_temporaire ?? [] as $panier) {
+            $produit = produits::find($panier['id_produit']);
+            if ($produit) {
+                $produits[] = [
+                    "nom" => $produit->nom,
+                    "quantite" => $panier['quantite'],
+                    "prix" => $produit->getPrice(),
+                    "photo" => Storage::url($produit->photo),
+                    "id" => $produit->id,
+                ];
+                $montant += $produit->getPrice() * $panier['quantite'];
+            }
+        }
+        $html = "";
+        $html .= view('components.panier-liste', compact('produits'))->render();
         return response()->json(
             [
-                "total" => $total,
+                "total" => count($produits),
+                "html" => $html,
+                "montant" => $montant,
             ]
         );
     }
-    
+
+
+    public function delete(Request $request)
+    {
+        $id_produit = $request->input('id_produit');
+
+        $panier = session('panier_front', []);
+
+        foreach ($panier as $key => $item) {
+            if ($item['id_produit'] == $id_produit) {
+                unset($panier[$key]);
+                break;
+            }
+        }
+
+        session(['panier_front' => array_values($panier)]);
+
+        return response()->json([
+            'status' => true,
+            'message' => "Produit supprimé"
+        ]);
+    }
+
+
+    public function cart()
+    {
+        if (!session()->has('panier_front')) {
+            session(['panier_front' => []]);
+        }
+        // Récupérer le panier de la session
+        $panier_temporaire = session('panier_front');
+
+        $produits = [];
+        $montant = 0;
+        foreach ($panier_temporaire ?? [] as $panier) {
+            $produit = produits::find($panier['id_produit']);
+            if ($produit) {
+                $produits[] = [
+                    "nom" => $produit->nom,
+                    "quantite" => $panier['quantite'],
+                    "prix" => $produit->getPrice(),
+                    "photo" => Storage::url($produit->photo),
+                    "id" => $produit->id,
+                ];
+                $montant += $produit->getPrice() * $panier['quantite'];
+            }
+        }
+        return view('front.cart')
+            ->with('produits', $produits);
+    }
 }

@@ -66,53 +66,22 @@
         <div class="container">
             <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-1 learts-mb-n40">
 
-                <div class="col learts-mb-40">
-                    <div class="category-banner4">
-                        <a href="shop.html" class="inner">
-                            <div class="image"><img src="/assets/images/banner/category/banner-s4-1.webp" alt="">
-                            </div>
-                            <div class="content" data-bg-color="#f4ede7">
-                                <h3 class="title">Gift ideas</h3>
-                            </div>
-                        </a>
+                @foreach ($categories as $categorie)
+                    <div class="col learts-mb-40">
+                        <div class="category-banner4">
+                            <a href="{{ route('shop') }}?IDcategorie={{ $categorie->id }}" class="inner">
+                                <div class="image">
+                                    <img src="{{ Storage::url($categorie->photo) }}" alt="{{ $categorie->nom }}">
+                                </div>
+                                <div class="content" data-bg-color="#f4ede7">
+                                    <h3 class="title">
+                                        {{ $categorie->nom }}
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col learts-mb-40">
-                    <div class="category-banner4">
-                        <a href="shop.html" class="inner">
-                            <div class="image"><img src="/assets/images/banner/category/banner-s4-2.webp" alt="">
-                            </div>
-                            <div class="content" data-bg-color="#e8f5f2">
-                                <h3 class="title">Home Decor</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col learts-mb-40">
-                    <div class="category-banner4">
-                        <a href="shop.html" class="inner">
-                            <div class="image"><img src="/assets/images/banner/category/banner-s4-3.webp" alt="">
-                            </div>
-                            <div class="content" data-bg-color="#e3e4f5">
-                                <h3 class="title">Toys</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col learts-mb-40">
-                    <div class="category-banner4">
-                        <a href="shop.html" class="inner">
-                            <div class="image"><img src="/assets/images/banner/category/banner-s4-4.webp" alt="">
-                            </div>
-                            <div class="content" data-bg-color="#faf5e5">
-                                <h3 class="title">Kitchen</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>
@@ -1279,47 +1248,5 @@
     </div>
     <!-- Testimonial Section End -->
 
-    <!-- Gallery Section Start -->
-    <div class="section section-padding pt-0">
-        <div class="container">
-            <div class="row row-cols-lg-2 row-cols-1 learts-mb-n50">
-
-                <div class="col align-self-center learts-mb-50 order-lg-2">
-                    <div class="section-title3 text-center m-0" data-bg-image="/assets/images/title/title-3.webp">
-                        <h2 class="title">Follow us on Instagram</h2>
-                        <p class="desc">@learts_shop</p>
-                    </div>
-                </div>
-
-                <div class="col learts-mb-50">
-                    <div class="instafeed instafeed-carousel instafeed-carousel2">
-                        <a class="instafeed-item" href="#">
-                            <img src="/assets/images/instagram/instagram-1.webp" alt="instagram image" />
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="instafeed-item" href="#">
-                            <img src="/assets/images/instagram/instagram-2.webp" alt="instagram image" />
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="instafeed-item" href="#">
-                            <img src="/assets/images/instagram/instagram-3.webp" alt="instagram image" />
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="instafeed-item" href="#">
-                            <img src="/assets/images/instagram/instagram-4.webp" alt="instagram image" />
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="instafeed-item" href="#">
-                            <img src="/assets/images/instagram/instagram-4.webp" alt="instagram image" />
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <!-- Gallery Section End -->
 
 @endsection

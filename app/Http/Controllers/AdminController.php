@@ -573,6 +573,7 @@ class AdminController extends Controller
     public function config_about_store(Request $request){
         $this->validate($request, [
             'about_titre' =>'nullable|string',
+            'footer_text' => "required|string",
             'about_description' =>'nullable|string',
             'about_cover' =>  'image|nullable|max:3024', 
             'about_cover_video' =>  'image|nullable|max:3024', 
@@ -585,6 +586,7 @@ class AdminController extends Controller
         $config = config::first();
         $config->about_titre = $request->about_titre;
         $config->about_description = $request->about_description;
+        $config->footer_text = $request->footer_text;
 
         if($request->file('about_cover')){
             if ($config->about_cover) {

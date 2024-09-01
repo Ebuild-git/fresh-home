@@ -44,7 +44,7 @@
                         data-hint="Quick View">
                         <i class="fas fa-search"></i>
                     </a>
-                    <a href="#" class="product-button hintT-top" data-hint="Add to Cart">
+                    <a href="javascript:void();" class="product-button hintT-top add-to-cart" data-id="{{ $produit->id }}" data-hint="Add to Cart">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </div>

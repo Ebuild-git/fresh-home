@@ -158,6 +158,7 @@
 
     </div>
     <!-- Shop Products Section End -->
+    <input type="hidden" name="IDcategorie" id="IDcategorie" value="{{ $IDcategorie }}">
 
 @endsection
 @section('scripts')

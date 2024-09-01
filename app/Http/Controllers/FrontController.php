@@ -23,8 +23,10 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         $banners = Banners::all();
+        $categories = categories::all();
         return view('front.index')
-            ->with('banners', $banners);
+            ->with('banners', $banners)
+            ->with('categories', $categories);
     }
 
     public function login()
@@ -39,10 +41,7 @@ class FrontController extends Controller
         return view('front.forgotpassword');
     }
 
-    public function cart()
-    {
-        return view('front.cart');
-    }
+ 
 
     public function shop(Request $request)
     {

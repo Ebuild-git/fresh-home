@@ -40,25 +40,32 @@
             <div class="row learts-mb-n30">
                 <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
                     <div class="contact-info">
-                        <h4 class="title">ADDRESS</h4>
-                        <span class="info"><i class="icon fas fa-map-marker-alt"></i> 1800 Abbot Kinney Blvd. Unit D & E
-                            Venice</span>
+                        <h4 class="title">ADDRESSE</h4>
+                        <span class="info">
+                            <i class="icon fas fa-map-marker-alt"></i>
+                            {{ $infos->adresse ?? '' }}
+                        </span>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
                     <div class="contact-info">
                         <h4 class="title">CONTACT</h4>
-                        <span class="info"><i class="icon fas fa-phone-alt"></i> Mobile: (+88) – 1990 – 6886 <br> Hotline:
-                            1800 – 1102</span>
-                        <span class="info"><i class="icon far fa-envelope"></i> Mail: <a
-                                href="#">contact@leartsstore.com</a></span>
+                        <span class="info">
+                            <i class="icon fas fa-phone-alt"></i>
+                            {{ $infos->telephone ?? '' }}
+                        </span>
+                        <span class="info">
+                            <i class="icon far fa-envelope"></i> Mail:
+                            <a href="#">
+                                {{ $infos->email ?? '' }}
+                            </a>
+                        </span>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
                     <div class="contact-info">
-                        <h4 class="title"> HOUR OF OPERATION</h4>
-                        <span class="info"><i class="icon far fa-clock"></i> Monday – Friday : 09:00 – 20:00 <br> Sunday &
-                            Saturday: 10:30 – 22:00</span>
+                        <h4 class="title"> DISPONIBLILITE</h4>
+                        <span class="info"><i class="icon far fa-clock"></i> Lundi - vendredi : 09:00 – 20:00 <br> samedi - Dimande : 10:30 – 22:00</span>
                     </div>
                 </div>
             </div>

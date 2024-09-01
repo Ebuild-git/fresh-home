@@ -66,7 +66,8 @@
                                             <label for="">
                                                 Image de couverture de la vidéo
                                             </label>
-                                            <input type="file" name="about_cover_video" accept="image/*" class="form-control">
+                                            <input type="file" name="about_cover_video" accept="image/*"
+                                                class="form-control">
                                             @error('about_cover_video')
                                                 <span class="text-danger small"> {{ $message }} </span>
                                             @enderror
@@ -77,8 +78,7 @@
                                             <label for="">
                                                 Vidéo
                                             </label>
-                                            <input type="file" name="about_video" accept="video/*"
-                                                class="form-control">
+                                            <input type="file" name="about_video" accept="video/*" class="form-control">
                                             @error('about_video')
                                                 <span class="text-danger small"> {{ $message }} </span>
                                             @enderror
@@ -98,7 +98,7 @@
                                     <div class="col-sm-12 col-12">
                                         <div class="mb-3">
                                             <label for="">
-                                                Titre 
+                                                Titre
                                             </label>
                                             <input type="text" name="about_titre"
                                                 value="{{ old('about_titre', $config->about_titre) }}" class="form-control">
@@ -112,7 +112,7 @@
                                             <label for="">
                                                 Description
                                             </label>
-                                                <textarea name="about_description" class="form-control" rows="10">{{ old('about_description', $config->about_description) }}
+                                            <textarea name="about_description" class="form-control" rows="10">{{ old('about_description', $config->about_description) }}
                                                 </textarea>
                                             @error('about_description')
                                                 <span class="text-danger small"> {{ $message }} </span>
@@ -120,20 +120,41 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary btn-sm" type="submit">
-                                        <i class="ri-save-line me-1 fs-16 lh-1"></i>
-                                        Enregistrer les changements
-                                    </button>
-                                </div>
-                            </form>
 
+                                <div class="text-center bg-dark card my-auto p-1 mb-3">
+                                    <h6 class="text-white">
+                                        Footer
+                                    </h6>
+                                </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label for="">
+                                        Phrase a afficher dans le footer
+                                    </label>
+                                    <input type="text" name="footer_text"
+                                        value="{{ old('footer_text', $config->footer_text) }}" class="form-control">
+                                    @error('footer_text')
+                                        <span class="text-danger small"> {{ $message }} </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary btn-sm" type="submit">
+                                <i class="ri-save-line me-1 fs-16 lh-1"></i>
+                                Enregistrer les changements
+                            </button>
+                        </div>
+                        </form>
 
                     </div>
+
                 </div>
             </div>
         </div>
+    </div>
 
-    @endsection
+@endsection

@@ -73,7 +73,7 @@ Route::middleware(['check.country.cookie'])->group(function () {
 
         //gestions des favoris
         Route::get('/favoris', [FavorisController::class, 'index'])->name('favoris_index');
-        Route::get('/favoris/add', [FavorisController::class, 'add'])->name('favoris_add');
+        Route::post('/favoris/add', [FavorisController::class, 'add'])->name('favoris_add');
         Route::get('/favoris/get', [FavorisController::class, 'get'])->name('favoris_get');
         Route::DELETE('/favoris/delete/{id}', [FavorisController::class, 'delete'])->name('favoris_delete');
     });

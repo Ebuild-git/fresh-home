@@ -1,11 +1,11 @@
 <ul class="minicart-product-list">
     @forelse ($produits as $produit)
         <li>
-            <a href="product-details.html" class="image">
+            <a href="{{ route('produit', ['id' => $produit['id'], 'slug' => $produit['slug']]) }}" class="image">
                 <img src="{{ $produit['photo'] }}" alt="{{ $produit['nom'] }}">
             </a>
             <div class="content">
-                <a href="product-details.html" class="title">
+                <a href="{{ route('produit', ['id' => $produit['id'], 'slug' => $produit['slug'] ]) }}" class="title">
                     {{ $produit['nom'] }}
                 </a>
                 <span class="quantity-price">

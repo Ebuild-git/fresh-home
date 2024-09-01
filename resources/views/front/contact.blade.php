@@ -29,7 +29,9 @@
         <div class="container">
             <!-- Section Title Start -->
             <div class="section-title2 text-center">
-                <h2 class="title">Keep in touch with us</h2>
+                <h2 class="title">
+                    Restez en contact avec nous
+                </h2>
                 <p>Been tearing your hair out to find the perfect gift for your loved ones? Try visiting our nationwide
                     local stores. You can also contact us to become partner or distributor. Call us, send us an email or
                     make an appointment now.</p>

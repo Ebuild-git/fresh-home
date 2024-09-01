@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\produits;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -86,6 +87,7 @@ class PanierController extends Controller
                     "quantite" => $panier['quantite'],
                     "prix" => $produit->getPrice(),
                     "photo" => Storage::url($produit->photo),
+                    "slug" => Str::slug($produit->nom),
                     "id" => $produit->id,
                 ];
                 $montant += $produit->getPrice() * $panier['quantite'];
@@ -143,6 +145,7 @@ class PanierController extends Controller
                     "quantite" => $panier['quantite'],
                     "prix" => $produit->getPrice(),
                     "photo" => Storage::url($produit->photo),
+                    "slug" => Str::slug($produit->nom),
                     "id" => $produit->id,
                 ];
                 $montant += $produit->getPrice() * $panier['quantite'];

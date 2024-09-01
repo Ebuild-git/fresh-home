@@ -567,7 +567,9 @@
                                 <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark"><i
                                         class="far fa-heart"></i></a>
                                 <a href="#" class="btn btn-dark btn-outline-hover-dark"><i
-                                        class="fas fa-shopping-cart"></i> Add to Cart</a>
+                                        class="fas fa-shopping-cart"></i>
+                                    Ajouter au panier
+                                    </a>
                                 <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark"><i
                                         class="fas fa-random"></i></a>
                             </div>

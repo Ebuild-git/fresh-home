@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class FavorisController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $user = Auth::user();
         $favoris = favoris::where('id_user', $user->id)->get();
         $produits = [];
@@ -22,13 +23,13 @@ class FavorisController extends Controller
         }
         return view('front.favoris', compact('produits'));
     }
-    
+
     public function add(Request $request)
     {
         if (!Auth::check()) {
             return response()->json(
                 [
-                    "statut" => false,
+                    "status" => false,
                     "message" => "Veuillez vous connecter !"
                 ]
             );
@@ -38,7 +39,7 @@ class FavorisController extends Controller
         if (!$produit) {
             return response()->json(
                 [
-                    "statut" => false,
+                    "status" => false,
                     "message" => "Produit introuvable en stock !"
                 ]
             );
@@ -48,7 +49,7 @@ class FavorisController extends Controller
         if ($count != 0) {
             return response()->json(
                 [
-                    "statut" => true,
+                    "status" => true,
                     "message" => "Produit déja ajouté !"
                 ]
             );
@@ -58,10 +59,12 @@ class FavorisController extends Controller
         $favoris->id_user = Auth::user()->id;
         $favoris->id_produit = $id_produit;
         $favoris->save();
-        return response()->json([
-            "statut" => true,
-            "message" => "Produit ajouté",
-        ]);
+        return response()->json(
+            [
+                "status" => true,
+                "message" => "Produit ajouté",
+            ]
+        );
     }
 
 
@@ -79,7 +82,8 @@ class FavorisController extends Controller
     }
 
 
-    public function delete($id_produit){
+    public function delete($id_produit)
+    {
         $favori = favoris::where('id_user', Auth::user()->id)->where('id_produit', $id_produit)->first();
         if ($favori) {
             $favori->delete();
@@ -94,5 +98,4 @@ class FavorisController extends Controller
             ]);
         }
     }
-
 }

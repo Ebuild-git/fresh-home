@@ -15,7 +15,7 @@
                     <img class="image-hover " src="{{ Storage::url($produit->photo) }}" alt="{{ $produit->nom }}">
                 </a>
                 @auth
-                    <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist">
+                    <a href="javascript:void();" class="add-to-wishlist hintT-left add-to-wish" data-id="{{ $produit->id }}" data-hint="Ajouter aux favoris">
                         <i class="far fa-heart"></i>
                     </a>
                 @endauth

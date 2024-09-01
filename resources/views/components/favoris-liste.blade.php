@@ -1,29 +1,27 @@
 <ul class="minicart-product-list">
-    <li>
-        <a href="product-details.html" class="image"><img
-                src="/assets/images/product/cart-product-1.webp" alt="Cart product Image"></a>
-        <div class="content">
-            <a href="product-details.html" class="title">Walnut Cutting Board</a>
-            <span class="quantity-price">1 x <span class="amount">$100.00</span></span>
-            <a href="#" class="remove">×</a>
-        </div>
-    </li>
-    <li>
-        <a href="product-details.html" class="image"><img
-                src="/assets/images/product/cart-product-2.webp" alt="Cart product Image"></a>
-        <div class="content">
-            <a href="product-details.html" class="title">Lucky Wooden Elephant</a>
-            <span class="quantity-price">1 x <span class="amount">$35.00</span></span>
-            <a href="#" class="remove">×</a>
-        </div>
-    </li>
-    <li>
-        <a href="product-details.html" class="image"><img
-                src="/assets/images/product/cart-product-3.webp" alt="Cart product Image"></a>
-        <div class="content">
-            <a href="product-details.html" class="title">Fish Cut Out Set</a>
-            <span class="quantity-price">1 x <span class="amount">$9.00</span></span>
-            <a href="#" class="remove">×</a>
-        </div>
-    </li>
+    @forelse ($favoris as $item)
+        @if ($item->produit)
+            <li>
+                <a href="{{ route('produit', ['id' => $item->produit->id, 'slug' => Str::slug($item->produit->nom)]) }}" class="image">
+                    <img src="{{ Storage::url($item->produit->photo) }}" alt="{{ $item->produit->nom }}">
+                </a>
+                <div class="content">
+                    <a href="{{ route('produit', ['id' => $item->produit->id, 'slug' => Str::slug($item->produit->nom)]) }}" class="title">
+                        {{ Str::limit($item->produit->nom , 30) }}
+                    </a>
+                    <span class="quantity-price">
+                        <span class="amount">
+                            {{ $item->produit->getPrice() }}
+                            <x-devise></x-devise>
+                        </span>
+                    </span>
+                    <a href="javascript:void();" class="remove delete-from-wish" data-id="{{ $item->produit->id }}" >×</a>
+                </div>
+            </li>
+        @endif
+    @empty
+        <li class="empty-cart text-center p-3">
+            vous n'avez pas de produit en favoris !
+        </li>
+    @endforelse
 </ul>

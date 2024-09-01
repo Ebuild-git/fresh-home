@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class FrontController extends Controller
 {
@@ -188,7 +189,7 @@ class FrontController extends Controller
                     $add_frais = false;
                 }
                 $panier[] = [
-                    "photo" => $produit->FirstImage(),
+                    "photo" => Storage::url($produit->photo),
                     "nom" => $produit->nom,
                     "quantite" => $item['quantite'],
                     "prix" => $produit->getPrice(),

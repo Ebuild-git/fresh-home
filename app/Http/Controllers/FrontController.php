@@ -24,9 +24,13 @@ class FrontController extends Controller
     {
         $banners = Banners::all();
         $categories = categories::all();
+        $news = produits::Orderby('id','desc')->take(8)->get();
+        $randoms= produits::inRandomOrder()->limit(8)->get();
         return view('front.index')
             ->with('banners', $banners)
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('news', $news)
+            ->with('randoms', $randoms);
     }
 
     public function login()
@@ -97,7 +101,7 @@ class FrontController extends Controller
             $message = "Produit non disponible!";
             abort(404, $message);
         }
-        $autres = produits::where('id_categorie', $produit->id_categorie)->take(10)->get();
+        $autres = produits::where('id_categorie', $produit->id_categorie)->take(20)->get();
         return view('front.produit')
             ->with('produit', $produit)
             ->with('autres', $autres);

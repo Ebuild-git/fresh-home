@@ -12,10 +12,16 @@
                 <div class="col">
 
                     <div class="page-title">
-                        <h1 class="title">Cart</h1>
+                        <h1 class="title">
+                            Panier
+                        </h1>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">Cart</li>
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('home') }}">Accueil</a>
+                            </li>
+                            <li class="breadcrumb-item active">
+                                Panier
+                            </li>
                         </ul>
                     </div>
 
@@ -61,7 +67,7 @@
                                 <td class="quantity">
                                     <div class="product-quantity">
                                         <span class="qty-btn minus"><i class="ti-minus"></i></span>
-                                        <input type="text" class="input-qty" value="1">
+                                        <input type="text" class="input-qty" readonly data-id="{{ $produit['id'] }}" value="1">
                                         <span class="qty-btn plus"><i class="ti-plus"></i></span>
                                     </div>
                                 </td>

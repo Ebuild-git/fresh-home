@@ -92,6 +92,14 @@ $(document).on("click", ".delete-item-to-cart", function (e) {
 
 
 
+$(document).on('change', '.input-qty', function() {
+    var quantite = $(this).val();
+    var productId = $(this).data('id');
+    alert('Quantité modifiée : ' + quantite + ' pour le produit ID : ' + productId);
+    // Ici, tu peux faire une requête AJAX pour mettre à jour la quantité sur le serveur si nécessaire
+});
+
+
 $(document).on("click", ".btn-delete-list-cart", function (e) {
     e.preventDefault();
     var id = $(this).data("id");

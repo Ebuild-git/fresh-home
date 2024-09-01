@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.webp">
+    <link rel="shortcut icon" type="image/x-icon" href="/icons/icon-black.png">
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
     <!-- CSS
  ============================================ -->
@@ -63,8 +63,10 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="{{ route('home') }}"><img src="/assets/images/logo/logo-2.webp"
-                                alt="{{ config('app.name') }} Logo"></a>
+                        <a href="{{ route('home') }}">
+                            <img src="/icons/logo-black.png" height="55"
+                                alt="{{ config('app.name') }} Logo">
+                            </a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -114,8 +116,10 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="{{ route('home') }}"><img src="/assets/images/logo/logo-2.webp"
-                                alt="{{ config('app.name') }} Logo"></a>
+                        <a href="{{ route('home') }}">
+                            <img src="/icons/logo-black.png" height="40"
+                                alt="{{ config('app.name') }} Logo">
+                            </a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -178,8 +182,10 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="{{ route('home') }}"><img src="/assets/images/logo/logo-2.webp"
-                                alt="{{ config('app.name') }} Logo"></a>
+                        <a href="{{ route('home') }}">
+                            <img src="/icons/logo-black.png" height="30"
+                                alt="{{ config('app.name') }} Logo">
+                            </a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -220,7 +226,6 @@
                     </div>
                 </div>
                 <!-- Header Tools End -->
-
             </div>
         </div>
     </div>
@@ -234,8 +239,10 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="{{ route('home') }}"><img src="/assets/images/logo/logo-2.webp"
-                                alt="{{ config('app.name') }} Logo"></a>
+                        <a href="{{ route('home') }}">
+                            <img src="/icons/logo-black.png" height="30"
+                                alt="{{ config('app.name') }} Logo">
+                            </a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -418,7 +425,7 @@
 
                 <div class="col-lg-6 {{ config('app.name') }}-mb-40">
                     <div class="widget-about">
-                        <img src="/assets/images/logo/logo-2.webp" alt="">
+                        <img src="/icons/logo-black.png" height="50" alt="">
                         <p>
                             {{ $infos->footer_text ?? '' }}
                         </p>

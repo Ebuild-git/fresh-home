@@ -13,7 +13,7 @@ use Livewire\Component;
 class Register extends Component
 {
 
-    public $nom, $email, $telephone, $password;
+    public $nom, $prenom, $email, $telephone, $password;
 
     public function render()
     {
@@ -25,6 +25,7 @@ class Register extends Component
     {
         $this->validate([
             'nom' => 'required|string',
+            'prenom' => 'nullable|string',
             'email' => 'required|email|unique:users',
             'telephone' => 'required|numeric',
             'password' => 'required|min:8',
@@ -36,11 +37,13 @@ class Register extends Component
             'telephone.required' => 'Veuillez entrer votre numéro de téléphone',
             'telephone.numeric' => 'Veuillez entrer un numéro de téléphone valide',
             'password.required' => 'Veuillez entrer votre mot de passe',
-            'password.min' => 'Votre mot de passe doit contenir au moins 8 caractères'
+            'password.min' => 'Votre mot de passe doit contenir au moins 8 caractères',
+
         ]);
 
         $user = new User();
         $user->nom = $this->nom;
+        $user->prenom = $this->prenom;
         $user->email = $this->email;
         $user->phone = $this->telephone;
         $user->password = Hash::make($this->password);
@@ -48,7 +51,7 @@ class Register extends Component
 
         //send email
         try {
-            Mail::to($user->email)->send(new MailRegister($user));
+            //Mail::to($user->email)->send(new MailRegister($user));
         } catch (Exception $e) {
             Log::error('Error sending email: ' . $e->getMessage());
             //flah info message
@@ -56,7 +59,9 @@ class Register extends Component
             return;
         }
 
+        // connecter directement la personne
+        auth()->login($user);
 
-        return redirect()->route('login')->with('success', 'Votre compte a bien été créé! Vous pouvez maintenant vous connecter.');;
+        return redirect()->route('home')->with('success', 'Votre compte a bien été créé! Vous pouvez maintenant vous connecter.');
     }
 }

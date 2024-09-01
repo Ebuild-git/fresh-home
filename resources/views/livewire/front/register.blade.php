@@ -2,15 +2,29 @@
     <form class="my-3" wire:submit='register'>
         <x-AlertFront></x-AlertFront>
         <div class="row">
-            <div class="form-group">
-                <label for="name" class="form-label">Nom<span class="text-danger"> * </span></label>
-                <input type="text" class="form-control input-h rounded-0" name="name" wire:model='nom' id="name"
-                    placeholder="Nom" required>
-                @error('nom')
-                    <span class="text-danger small">
-                        {{ $message }}
-                    </span>
-                @enderror
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="name" class="form-label">Nom<span class="text-danger"> * </span></label>
+                    <input type="text" class="form-control input-h rounded-0" name="name" wire:model='nom'
+                        id="name" placeholder="Nom" required>
+                    @error('nom')
+                        <span class="text-danger small">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="name" class="form-label">Prénom<span class="text-danger"> * </span></label>
+                    <input type="text" class="form-control input-h rounded-0" name="name" wire:model='prenom'
+                        id="name" placeholder="prénom"  >
+                    @error('prenom')
+                        <span class="text-danger small">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
             </div>
             <div class="form-group">
                 <label for="email" class="form-label">Email<span class="text-danger"> * </span></label>
@@ -42,20 +56,15 @@
                     </span>
                 @enderror
             </div>
-            <div class="form-group">
-                <input class="form-check-input" type="checkbox" wire:model='' required id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">J'accepte la
-                    <a href="termscondition" class="text-primary fw-semibold">Terms &amp; Conditions</a>
-                </label>
-            </div>
         </div>
+        <br>
+        <p>
+            Vos données personnelles seront utilisées pour soutenir votre expérience sur ce site Web, pour gérer l'accès
+            à votre compte et à d'autres fins décrites dans notre politique de confidentialité.
+        </p>
         <button class="btn btn-fashion w-100 mt-4" type="submit">
             <x-Loading></x-Loading>
             Enregistrer
         </button>
-        <p class="fs-7 text-center mt-3">
-            Vous avez déjà un compte ?
-            <a href="login" class="text-primary fw-semibold">Connexion</a>
-        </p>
     </form>
 </div>

@@ -36,8 +36,10 @@
                 <div class="col-lg-6">
                     <div class="user-login-register bg-light">
                         <div class="login-register-title">
-                            <h2 class="title">Login</h2>
-                            <p class="desc">Great to have you back!</p>
+                            <h2 class="title">Connexion</h2>
+                            <p class="desc">
+                                Super de vous revoir !
+                            </p>
                         </div>
                         <div class="login-register-form">
                             @livewire('Front.Login')
@@ -47,26 +49,13 @@
                 <div class="col-lg-6">
                     <div class="user-login-register">
                         <div class="login-register-title">
-                            <h2 class="title">Register</h2>
-                            <p class="desc">If you don’t have an account, register now!</p>
+                            <h2 class="title">Inscription</h2>
+                            <p class="desc">
+                                Si vous n'avez pas de compte, inscrivez-vous maintenant !
+                            </p>
                         </div>
                         <div class="login-register-form">
-                            <form action="#">
-                                <div class="row learts-mb-n50">
-                                    <div class="col-12 learts-mb-20">
-                                        <label for="registerEmail">Email address <abbr class="required">*</abbr></label>
-                                        <input type="email" id="registerEmail">
-                                    </div>
-                                    <div class="col-12 learts-mb-50">
-                                        <p>Your personal data will be used to support your experience throughout this
-                                            website, to manage access to your account, and for other purposes described in
-                                            our privacy policy</p>
-                                    </div>
-                                    <div class="col-12 text-center learts-mb-50">
-                                        <button class="btn btn-dark btn-outline-hover-dark">Register</button>
-                                    </div>
-                                </div>
-                            </form>
+                            @livewire('Front.Register')
                         </div>
                     </div>
                 </div>

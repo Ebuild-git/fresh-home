@@ -14,14 +14,7 @@ class FavorisController extends Controller
     {
         $user = Auth::user();
         $favoris = favoris::where('id_user', $user->id)->get();
-        $produits = [];
-        foreach ($favoris as $favori) {
-            $produit = produits::find($favori->id_produit);
-            if ($produit) {
-                $produits[] = $produit;
-            }
-        }
-        return view('front.favoris', compact('produits'));
+        return view('front.favoris', compact('favoris'));
     }
 
     public function add(Request $request)
@@ -82,20 +75,32 @@ class FavorisController extends Controller
     }
 
 
-    public function delete($id_produit)
+    public function delete(Request $request)
     {
-        $favori = favoris::where('id_user', Auth::user()->id)->where('id_produit', $id_produit)->first();
+        //validation
+        $this->validate($request, [
+            'id_produit' => 'required|exists:produits,id'
+        ]);
+
+        $id_produit = $request->input("id_produit") ?? null;
+        $favori = favoris::where('id_user', Auth::user()->id)
+            ->where('id_produit', $id_produit)
+            ->first();
         if ($favori) {
             $favori->delete();
-            return response()->json([
-                "statut" => true,
+            return response()->json(
+                [
+                "status" => true,
                 "message" => "Produit supprimé de vos favoris"
-            ]);
+            ]
+        );
         } else {
-            return response()->json([
-                "statut" => false,
+            return response()->json(
+                [
+                "status" => false,
                 "message" => "Le produit n'est pas dans vos favoris"
-            ]);
+            ]
+        );
         }
     }
 }

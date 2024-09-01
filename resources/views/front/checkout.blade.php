@@ -78,14 +78,6 @@
                         <label for="bdPhone">Numéro de téléphone <abbr class="required">*</abbr></label>
                         <input type="text" id="bdPhone" name="telephone" value="{{ $user->telephone ?? "" }}" placeholder="+216 XX XXX XXX">
                     </div>
-                    @guest
-                        <div class="col-12 learts-mb-40">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" name="create_acount" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Créer un compte?</label>
-                            </div>
-                        </div>
-                    @endguest
                 </div>
             </form>
             <div class="section-title2 text-center">

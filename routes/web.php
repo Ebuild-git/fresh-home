@@ -58,11 +58,7 @@ Route::middleware(['check.country.cookie'])->group(function () {
     //gestion des contact et formulaires
     Route::resource('/front-contact', ContactController::class);
 
-
-    Route::get('/payment-success/{token}', [PayementController::class, 'payment_success'])->name('payment-success');
-    Route::get('/payment-failure', [PayementController::class, 'payment_failure'])->name('payment-failure');
-    Route::post('/commander', [PayementController::class, 'commander'])->name('commander');
-
+   
     // Route du client
     Route::middleware(['auth'])->group(function () {
         Route::get('/change-password', [FrontController::class, 'change_password'])->name('change_password');
@@ -70,12 +66,19 @@ Route::middleware(['check.country.cookie'])->group(function () {
         Route::get('/profile', [FrontController::class, 'profile'])->name('profile');
         Route::get('/orders', [FrontController::class, 'orders'])->name('orders');
 
+        //paiement et facture
+        Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
+        Route::get('/payment-success/{token}', [PayementController::class, 'payment_success'])->name('payment-success');
+        Route::get('/payment-failure', [PayementController::class, 'payment_failure'])->name('payment-failure');
+        Route::post('/commander', [PayementController::class, 'commander'])->name('commander');
+    
+
 
         //gestions des favoris
         Route::get('/favoris', [FavorisController::class, 'index'])->name('favoris_index');
         Route::post('/favoris/add', [FavorisController::class, 'add'])->name('favoris_add');
         Route::get('/favoris/get', [FavorisController::class, 'get'])->name('favoris_get');
-        Route::DELETE('/favoris/delete/{id}', [FavorisController::class, 'delete'])->name('favoris_delete');
+        Route::DELETE('/favoris/delete', [FavorisController::class, 'delete'])->name('favoris_delete');
     });
 });
 

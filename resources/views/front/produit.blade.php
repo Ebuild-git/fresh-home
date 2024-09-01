@@ -244,7 +244,7 @@
                                     </span>
                                 </span>
                                 <div class="product-buttons">
-                                    <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top"
+                                    <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top modal-view-open" data-id="{{ $produit->id }}"
                                         data-hint="Quick View">
                                         <i class="fas fa-search"></i>
                                     </a>

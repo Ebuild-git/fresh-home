@@ -32,17 +32,29 @@ class HomeController extends Controller
         Cookie::queue($cookie);
         return redirect()->back()->with('success', 'Pays sélectionné !');
     }
-    
+
 
 
     public function view_produit($id)
     {
         $produit = produits::find($id);
         if (!$produit) {
-            abort('404');
+            return response()->json(
+                [
+                    "statut" => false,
+                    "message" => "Produit introuvable en stock!"
+                ]
+            );
         }
-        $Html = view('components.modal-view-produit', ['produit' => $produit, 'show' => true])->render();
-        return response()->json($Html);
+        $Html = view('components.modal-produit', ['produit' => $produit, 'show' => true])->render();
+        return response()->json(
+            [
+                "statut" => true,
+                "message" => "",
+                "produit" => $produit,
+                "html" => $Html,
+            ]
+        );
     }
 
 
@@ -91,5 +103,4 @@ class HomeController extends Controller
     {
         return view('front.inscription');
     }
-    
 }

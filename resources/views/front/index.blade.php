@@ -159,8 +159,8 @@
                                                     </span>
                                                 </span>
                                                 <div class="product-buttons">
-                                                    <a href="#quickViewModal" data-bs-toggle="modal"
-                                                        class="product-button hintT-top" data-hint="Quick View">
+                                                    <a href="#quickViewModal" data-bs-toggle="modal" data-id="{{ $produit->id }}"
+                                                        class="product-button hintT-top modal-view-open" data-hint="Quick View">
                                                         <i class="fas fa-search"></i>
                                                     </a>
                                                     <a href="javascript:void();"
@@ -228,8 +228,8 @@
                                                     </span>
                                                 </span>
                                                 <div class="product-buttons">
-                                                    <a href="#quickViewModal" data-bs-toggle="modal"
-                                                        class="product-button hintT-top" data-hint="Quick View">
+                                                    <a href="#quickViewModal" data-bs-toggle="modal" data-id="{{ $produit->id }}"
+                                                        class="product-button hintT-top modal-view-open" data-hint="Quick View">
                                                         <i class="fas fa-search"></i>
                                                     </a>
                                                     <a href="javascript:void();"

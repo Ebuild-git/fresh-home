@@ -59,10 +59,8 @@ class produits extends Model
     public function inPromotion()
     {
         if ($this->id_promotion) {
-            $promotion = promotions::find($this->id_promotion);
-            return $promotion ?: false;
+            return $this->belongsTo(promotions::class, 'id_promotion','id');
         }
-
         return false;
     }
 

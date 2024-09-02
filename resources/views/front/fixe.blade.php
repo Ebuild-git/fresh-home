@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/assets/css/vendor/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/css/vendor/themify-icons.css">
     <link rel="stylesheet" href="/assets/css/vendor/customFonts.css">
+    <link rel="stylesheet" href="/style.css">
 
     <!-- Plugins CSS (All Plugins Files) -->
     <link rel="stylesheet" href="/assets/css/plugins/select2.min.css">
@@ -33,13 +34,7 @@
     <link rel="stylesheet" href="/assets/css/style.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
 
-    <style>
-        .cusor {
-            cursor: pointer;
-        }
-    </style>
     @livewireStyles
 </head>
 
@@ -473,6 +468,11 @@
 
 
 
+    <div class="preloader-container">
+        <div class="preloader-circle"></div>
+        <div class="preloader-logo">Fresh Home</div>
+    </div>
+
 
 
     @yield('body')
@@ -496,10 +496,9 @@
                     <div class="row">
                         <div class="col">
                             <ul class="widget-list">
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Store location</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">Orders</a></li>
+                                <li><a href="{{ route('about') }}">à-propos</a></li>
+                                <li><a href="{{ route('front-contact.index') }}">Contact</a></li>
+                                <li><a href="{{ route('shop') }}">Shop</a></li>
                             </ul>
                         </div>
                         <div class="col">
@@ -610,7 +609,21 @@
     @endauth
     <script src="/assets/js/cart.js"></script>
     @yield('scripts')
-    
+
+    <script>
+        $(window).on('load', function() {
+            $('body').addClass('loaded');
+        });
+        $(document).ready(function() {
+            $(document).on('mousemove', function(e) {
+                $('.custom-cursor').css({
+                    top: e.clientY + 'px',
+                    left: e.clientX + 'px'
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>

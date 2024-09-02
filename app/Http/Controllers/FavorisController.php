@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banners;
 use App\Models\favoris;
 use App\Models\produits;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class FavorisController extends Controller
     {
         $user = Auth::user();
         $favoris = favoris::where('id_user', $user->id)->get();
-        return view('front.favoris', compact('favoris'));
+        $banner = Banners::where('type', "contact")->first();
+        return view('front.favoris', compact('favoris','banner'));
     }
 
     public function add(Request $request)

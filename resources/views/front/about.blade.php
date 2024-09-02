@@ -12,10 +12,12 @@
                 <div class="col">
 
                     <div class="page-title">
-                        <h1 class="title">About us</h1>
+                        <h1 class="title">à-propos</h1>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">About us</li>
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('home') }}">Accueil</a>
+                            </li>
+                            <li class="breadcrumb-item active">à-propos</li>
                         </ul>
                     </div>
 

@@ -3,27 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\categories;
-use App\Models\commandes;
 use App\Models\config;
-use App\Models\contenu_commande;
-use App\Models\favoris;
-use App\Mail\Commande as MailCommande;
 use App\Models\Banners;
 use App\Models\gouvernorats;
-use App\Models\notifications;
 use App\Models\produits;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class FrontController extends Controller
 {
     public function index(Request $request)
     {
-        $banners = Banners::all();
+        $banners = Banners::where('type', "banner")->get();
         $categories = categories::all();
         $news = produits::Orderby('id', 'desc')->take(8)->get();
         $randoms = produits::inRandomOrder()->limit(8)->get();
@@ -36,7 +29,18 @@ class FrontController extends Controller
 
     public function login()
     {
-        return view('front.login');
+        if (Auth::check()) {
+            $user = Auth::user();
+            if ($user->role = "admin") {
+                return redirect()->route('dashboard');
+            } else {
+                return redirect()->route('home');
+            }
+        } else {
+            $banner = Banners::where('type', "contact")->first();
+            return view('front.login')
+                ->with('banner', $banner);
+        }
     }
 
 
@@ -80,11 +84,13 @@ class FrontController extends Controller
         }
         $produits = $produits->paginate(25);
         $categories = categories::all();
+        $banner = Banners::where('type', "shop")->first();
         return view('front.shop')
             ->with('produits', $produits)
             ->with('categories', $categories)
             ->with('IDcategorie', $IDcategorie)
-            ->with('key', $key);
+            ->with('key', $key)
+            ->with('banner', $banner);
     }
 
 
@@ -96,9 +102,11 @@ class FrontController extends Controller
             abort(404, $message);
         }
         $autres = produits::where('id_categorie', $produit->id_categorie)->take(20)->get();
+        $banner = Banners::where('type', "contact")->first();
         return view('front.produit')
             ->with('produit', $produit)
-            ->with('autres', $autres);
+            ->with('autres', $autres)
+            ->with('banner', $banner);
     }
 
     public function about()
@@ -151,8 +159,10 @@ class FrontController extends Controller
     public function profile()
     {
         $user = auth()->user();
+        $banner = Banners::where('type', "profile")->first();
         return view('front.profile')
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('banner', $banner);
     }
 
     public function checkout()
@@ -205,6 +215,7 @@ class FrontController extends Controller
         $timbre = $config->timbre;
         $montant_final = $montant + $frais;
         $gouvernorats = gouvernorats::all();
+        $banner = Banners::where('type', "checkout")->first();
         return view('front.checkout')
             ->with('panier', $panier)
             ->with('montant', $montant)
@@ -214,7 +225,8 @@ class FrontController extends Controller
             ->with('timbre', $timbre)
             ->with('config', $config)
             ->with('gouvernorats', $gouvernorats)
-            ->with('add_frais', $add_frais);
+            ->with('add_frais', $add_frais)
+            ->with('banner', $banner);
     }
 
 

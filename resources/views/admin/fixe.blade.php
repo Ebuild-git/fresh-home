@@ -2,7 +2,7 @@
     $config = DB::table('configs')->select('icon', 'logo')->first();
 @endphp
 <!doctype html>
-<html lang="en">
+<html lang="fr" class="dark-sidebar">
 
 <head>
     <!-- Required meta tags -->

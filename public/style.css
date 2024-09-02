@@ -1,0 +1,67 @@
+.preloader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #f8f9fa;
+    z-index: 9999;
+    flex-direction: column;
+}
+
+.preloader-circle {
+    width: 80px;
+    height: 80px;
+    border: 8px solid #ccc;
+    border-top: 8px solid #333333; /* Couleur primaire */
+    border-radius: 50%;
+    animation: preloader-spin 1.5s linear infinite;
+}
+
+.preloader-logo {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+@keyframes preloader-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Masquer le préchargeur après le chargement */
+body.loaded .preloader-container {
+    display: none;
+    cursor: none;
+}
+
+.cusor {
+    cursor: pointer;
+}
+/* Style du curseur personnalisé */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ab26aa; /* Couleur primaire */
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.1s ease, height 0.1s ease;
+    z-index: 10000;
+}
+
+/* Effet lors du survol des liens */
+a:hover + .custom-cursor, button:hover + .custom-cursor {
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -50%) scale(1.2);
+}

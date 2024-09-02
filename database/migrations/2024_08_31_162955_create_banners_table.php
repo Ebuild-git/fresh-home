@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
-            $table->string("titre");
+            $table->string("titre")->nullable();
+            $table->enum("type",["banner","shop","contact","profile","reset","checkout","cart","login","produit","favoris"])->default("banner");
             $table->string("photo");
             $table->timestamps();
         });

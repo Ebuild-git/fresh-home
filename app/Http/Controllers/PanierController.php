@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banners;
 use App\Models\produits;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -151,7 +152,9 @@ class PanierController extends Controller
                 $montant += $produit->getPrice() * $panier['quantite'];
             }
         }
+        $banner = Banners::where('type', "cart")->first();
         return view('front.cart')
+            ->with('banner', $banner)
             ->with('produits', $produits);
     }
 }

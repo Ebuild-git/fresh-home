@@ -11,6 +11,17 @@
             <div class="home4-slider swiper-container">
                 <div class="swiper-wrapper">
                     @foreach ($banners as $banner)
+                        @php
+                            function addBreaksAfterWords($text, $wordsPerLine = 4)
+                            {
+                                $words = explode(' ', $text);
+                                $lines = [];
+                                foreach (array_chunk($words, $wordsPerLine) as $chunk) {
+                                    $lines[] = implode(' ', $chunk);
+                                }
+                                return implode('<br>', $lines);
+                            }
+                        @endphp
                         <div class="home4-slide-item swiper-slide" data-swiper-autoplay="5000">
                             <div class="home4-slide-image">
                                 <img src="{{ Storage::url($banner->photo) }}" alt="{{ $banner->titre }}">
@@ -20,7 +31,7 @@
                                     {{ config('app.name') }}
                                 </span>
                                 <h2 class="title">*
-                                    {{ $banner->titre }}
+                                    {!! addBreaksAfterWords($banner->titre) !!}
                                 </h2>
                                 <div class="link">
                                     <a href="{{ route('shop') }}" class="btn btn-black btn-outline-hover-black">
@@ -159,8 +170,10 @@
                                                     </span>
                                                 </span>
                                                 <div class="product-buttons">
-                                                    <a href="#quickViewModal" data-bs-toggle="modal" data-id="{{ $produit->id }}"
-                                                        class="product-button hintT-top modal-view-open" data-hint="Regard rapide">
+                                                    <a href="#quickViewModal" data-bs-toggle="modal"
+                                                        data-id="{{ $produit->id }}"
+                                                        class="product-button hintT-top modal-view-open"
+                                                        data-hint="Regard rapide">
                                                         <i class="fas fa-search"></i>
                                                     </a>
                                                     <a href="javascript:void();"
@@ -228,8 +241,10 @@
                                                     </span>
                                                 </span>
                                                 <div class="product-buttons">
-                                                    <a href="#quickViewModal" data-bs-toggle="modal" data-id="{{ $produit->id }}"
-                                                        class="product-button hintT-top modal-view-open" data-hint="Regard rapide">
+                                                    <a href="#quickViewModal" data-bs-toggle="modal"
+                                                        data-id="{{ $produit->id }}"
+                                                        class="product-button hintT-top modal-view-open"
+                                                        data-hint="Regard rapide">
                                                         <i class="fas fa-search"></i>
                                                     </a>
                                                     <a href="javascript:void();"
@@ -535,91 +550,6 @@
         </div>
     </div>
     <!-- Product Section End -->
-
-    <!-- Separator -->
-    <div class="section">
-        <div class="container">
-            <hr class="m-0">
-        </div>
-    </div>
-    <!-- Separator -->
-
-    <!-- Brands Section Start -->
-    <div class="section section-padding">
-        <div class="container">
-
-            <div class="section-title2 text-md-left text-center row justify-content-between align-items-center">
-                <div class="col-md-auto col-12">
-                    <!-- Section Title Start -->
-                    <h2 class="title title-icon-right">Shop by brands</h2>
-                    <!-- Section Title End -->
-                </div>
-                <div class="col-md-auto d-none d-md-block mt-4 mt-md-0">
-                    <a href="#" class="btn btn-light btn-hover-black">view all</a>
-                </div>
-            </div>
-
-            <div class="row align-items-center row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 learts-mb-n50">
-
-                <div class="col learts-mb-50">
-                    <div class="brand-item">
-                        <a href="#"><img src="/assets/images/brands/brand-1.webp" alt="Brands Image"></a>
-                    </div>
-                </div>
-
-                <div class="col learts-mb-50">
-                    <div class="brand-item">
-                        <a href="#"><img src="/assets/images/brands/brand-2.webp" alt="Brands Image"></a>
-                    </div>
-                </div>
-
-                <div class="col learts-mb-50">
-                    <div class="brand-item">
-                        <a href="#"><img src="/assets/images/brands/brand-3.webp" alt="Brands Image"></a>
-                    </div>
-                </div>
-
-                <div class="col learts-mb-50">
-                    <div class="brand-item">
-                        <a href="#"><img src="/assets/images/brands/brand-4.webp" alt="Brands Image"></a>
-                    </div>
-                </div>
-
-                <div class="col learts-mb-50">
-                    <div class="brand-item">
-                        <a href="#"><img src="/assets/images/brands/brand-5.webp" alt="Brands Image"></a>
-                    </div>
-                </div>
-
-                <div class="col learts-mb-50">
-                    <div class="brand-item">
-                        <a href="#"><img src="/assets/images/brands/brand-6.webp" alt="Brands Image"></a>
-                    </div>
-                </div>
-
-                <div class="col learts-mb-50">
-                    <div class="brand-item">
-                        <a href="#"><img src="/assets/images/brands/brand-7.webp" alt="Brands Image"></a>
-                    </div>
-                </div>
-
-                <div class="col learts-mb-50">
-                    <div class="brand-item">
-                        <a href="#"><img src="/assets/images/brands/brand-8.webp" alt="Brands Image"></a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row d-md-none learts-mt-50">
-                <div class="col text-center">
-                    <a href="#" class="btn btn-light btn-hover-black">view all</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- Brands Section End -->
 
     <!-- Separator -->
     <div class="section">

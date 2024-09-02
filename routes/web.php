@@ -42,9 +42,7 @@ Route::middleware(['check.country.cookie'])->group(function () {
     Route::get('/print/commande/{id}', [HomeController::class, 'print_commande'])->name('print_commande');
     Route::get('/print/commande2/{token}', [HomeController::class, 'print_commande2'])->name('print_commande2');
     Route::get('/print_bordereau', [HomeController::class, 'print_bordereau'])->name('print_bordereau');
-    Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
     Route::get('/error-page', [FrontController::class, 'error_page'])->name('error-page');
-
     Route::post('/client/ajouter_favoris', [FavorisController::class, 'add']);
 
 
@@ -63,6 +61,7 @@ Route::middleware(['check.country.cookie'])->group(function () {
     Route::middleware(['auth'])->group(function () {
         
         Route::get('/profile', [FrontController::class, 'profile'])->name('profile');
+        Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
 
         //paiement et facture
         Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');

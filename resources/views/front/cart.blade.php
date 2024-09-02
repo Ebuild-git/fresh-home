@@ -6,7 +6,7 @@
     <div class="offcanvas-overlay"></div>
 
     <!-- Page Title/Header Start -->
-    <div class="page-title-section section" data-bg-image="/assets/images/bg/page-title-1.webp">
+    <div class="page-title-section section" data-bg-image="{{ $banner->photo ? Storage::url($banner->photo) : '/assets/images/bg/page-title-1.webp'  }}">
         <div class="container">
             <div class="row">
                 <div class="col">

@@ -26,7 +26,7 @@ class register extends Mailable
         return $this->to($this->user->email)
             ->view('Mail.register')
             ->subject('Bienvenue sur '.config('app.name'))
-            ->from("no-reply@mystory-cosmetics.shop", "Création du compte !")
+            ->from("no_reply@fresh-home.store", "Création du compte !")
             ->with([
                 'user' => $this->user,
             ]);

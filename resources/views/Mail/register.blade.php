@@ -19,8 +19,6 @@
             border: 1px solid #ddd;
         }
         .header {
-            background-color: #000;
-            color: #fff;
             padding: 20px;
             text-align: center;
         }

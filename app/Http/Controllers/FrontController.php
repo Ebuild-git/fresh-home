@@ -88,13 +88,6 @@ class FrontController extends Controller
     }
 
 
-    public function orders()
-    {
-        $commande = commandes::where('id_user', Auth::id())->orderby('id', "Desc")->get();
-        return view('front.orders')
-            ->with('commandes', $commande);
-    }
-
     public function produit($id)
     {
         $produit = produits::find($id);
@@ -223,11 +216,6 @@ class FrontController extends Controller
     }
 
 
-
-    public function change_password()
-    {
-        return view('front.change_password');
-    }
 
 
     public function password_reset(Request $request)

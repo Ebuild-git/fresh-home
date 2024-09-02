@@ -31,7 +31,7 @@
         </div>
     </div>
     <!-- Page Title/Header End -->
-
+ 
     <!-- Single Products Section Start -->
     <div class="section section-fluid section-padding border-bottom">
         <div class="container">
@@ -245,7 +245,7 @@
                                 </span>
                                 <div class="product-buttons">
                                     <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top modal-view-open" data-id="{{ $produit->id }}"
-                                        data-hint="Quick View">
+                                        data-hint="Regard rapide">
                                         <i class="fas fa-search"></i>
                                     </a>
                                     <a href="javascript:void();" class="product-button hintT-top add-to-cart"

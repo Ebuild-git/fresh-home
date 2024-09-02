@@ -61,10 +61,8 @@ Route::middleware(['check.country.cookie'])->group(function () {
    
     // Route du client
     Route::middleware(['auth'])->group(function () {
-        Route::get('/change-password', [FrontController::class, 'change_password'])->name('change_password');
-
+        
         Route::get('/profile', [FrontController::class, 'profile'])->name('profile');
-        Route::get('/orders', [FrontController::class, 'orders'])->name('orders');
 
         //paiement et facture
         Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');

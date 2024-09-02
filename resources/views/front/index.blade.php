@@ -160,7 +160,7 @@
                                                 </span>
                                                 <div class="product-buttons">
                                                     <a href="#quickViewModal" data-bs-toggle="modal" data-id="{{ $produit->id }}"
-                                                        class="product-button hintT-top modal-view-open" data-hint="Quick View">
+                                                        class="product-button hintT-top modal-view-open" data-hint="Regard rapide">
                                                         <i class="fas fa-search"></i>
                                                     </a>
                                                     <a href="javascript:void();"
@@ -229,7 +229,7 @@
                                                 </span>
                                                 <div class="product-buttons">
                                                     <a href="#quickViewModal" data-bs-toggle="modal" data-id="{{ $produit->id }}"
-                                                        class="product-button hintT-top modal-view-open" data-hint="Quick View">
+                                                        class="product-button hintT-top modal-view-open" data-hint="Regard rapide">
                                                         <i class="fas fa-search"></i>
                                                     </a>
                                                     <a href="javascript:void();"
@@ -269,7 +269,7 @@
                                             </span>
                                             <div class="product-buttons">
                                                 <a href="#quickViewModal" data-bs-toggle="modal"
-                                                    class="product-button hintT-top" data-hint="Quick View"><i
+                                                    class="product-button hintT-top" data-hint="Regard rapide"><i
                                                         class="fas fa-search"></i></a>
                                                 <a href="#" class="product-button hintT-top"
                                                     data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
@@ -303,7 +303,7 @@
                                             </span>
                                             <div class="product-buttons">
                                                 <a href="#quickViewModal" data-bs-toggle="modal"
-                                                    class="product-button hintT-top" data-hint="Quick View"><i
+                                                    class="product-button hintT-top" data-hint="Regard rapide"><i
                                                         class="fas fa-search"></i></a>
                                                 <a href="#" class="product-button hintT-top"
                                                     data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
@@ -349,7 +349,7 @@
                                             </span>
                                             <div class="product-buttons">
                                                 <a href="#quickViewModal" data-bs-toggle="modal"
-                                                    class="product-button hintT-top" data-hint="Quick View"><i
+                                                    class="product-button hintT-top" data-hint="Regard rapide"><i
                                                         class="fas fa-search"></i></a>
                                                 <a href="#" class="product-button hintT-top"
                                                     data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
@@ -379,7 +379,7 @@
                                             </span>
                                             <div class="product-buttons">
                                                 <a href="#quickViewModal" data-bs-toggle="modal"
-                                                    class="product-button hintT-top" data-hint="Quick View"><i
+                                                    class="product-button hintT-top" data-hint="Regard rapide"><i
                                                         class="fas fa-search"></i></a>
                                                 <a href="#" class="product-button hintT-top"
                                                     data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
@@ -410,7 +410,7 @@
                                             </span>
                                             <div class="product-buttons">
                                                 <a href="#quickViewModal" data-bs-toggle="modal"
-                                                    class="product-button hintT-top" data-hint="Quick View"><i
+                                                    class="product-button hintT-top" data-hint="Regard rapide"><i
                                                         class="fas fa-search"></i></a>
                                                 <a href="#" class="product-button hintT-top"
                                                     data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
@@ -444,7 +444,7 @@
                                             </span>
                                             <div class="product-buttons">
                                                 <a href="#quickViewModal" data-bs-toggle="modal"
-                                                    class="product-button hintT-top" data-hint="Quick View"><i
+                                                    class="product-button hintT-top" data-hint="Regard rapide"><i
                                                         class="fas fa-search"></i></a>
                                                 <a href="#" class="product-button hintT-top"
                                                     data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
@@ -474,7 +474,7 @@
                                             </span>
                                             <div class="product-buttons">
                                                 <a href="#quickViewModal" data-bs-toggle="modal"
-                                                    class="product-button hintT-top" data-hint="Quick View"><i
+                                                    class="product-button hintT-top" data-hint="Regard rapide"><i
                                                         class="fas fa-search"></i></a>
                                                 <a href="#" class="product-button hintT-top"
                                                     data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
@@ -508,7 +508,7 @@
                                             </span>
                                             <div class="product-buttons">
                                                 <a href="#quickViewModal" data-bs-toggle="modal"
-                                                    class="product-button hintT-top" data-hint="Quick View"><i
+                                                    class="product-button hintT-top" data-hint="Regard rapide"><i
                                                         class="fas fa-search"></i></a>
                                                 <a href="#" class="product-button hintT-top"
                                                     data-hint="Add to Cart"><i class="fas fa-shopping-cart"></i></a>

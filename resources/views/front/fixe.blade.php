@@ -64,9 +64,8 @@
                 <div class="col">
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
-                            <img src="/icons/logo-black.png" height="55"
-                                alt="{{ config('app.name') }} Logo">
-                            </a>
+                            <img src="/icons/logo-black.png" height="55" alt="{{ config('app.name') }} Logo">
+                        </a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -83,15 +82,28 @@
                 <div class="col">
                     <div class="header-tools justify-content-end">
                         <div class="header-login">
-                            <a href="{{ route('login') }}"><i class="far fa-user"></i></a>
+                            @guest
+                                <a href="{{ route('login') }}">
+                                    <i class="far fa-user"></i>
+                                </a>
+                            @endguest
+                            @auth
+                                <a href="{{ route('profile') }}">
+                                    {{ Auth::user()->nom }}
+                                </a>
+                            @endauth
                         </div>
                         <div class="header-search d-none d-sm-block">
                             <a href="#offcanvas-search" class="offcanvas-toggle"><i class="fas fa-search"></i></a>
                         </div>
-                        <div class="header-wishlist">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span
-                                    class="wishlist-count">0</span><i class="far fa-heart"></i></a>
-                        </div>
+                        @auth
+                            <div class="header-wishlist">
+                                <a href="#offcanvas-wishlist" class="offcanvas-toggle">
+                                    <span class="wishlist-count">0</span>
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </div>
+                        @endauth
                         <div class="header-cart">
                             <a href="#offcanvas-cart" class="offcanvas-toggle">
                                 <span class="cart-count">0</span>
@@ -117,9 +129,8 @@
                 <div class="col">
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
-                            <img src="/icons/logo-black.png" height="40"
-                                alt="{{ config('app.name') }} Logo">
-                            </a>
+                            <img src="/icons/logo-black.png" height="40" alt="{{ config('app.name') }} Logo">
+                        </a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -136,15 +147,28 @@
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="header-login">
-                            <a href="{{ route('login') }}"><i class="far fa-user"></i></a>
+                            @guest
+                                <a href="{{ route('login') }}">
+                                    <i class="far fa-user"></i>
+                                </a>
+                            @endguest
+                            @auth
+                                <a href="{{ route('profile') }}">
+                                    {{ Auth::user()->nom }}
+                                </a>
+                            @endauth
                         </div>
                         <div class="header-search d-none d-sm-block">
                             <a href="#offcanvas-search" class="offcanvas-toggle"><i class="fas fa-search"></i></a>
                         </div>
-                        <div class="header-wishlist">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span
-                                    class="wishlist-count">0</span><i class="far fa-heart"></i></a>
-                        </div>
+                        @auth
+                            <div class="header-wishlist">
+                                <a href="#offcanvas-wishlist" class="offcanvas-toggle">
+                                    <span class="wishlist-count">0</span>
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </div>
+                        @endauth
                         <div class="header-cart">
                             <a href="#offcanvas-cart" class="offcanvas-toggle">
                                 <span class="cart-count">0</span>
@@ -183,9 +207,8 @@
                 <div class="col">
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
-                            <img src="/icons/logo-black.png" height="30"
-                                alt="{{ config('app.name') }} Logo">
-                            </a>
+                            <img src="/icons/logo-black.png" height="30" alt="{{ config('app.name') }} Logo">
+                        </a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -194,15 +217,28 @@
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="header-login d-none d-sm-block">
-                            <a href="{{ route('login') }}"><i class="far fa-user"></i></a>
+                            @guest
+                                <a href="{{ route('login') }}">
+                                    <i class="far fa-user"></i>
+                                </a>
+                            @endguest
+                            @auth
+                                <a href="{{ route('profile') }}">
+                                    {{ Auth::user()->nom }}
+                                </a>
+                            @endauth
                         </div>
                         <div class="header-search d-none d-sm-block">
                             <a href="#offcanvas-search" class="offcanvas-toggle"><i class="fas fa-search"></i></a>
                         </div>
-                        <div class="header-wishlist d-none d-sm-block">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span
-                                    class="wishlist-count">0</span><i class="far fa-heart"></i></a>
-                        </div>
+                        @auth
+                            <div class="header-wishlist d-none d-sm-block">
+                                <a href="#offcanvas-wishlist" class="offcanvas-toggle">
+                                    <span class="wishlist-count">0</span>
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </div>
+                        @endauth
                         <div class="header-cart">
                             <a href="#offcanvas-cart" class="offcanvas-toggle">
                                 <span class="cart-count">0</span>
@@ -240,9 +276,8 @@
                 <div class="col">
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
-                            <img src="/icons/logo-black.png" height="30"
-                                alt="{{ config('app.name') }} Logo">
-                            </a>
+                            <img src="/icons/logo-black.png" height="30" alt="{{ config('app.name') }} Logo">
+                        </a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -251,15 +286,28 @@
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
                         <div class="header-login d-none d-sm-block">
-                            <a href="{{ route('login') }}"><i class="far fa-user"></i></a>
+                            @guest
+                                <a href="{{ route('login') }}">
+                                    <i class="far fa-user"></i>
+                                </a>
+                            @endguest
+                            @auth
+                                <a href="{{ route('profile') }}">
+                                    {{ Auth::user()->nom }}
+                                </a>
+                            @endauth
                         </div>
                         <div class="header-search d-none d-sm-block">
                             <a href="#offcanvas-search" class="offcanvas-toggle"><i class="fas fa-search"></i></a>
                         </div>
-                        <div class="header-wishlist d-none d-sm-block">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span
-                                    class="wishlist-count">0</span><i class="far fa-heart"></i></a>
-                        </div>
+                        @auth
+                            <div class="header-wishlist d-none d-sm-block">
+                                <a href="#offcanvas-wishlist" class="offcanvas-toggle">
+                                    <span class="wishlist-count">0</span>
+                                    <i class="far fa-heart"></i>
+                                </a>
+                            </div>
+                        @endauth
                         <div class="header-cart">
                             <a href="#offcanvas-cart" class="offcanvas-toggle">
                                 <span class="cart-count">0</span>
@@ -385,14 +433,25 @@
             <div class="offcanvas-buttons">
                 <div class="header-tools">
                     <div class="header-login">
-                        <a href="{{ route('login') }}"><i class="far fa-user"></i></a>
+                        @guest
+                            <a href="{{ route('login') }}">
+                                <i class="far fa-user"></i>
+                            </a>
+                        @endguest
+                        @auth
+                            <a href="{{ route('profile') }}">
+                                {{ Auth::user()->nom }}
+                            </a>
+                        @endauth
                     </div>
-                    <div class="header-wishlist">
-                        <a href="{{ route('favoris_index') }}">
-                            <span class="wishlist-count">0</span>
-                            <i class="far fa-heart"></i>
-                        </a>
-                    </div>
+                    @auth
+                        <div class="header-wishlist">
+                            <a href="{{ route('favoris_index') }}">
+                                <span class="wishlist-count">0</span>
+                                <i class="far fa-heart"></i>
+                            </a>
+                        </div>
+                    @endauth
                     <div class="header-cart">
                         <a href="{{ route('cart') }}">
                             <span class="cart-count">0</span>

@@ -197,19 +197,8 @@
                                                 </div>
                                                 <input type="number" name="frais" step="0.1"
                                                     value="{{ old('frais', $config->frais) }}" class="form-control">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                        FR
-                                                    </span>
-                                                </div>
-                                                <input type="number" name="frais_fr" step="0.1"
-                                                    value="{{ old('frais_fr', $config->frais_fr) }}"
-                                                    class="form-control">
                                             </div>
                                             @error('frais')
-                                                <span class="text-danger small"> {{ $message }} </span>
-                                            @enderror
-                                            @error('frais_fr')
                                                 <span class="text-danger small"> {{ $message }} </span>
                                             @enderror
                                         </div>
@@ -225,20 +214,9 @@
                                                 </div>
                                                 <input type="text" name="tva" step="0.1"
                                                     value="{{ old('tva', $config->tva) }}" class="form-control">
-
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                        FR
-                                                    </span>
-                                                </div>
-                                                <input type="text" name="tva_fr" step="0.1"
-                                                    value="{{ old('tva_fr', $config->tva_fr) }}" class="form-control">
                                             </div>
                                         </div>
                                         @error('tva')
-                                            <span class="text-danger small"> {{ $message }} </span>
-                                        @enderror
-                                        @error('tva_fr')
                                             <span class="text-danger small"> {{ $message }} </span>
                                         @enderror
                                     </div>
@@ -253,19 +231,8 @@
                                                 </div>
                                                 <input type="number" name="timbre" step="0.1"
                                                     value="{{ old('timbre', $config->timbre) }}" class="form-control">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                        FR
-                                                    </span>
-                                                </div>
-                                                <input type="number" name="timbre_fr" step="0.1"
-                                                    value="{{ old('timbre_fr', $config->timbre_fr) }}"
-                                                    class="form-control">
                                             </div>
                                             @error('timbre')
-                                                <span class="text-danger small"> {{ $message }} </span>
-                                            @enderror
-                                            @error('timbre_fr')
                                                 <span class="text-danger small"> {{ $message }} </span>
                                             @enderror
                                         </div>

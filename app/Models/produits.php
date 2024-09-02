@@ -39,11 +39,7 @@ class produits extends Model
     public function getPrixVente()
     {
         $pays =  request()->cookie('countryName') ?? "TN";
-        if ($pays == "TN") {
-            return $this->prix;
-        } else {
-            return $this->prix_fr;
-        }
+        return $this->prix;
     }
 
 
@@ -64,14 +60,10 @@ class produits extends Model
     {
         if ($this->id_promotion) {
             $promotion = promotions::find($this->id_promotion);
-            if ($promotion) {
-                return $promotion;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
+            return $promotion ?: false;
         }
+
+        return false;
     }
 
     public function diminuer_stock(int $quantite): void

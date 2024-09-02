@@ -23,8 +23,6 @@ return new class extends Migration
             $table->integer("stock")->default(0);
             $table->unsignedBigInteger("id_categorie")->nullable();
             $table->enum("statut",["disponible","indisponible"])->default("indisponible");
-            $table->decimal('prix_fr', 13, 3);
-            $table->decimal('prix_achat_fr', 13, 3);
             $table->boolean("frais_inclu")->default(false);
             $table->json('photos')->nullable();
             $table->boolean('top')->default(false);

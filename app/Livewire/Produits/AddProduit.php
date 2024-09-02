@@ -15,7 +15,6 @@ class AddProduit extends Component
     use WithFileUploads;
 
     public $nom, $prix, $photo, $photos, $prix_achat, $photo2, $photos2, $produit, $reference, $description, $id_categorie;
-    public $prix_fr, $prix_achat_fr;
     public $new_prix, $new_qte;
     public $frais_inclu = false;
 
@@ -32,8 +31,6 @@ class AddProduit extends Component
             $this->description = $produit->description;
             $this->id_categorie = $produit->id_categorie;
             $this->frais_inclu = $produit->frais_inclu;
-            $this->prix_fr = $produit->prix_fr;
-            $this->prix_achat_fr = $produit->prix_achat_fr;
         }
     }
 
@@ -66,8 +63,6 @@ class AddProduit extends Component
             'description' => 'nullable|string',
             'id_categorie' => 'required|exists:categories,id',
             'frais_inclu' => 'nullable|boolean',
-            'prix_fr' => 'required|numeric',
-            'prix_achat_fr' => 'required|numeric',
         ], [
             'required' => "Ce champ est obligatoire"
         ]);
@@ -79,8 +74,6 @@ class AddProduit extends Component
         $produit->reference = $this->reference;
         $produit->prix = $this->prix;
         $produit->prix_achat = $this->prix_achat;
-        $produit->prix_fr = $this->prix_fr;
-        $produit->prix_achat_fr = $this->prix_achat_fr;
         $produit->description = $this->description;
         $produit->id_categorie = $this->id_categorie;
         $produit->frais_inclu = $this->frais_inclu ? true : false;
@@ -105,6 +98,7 @@ class AddProduit extends Component
                 'prix_achat',
                 'description',
                 'id_categorie',
+                'frais_inclu',
             ]
         );
 

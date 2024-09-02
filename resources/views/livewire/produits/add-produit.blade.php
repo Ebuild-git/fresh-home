@@ -45,13 +45,6 @@
                                 </span>
                             </div>
                             <input type="number" step="0.1" name="prix" class="form-control" wire:model="prix">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    FR
-                                </span>
-                            </div>
-                            <input type="number" step="0.1" name="prix_fr" class="form-control"
-                                wire:model="prix_fr">
                         </div>
                         @error('prix')
                             <span class="text-danger small"> {{ $message }} </span>
@@ -72,13 +65,6 @@
                             </div>
                             <input type="number" step="0.1" name="prix_achat" class="form-control"
                                 wire:model="prix_achat">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    FR
-                                </span>
-                            </div>
-                            <input type="number" step="0.1" name="prix_achat_fr" class="form-control"
-                                wire:model="prix_achat_fr">
                         </div>
                         @error('prix_achat')
                             <span class="text-danger small"> {{ $message }} </span>

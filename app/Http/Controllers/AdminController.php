@@ -431,9 +431,6 @@ class AdminController extends Controller
             'frais' => 'nullable|numeric',
             'tva' => 'nullable|numeric',
             'timbre' => 'nullable|numeric',
-            'frais_fr' => 'nullable|numeric',
-            'tva_fr' => 'nullable|numeric',
-            'timbre_fr' => 'nullable|numeric',
             'telephone' => 'nullable|numeric',
             'adresse' => 'nullable|string',
             'facebook' => 'nullable|string',
@@ -495,9 +492,6 @@ class AdminController extends Controller
         $config->frais = $request->frais;
         $config->tva = $request->tva;
         $config->timbre = $request->timbre;
-        $config->frais_fr = $request->frais_fr;
-        $config->tva_fr = $request->tva_fr;
-        $config->timbre_fr = $request->timbre_fr;
         $config->telephone = $request->telephone;
         $config->adresse = $request->adresse;
         $config->facebook = $request->facebook;

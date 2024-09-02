@@ -48,7 +48,7 @@
                                                     <img src="{{ Storage::url($banner->photo)}}" width="40 " height="40 " class="rounded shadow" alt="">
                                                 </td>
                                                 <td>
-                                                    <span class="badge bg-dark">
+                                                    <span class="badge bg-dark" title="{{ $banner->titre }}">
                                                         {{ $banner->position() }}
                                                     </span>
                                                 </td>

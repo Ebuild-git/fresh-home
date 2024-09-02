@@ -20,12 +20,18 @@ class Banners extends Model
             return "Page de contact";
         } elseif ($this->type == "reset") {
             return "Page de réinitialisation du mot de passe";
-        } elseif($this->type == "profile") {
+        } elseif ($this->type == "profile") {
             return "Page de profile";
-        }elseif($this->type == "cart"){
+        } elseif ($this->type == "cart") {
             return "Page de panier";
-        }else{
+        } elseif ($this->type == "login") {
+            return "page de connexion";
+        } elseif ($this->type == "favoris") {
+            return "page de favoris";
+        } elseif ($this->type == "checkout") {
             return "page de paiement";
+        } else {
+            return "Page inconnue";
         }
     }
 }

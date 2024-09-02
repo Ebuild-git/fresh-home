@@ -31,8 +31,8 @@ class BannerController extends Controller
 
 
         //si on a une autre image que de type banner alors on supprime avant de ajouter la nouvelle
-        if ($request->type == 'banner' && $request->hasFile('photo')) {
-            $found  =Banners::where('type', 'banner')->first();
+        if ($request->type != 'banner' && $request->hasFile('photo')) {
+            $found  =Banners::where('type', $request->type )->first();
             if($found){
                 Storage::disk('public')->delete($found->photo);
                 $found->delete();

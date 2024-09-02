@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/assets/css/vendor/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/css/vendor/themify-icons.css">
     <link rel="stylesheet" href="/assets/css/vendor/customFonts.css">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css?v={{ time() }}">
 
     <!-- Plugins CSS (All Plugins Files) -->
     <link rel="stylesheet" href="/assets/css/plugins/select2.min.css">

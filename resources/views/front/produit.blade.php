@@ -6,7 +6,8 @@
     <div class="offcanvas-overlay"></div>
 
     <!-- Page Title/Header Start -->
-    <div class="page-title-section section" data-bg-image="{{ isset($banner) && $banner->photo ? Storage::url($banner->photo) : '/assets/images/bg/page-title-1.webp' }}">
+    <div class="page-title-section section"
+        data-bg-image="{{ isset($banner) && $banner->photo ? Storage::url($banner->photo) : '/assets/images/bg/page-title-1.webp' }}">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -31,7 +32,7 @@
         </div>
     </div>
     <!-- Page Title/Header End -->
- 
+
     <!-- Single Products Section Start -->
     <div class="section section-fluid section-padding border-bottom">
         <div class="container">
@@ -43,11 +44,8 @@
                         <button class="product-gallery-popup hintT-left" data-hint="Click to enlarge"
                             data-images='[
                                     {"src": "{{ Storage::url($produit->photo) }}", "w": 810, "h": 1080},
-                                    
-                                    {"src": "/assets/images/product/single/2/product-zoom-2.webp", "w": 810, "h": 1080},
-                                    {"src": "/assets/images/product/single/2/product-zoom-3.webp", "w": 810, "h": 1080},
-                                    {"src": "/assets/images/product/single/2/product-zoom-4.webp", "w": 810, "h": 1080},
-                                    {"src": "/assets/images/product/single/2/product-zoom-5.webp", "w": 810, "h": 1080}
+                                     @foreach (json_decode($produit->photos) ?? [] as $item)
+                                    {"src": "{{ Storage::url($item) }}"", "w": 810, "h": 1080}, @endforeach
                                 ]'><i
                                 class="fas fa-expand"></i></button>
 
@@ -244,7 +242,8 @@
                                     </span>
                                 </span>
                                 <div class="product-buttons">
-                                    <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top modal-view-open" data-id="{{ $produit->id }}"
+                                    <a href="#quickViewModal" data-bs-toggle="modal"
+                                        class="product-button hintT-top modal-view-open" data-id="{{ $produit->id }}"
                                         data-hint="Regard rapide">
                                         <i class="fas fa-search"></i>
                                     </a>

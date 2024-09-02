@@ -25,8 +25,8 @@ class FrontController extends Controller
     {
         $banners = Banners::all();
         $categories = categories::all();
-        $news = produits::Orderby('id','desc')->take(8)->get();
-        $randoms= produits::inRandomOrder()->limit(8)->get();
+        $news = produits::Orderby('id', 'desc')->take(8)->get();
+        $randoms = produits::inRandomOrder()->limit(8)->get();
         return view('front.index')
             ->with('banners', $banners)
             ->with('categories', $categories)
@@ -46,7 +46,7 @@ class FrontController extends Controller
         return view('front.forgotpassword');
     }
 
- 
+
 
     public function shop(Request $request)
     {
@@ -150,7 +150,9 @@ class FrontController extends Controller
 
     public function profile()
     {
-        return view('front.profile');
+        $user = auth()->user();
+        return view('front.profile')
+            ->with('user', $user);
     }
 
     public function checkout()

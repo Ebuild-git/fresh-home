@@ -57,9 +57,38 @@
                         <div class="tab-pane fade show active" id="dashboad">
                             <div class="myaccount-content dashboad">
                                 <p>Salut <strong>{{ Auth::user()->nom }}</strong>, </p>
-                                <p>From your account dashboard you can view your <span>recent orders</span>, manage your
-                                    <span>shipping and billing addresses</span>, and <span>edit your password and account
-                                        details</span>.</p>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="p-2 card-dashboard">
+                                                <h2>
+                                                    0{{ $user->commandes->count() }}
+                                                </h2>
+                                                <h5>
+                                                    Commandes
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="p-2 card-dashboard">
+                                                <h2>
+                                                    0{{ $user->favoris->count() }}
+                                                </h2>
+                                                <h5>
+                                                    Favoris
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="p-2 card-dashboard">
+                                                <h2>
+                                                    0{{ count(session('panier_front', [])) }}
+                                                </h2>
+                                                <h5>
+                                                    Panier
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                         <!-- Single Tab Content End -->
@@ -134,5 +163,17 @@
         </div>
     </div>
     <!-- My Account Section End -->
+
+    <style>
+        .card-dashboard{
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border:solid 1px rgba(0, 0, 0, 0.267);
+            text-align: left;
+            border-bottom: solid 4px black;
+        }
+    </style>
 
 @endsection

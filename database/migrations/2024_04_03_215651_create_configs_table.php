@@ -19,9 +19,12 @@ return new class extends Migration
             $table->string('footer_text')->nullable()->default(null);
             $table->string('telephone')->nullable()->default(null);
             $table->string('adresse')->nullable()->default(null);
+            $table->decimal("frais_fr", 10,3)->default(0);
             $table->decimal("frais", 10,3)->default(0);
             $table->decimal("tva", 13, 3)->default(0);
+            $table->decimal("tva_fr", 13, 3)->default(0);
             $table->decimal('timbre', 13, 2)->default(0);
+            $table->decimal('timbre_fr', 13, 2)->default(0);
             $table->string("facebook")->nullable();
             $table->string("instagram")->nullable();
             $table->string('tiktok')->nullable();

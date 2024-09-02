@@ -40,8 +40,8 @@
                     <div class="myaccount-tab-list nav">
                         <a href="#dashboad" class="active" data-bs-toggle="tab">Dashboard <i class="far fa-home"></i></a>
                         <a href="#orders" data-bs-toggle="tab">Commandes <i class="far fa-file-alt"></i></a>
-                        <a href="#address" data-bs-toggle="tab">address <i class="far fa-map-marker-alt"></i></a>
-                        <a href="#account-info" data-bs-toggle="tab">Account Details <i class="far fa-user"></i></a>
+                        <a href="#account-info" data-bs-toggle="tab">Mes informations <i class="far fa-user"></i></a>
+                        <a href="#account-securiter" data-bs-toggle="tab">Sécurité <i class="far fa-shield"></i></a>
                         <a href="{{ route('logout') }}" class="text-danger">
                             Déconnexion <i class="far fa-sign-out-alt"></i>
                         </a>
@@ -107,94 +107,26 @@
                         </div>
                         <!-- Single Tab Content End -->
 
-                        <!-- Single Tab Content Start -->
-                        <div class="tab-pane fade" id="address">
-                            <div class="myaccount-content address">
-                                <p>The following addresses will be used on the checkout page by default.</p>
-                                <div class="row learts-mb-n30">
-                                    <div class="col-md-6 col-12 learts-mb-30">
-                                        <h4 class="title">Billing Address <a href="#" class="edit-link">edit</a></h4>
-                                        <address>
-                                            <p><strong>Alex Tuntuni</strong></p>
-                                            <p>1355 Market St, Suite 900 <br>
-                                                San Francisco, CA 94103</p>
-                                            <p>Mobile: (123) 456-7890</p>
-                                        </address>
-                                    </div>
-                                    <div class="col-md-6 col-12 learts-mb-30">
-                                        <h4 class="title">Shipping Address <a href="#" class="edit-link">edit</a>
-                                        </h4>
-                                        <address>
-                                            <p><strong>Alex Tuntuni</strong></p>
-                                            <p>1355 Market St, Suite 900 <br>
-                                                San Francisco, CA 94103</p>
-                                            <p>Mobile: (123) 456-7890</p>
-                                        </address>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Tab Content End -->
-
+              
                         <!-- Single Tab Content Start -->
                         <div class="tab-pane fade" id="account-info">
                             <div class="myaccount-content account-details">
                                 <div class="account-details-form">
-                                    <form action="#">
-                                        <div class="row learts-mb-n30">
-                                            <div class="col-md-6 col-12 learts-mb-30">
-                                                <div class="single-input-item">
-                                                    <label for="first-name">First Name <abbr
-                                                            class="required">*</abbr></label>
-                                                    <input type="text" id="first-name">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-12 learts-mb-30">
-                                                <div class="single-input-item">
-                                                    <label for="last-name">Last Name <abbr class="required">*</abbr></label>
-                                                    <input type="text" id="last-name">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 learts-mb-30">
-                                                <label for="display-name">Display Name <abbr
-                                                        class="required">*</abbr></label>
-                                                <input type="text" id="display-name" value="didiv91396">
-                                                <p>This will be how your name will be displayed in the account section and
-                                                    in reviews</p>
-                                            </div>
-                                            <div class="col-12 learts-mb-30">
-                                                <label for="email">Email Addres <abbr class="required">*</abbr></label>
-                                                <input type="email" id="email" value="didiv91396@ismailgul.net">
-                                            </div>
-                                            <div class="col-12 learts-mb-30 learts-mt-30">
-                                                <fieldset>
-                                                    <legend>Password change</legend>
-                                                    <div class="row learts-mb-n30">
-                                                        <div class="col-12 learts-mb-30">
-                                                            <label for="current-pwd">Current password (leave blank to leave
-                                                                unchanged)</label>
-                                                            <input type="password" id="current-pwd">
-                                                        </div>
-                                                        <div class="col-12 learts-mb-30">
-                                                            <label for="new-pwd">New password (leave blank to leave
-                                                                unchanged)</label>
-                                                            <input type="password" id="new-pwd">
-                                                        </div>
-                                                        <div class="col-12 learts-mb-30">
-                                                            <label for="confirm-pwd">Confirm new password</label>
-                                                            <input type="password" id="confirm-pwd">
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-12 learts-mb-30">
-                                                <button class="btn btn-dark btn-outline-hover-dark">Save Changes</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    @livewire('Front.Informations')
                                 </div>
                             </div>
                         </div> <!-- Single Tab Content End -->
+
+
+
+                         <!-- Single Tab Content Start -->
+                         <div class="tab-pane fade" id="account-securiter">
+                            <div class="myaccount-content account-details">
+                                <div class="account-details-form">
+                                    @livewire('Front.Security')
+                                </div>
+                            </div>
+                         </div>
 
                     </div>
                 </div> <!-- My Account Tab Content End -->

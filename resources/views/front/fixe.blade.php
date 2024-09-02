@@ -563,6 +563,7 @@
         </div>
     </div>
 
+    @livewireScripts
     <!-- JS
 ============================================ -->
 
@@ -608,7 +609,7 @@
     @endauth
     <script src="/assets/js/cart.js"></script>
     @yield('scripts')
-    @livewireScripts
+    
 </body>
 
 </html>

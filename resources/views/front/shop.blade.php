@@ -146,7 +146,7 @@
                                 Filtres par prix
                             </h3>
                             <div class="widget-price-range">
-                                <input class="range-slider" type="text" data-min="0" data-max="350" data-from="0"
+                                <input class="range-slider" type="text" data-min="{{ $min_price }}" data-max="{{ $max_price+350 }}" data-from="0"
                                     data-to="350" />
                             </div>
                         </div>

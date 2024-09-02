@@ -256,9 +256,12 @@
         skin: "learts",
         hide_min_max: true,
         type: "double",
-        prefix: "$",
+        prefix: " DT ",
+        onFinish: function(data) {
+            set_price(data.to,data.from );
+        }
     });
-
+    
     /*--
         Add To Wishlist
     -----------------------------------*/

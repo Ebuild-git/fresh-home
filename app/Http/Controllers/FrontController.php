@@ -85,12 +85,18 @@ class FrontController extends Controller
         $produits = $produits->paginate(25);
         $categories = categories::all();
         $banner = Banners::where('type', "shop")->first();
+
+        // recuperer le prix de l'article le plus couteux
+        $max_price = produits::max('prix');
+        $min_price = produits::min('prix');
         return view('front.shop')
             ->with('produits', $produits)
             ->with('categories', $categories)
             ->with('IDcategorie', $IDcategorie)
             ->with('key', $key)
-            ->with('banner', $banner);
+            ->with('banner', $banner)
+            ->with('max_price', $max_price)
+            ->with('min_price', $min_price);
     }
 
 
@@ -120,6 +126,8 @@ class FrontController extends Controller
         $id_categorie = $request->input('id_categorie') ?? null;
         $key = $request->input('key') ?? null;
         $ordre = $request->input('ordre') ?? null;
+        $max_price = $request->input('max_price') ?? null;
+        $min_price = $request->input('min_price')?? null;
 
         $produits = produits::query();
         if ($ordre) {
@@ -135,6 +143,12 @@ class FrontController extends Controller
         }
         if ($id_categorie) {
             $produits->where('id_categorie', $id_categorie);
+        }
+        if ($max_price) {
+            $produits->where('prix', '<', $max_price);
+        }
+        if ($min_price) {
+            $produits->where('prix', '>', $min_price);
         }
         if ($key) {
             $produits->where('nom', 'like', '%' . $key . '%')

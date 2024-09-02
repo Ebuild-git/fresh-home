@@ -51,7 +51,7 @@ class Register extends Component
 
         //send email
         try {
-            //Mail::to($user->email)->send(new MailRegister($user));
+            Mail::to($user->email)->send(new MailRegister($user));
         } catch (Exception $e) {
             Log::error('Error sending email: ' . $e->getMessage());
             //flah info message

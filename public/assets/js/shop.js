@@ -1,6 +1,16 @@
 let ordre = null;
 let id_categorie = $("#IDcategorie").val();;
 let key = null;
+let max_price = null;
+let min_price = null;
+
+function set_price(max,min) {
+    max_price = max;
+    min_price = min;
+    fetch_shop();
+}
+
+
 function fetch_shop() {
     $.get(
         "/shop_live",
@@ -8,6 +18,8 @@ function fetch_shop() {
             ordre: ordre,
             id_categorie: id_categorie,
             key: key,
+            max_price: max_price,
+            min_price: min_price,
         },
         function (response) {
             $("#shop-products").html(response.html);

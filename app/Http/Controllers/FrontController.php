@@ -37,7 +37,7 @@ class FrontController extends Controller
                 return redirect()->route('home');
             }
         } else {
-            $banner = Banners::where('type', "contact")->first();
+            $banner = Banners::where('type', "login")->first();
             return view('front.login')
                 ->with('banner', $banner);
         }

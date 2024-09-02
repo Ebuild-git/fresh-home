@@ -4,7 +4,7 @@
             <div class="product-thumb">
                 <a href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}"
                     class="image">
-                    @if ($produit->inPromotion())
+                    @if ($produit->id_promotion)
                         <span class="product-badges">
                             <span class="onsale">
                                 {{ $produit->inPromotion->pourcentage }} %
@@ -27,7 +27,7 @@
                     </a>
                 </h6>
                 <span class="price">
-                    @if ($produit->inPromotion())
+                    @if ($produit->id_promotion)
                         <span class="old">
                             {{ $produit->prix }}
                             <x-devise></x-devise>

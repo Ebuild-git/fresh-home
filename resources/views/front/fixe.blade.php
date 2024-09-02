@@ -39,18 +39,22 @@
 </head>
 
 <body>
-
-    <!-- Topbar Section Start -->
-    <div class="topbar-section section bg-dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <p class="text-center my-2 text-white">Free shipping for orders over $59 !</p>
+    @if ($infos->header_text)
+        <!-- Topbar Section Start -->
+        <div class="topbar-section section bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text-center my-2 text-white">
+                            {{ $infos->header_text }}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Topbar Section End -->
+        <!-- Topbar Section End -->
+    @endif
+
     <!-- Header Section Start -->
     <div class="header-section header-menu-center section bg-white d-none d-xl-block">
         <div class="container">

@@ -43,9 +43,11 @@
                                         @forelse ($banners as $banner)
                                             <tr>
                                                 <td>{{ $banner->id }}</td>
-                                                <td>{{ $banner->titre }}</td>
+                                                <td>{{ $banner->titre ?? "-" }}</td>
                                                 <td>
-                                                    <img src="{{ Storage::url($banner->photo)}}" width="40 " height="40 " class="rounded shadow" alt="">
+                                                    <a href="{{ Storage::url($banner->photo)}}" target="__blank">
+                                                        <img src="{{ Storage::url($banner->photo)}}" width="40 " height="40 " class="rounded shadow" alt="{{ $banner->titre }}">
+                                                    </a>
                                                 </td>
                                                 <td>
                                                     <span class="badge bg-dark" title="{{ $banner->titre }}">

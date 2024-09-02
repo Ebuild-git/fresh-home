@@ -438,6 +438,7 @@ class AdminController extends Controller
             'email' => 'nullable|email',
             'tiktok' => 'nullable|string',
             'matricule' => 'nullable|string',
+            'header_text' => 'nullable|string',
         ]);
 
         // update the user
@@ -499,6 +500,7 @@ class AdminController extends Controller
         $config->email = $request->email;
         $config->tiktok = $request->tiktok;
         $config->matricule = $request->matricule;
+        $config->header_text = $request->header_text;
         if($config->save()){
             //flash message
             return redirect()->back()->with('info', 'Vos modifications ont été enregistrées.');

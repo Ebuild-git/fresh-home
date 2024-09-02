@@ -27,12 +27,14 @@
                                 <img src="{{ Storage::url($banner->photo) }}" alt="{{ $banner->titre }}">
                             </div>
                             <div class="home4-slide-content">
-                                <span class="category">
+                               <div class=" p-3" style="background-color: #00000056;">
+                                <span class="category text-white">
                                     {{ config('app.name') }}
                                 </span>
-                                <h2 class="title">*
+                                <h2 class="title text-white">
                                     {!! addBreaksAfterWords($banner->titre) !!}
                                 </h2>
+                               </div>
                                 <div class="link">
                                     <a href="{{ route('shop') }}" class="btn btn-black btn-outline-hover-black">
                                         Acheter maintenant !

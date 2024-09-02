@@ -103,11 +103,11 @@
 
                                 <div class="text-center bg-primary card my-auto p-1 mb-3">
                                     <h6 class="text-white">
-                                        Réseaux sociaux / societe
+                                        Réseaux sociaux / societé et texte
                                     </h6>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="">Adresse</label>
                                             <input type="text" name="adresse"
@@ -117,7 +117,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="">Numéro de téléphone</label>
                                             <input type="text" name="telephone"
@@ -127,7 +127,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="">Matricule Fiscal</label>
                                             <input type="text" name="matricule"
@@ -137,7 +137,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="">Lien Facebook</label>
                                             <input type="url" name="facebook"
@@ -147,7 +147,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="">Lien Tiktok</label>
                                             <input type="url" name="tiktok"
@@ -157,7 +157,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="">Lien instagram</label>
                                             <input type="url" name="instagram"
@@ -167,12 +167,22 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="">Email</label>
                                             <input type="email" name="email"
                                                 value="{{ old('email', $config->email) }}" class="form-control">
                                             @error('email')
+                                                <span class="text-danger small"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label for="">Texte de l'entête </label>
+                                            <input type="texte" name="header_text"
+                                                value="{{ old('header_text', $config->header_text) }}" class="form-control">
+                                            @error('header_text')
                                                 <span class="text-danger small"> {{ $message }} </span>
                                             @enderror
                                         </div>

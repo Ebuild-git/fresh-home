@@ -433,6 +433,7 @@ class AdminController extends Controller
             'timbre' => 'nullable|numeric',
             'telephone' => 'nullable|numeric',
             'adresse' => 'nullable|string',
+            'adresse2' => 'nullable|string',
             'facebook' => 'nullable|string',
             'instagram' => 'nullable|string',
             'email' => 'nullable|email',
@@ -495,6 +496,7 @@ class AdminController extends Controller
         $config->timbre = $request->timbre;
         $config->telephone = $request->telephone;
         $config->adresse = $request->adresse;
+        $config->adresse2 = $request->adresse2;
         $config->facebook = $request->facebook;
         $config->instagram = $request->instagram;
         $config->email = $request->email;

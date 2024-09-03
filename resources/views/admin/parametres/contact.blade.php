@@ -109,10 +109,20 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="mb-3">
-                                            <label for="">Adresse</label>
+                                            <label for="">Adresse 1</label>
                                             <input type="text" name="adresse"
                                                 value="{{ old('adresse', $config->adresse) }}" class="form-control">
                                             @error('adresse')
+                                                <span class="text-danger small"> {{ $message }} </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label for="">Adresse 2</label>
+                                            <input type="text" name="adresse2"
+                                                value="{{ old('adresse2', $config->adresse2) }}" class="form-control">
+                                            @error('adresse2')
                                                 <span class="text-danger small"> {{ $message }} </span>
                                             @enderror
                                         </div>
@@ -137,7 +147,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4 col-12">
                                         <div class="mb-3">
                                             <label for="">Lien Facebook</label>
                                             <input type="url" name="facebook"
@@ -147,7 +157,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4 col-12">
                                         <div class="mb-3">
                                             <label for="">Lien Tiktok</label>
                                             <input type="url" name="tiktok"
@@ -157,7 +167,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4 col-12">
                                         <div class="mb-3">
                                             <label for="">Lien instagram</label>
                                             <input type="url" name="instagram"

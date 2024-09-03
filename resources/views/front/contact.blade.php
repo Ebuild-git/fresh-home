@@ -5,7 +5,8 @@
     <div class="offcanvas-overlay"></div>
 
     <!-- Page Title/Header Start -->
-    <div class="page-title-section section" data-bg-image="{{ isset($banner) && $banner->photo ? Storage::url($banner->photo) : '/assets/images/bg/page-title-1.webp' }}">
+    <div class="page-title-section section"
+        data-bg-image="{{ isset($banner) && $banner->photo ? Storage::url($banner->photo) : '/assets/images/bg/page-title-1.webp' }}">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -43,10 +44,18 @@
                 <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
                     <div class="contact-info">
                         <h4 class="title">ADDRESSE</h4>
-                        <span class="info">
-                            <i class="icon fas fa-map-marker-alt"></i>
-                            {{ $infos->adresse ?? '' }}
-                        </span>
+                        @if ($infos->adresse)
+                            <span class="info">
+                                <i class="icon fas fa-map-marker-alt"></i>
+                                {{ $infos->adresse ?? '' }}
+                            </span>
+                        @endif
+                        @if ($infos->adresse2)
+                            <span class="info">
+                                <i class="icon fas fa-map-marker-alt"></i>
+                                {{ $infos->adresse2 ?? '' }}
+                            </span>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
@@ -67,7 +76,8 @@
                 <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
                     <div class="contact-info">
                         <h4 class="title"> DISPONIBLILITE</h4>
-                        <span class="info"><i class="icon far fa-clock"></i> Lundi - vendredi : 09:00 – 20:00 <br> samedi - Dimande : 10:30 – 22:00</span>
+                        <span class="info"><i class="icon far fa-clock"></i> Lundi - vendredi : 09:00 – 20:00 <br> samedi
+                            - Dimande : 10:30 – 22:00</span>
                     </div>
                 </div>
             </div>
@@ -77,7 +87,7 @@
             <div class="row learts-mt-60">
                 <div class="col">
                     <iframe class="contact-map"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2136.986005919501!2d-73.9685579655238!3d40.75862446708152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258e4a1c884e5%3A0x24fe1071086b36d5!2sThe%20Atrium!5e0!3m2!1sen!2sbd!4v1585132512970!5m2!1sen!2sbd"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11592.22665410924!2d10.2558798!3d36.7260284!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd362adc182301%3A0xd3937b63f4c56d1b!2sCentre%20Commercial%20AZUR%20CITY!5e1!3m2!1sfr!2sca!4v1725393490231!5m2!1sfr!2sca"
                         style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </div>

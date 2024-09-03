@@ -27,14 +27,14 @@
                                 <img src="{{ Storage::url($banner->photo) }}" alt="{{ $banner->titre }}">
                             </div>
                             <div class="home4-slide-content">
-                               <div class=" p-3" style="background-color: #00000056;">
-                                <span class="category text-white">
-                                    {{ config('app.name') }}
-                                </span>
-                                <h2 class="title text-white">
-                                    {!! addBreaksAfterWords($banner->titre) !!}
-                                </h2>
-                               </div>
+                                <div class=" p-3" style="background-color: #00000056;">
+                                    <span class="category text-white">
+                                        {{ config('app.name') }}
+                                    </span>
+                                    <h2 class="title text-white">
+                                        {!! addBreaksAfterWords($banner->titre) !!}
+                                    </h2>
+                                </div>
                                 <div class="link">
                                     <a href="{{ route('shop') }}" class="btn btn-black btn-outline-hover-black">
                                         Acheter maintenant !
@@ -77,25 +77,25 @@
     <!-- Category Banner Section Start -->
     <div class="section section-padding pt-0">
         <div class="container">
-            <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-1 learts-mb-n40">
-
-                @foreach ($categories as $categorie)
-                    <div class="col learts-mb-40">
-                        <div class="category-banner4">
-                            <a href="{{ route('shop') }}?IDcategorie={{ $categorie->id }}" class="inner">
-                                <div class="image">
-                                    <img src="{{ Storage::url($categorie->photo) }}" alt="{{ $categorie->nom }}">
-                                </div>
-                                <div class="content" data-bg-color="#f4ede7">
-                                    <h3 class="title">
-                                        {{ $categorie->nom }}
-                                    </h3>
-                                </div>
-                            </a>
+            <div class="cat-scroll-wrapper">
+                <button class="cat-scroll-button left">&lt;</button>
+                <div class="cat-scroll-container learts-mb-n40">
+                    @foreach ($categories as $categorie)
+                        <div class="cat-item learts-mb-40">
+                            <div class="cat-banner">
+                                <a href="{{ route('shop') }}?IDcategorie={{ $categorie->id }}" class="cat-inner">
+                                    <div class="cat-image">
+                                        <img src="{{ Storage::url($categorie->photo) }}" alt="{{ $categorie->nom }}">
+                                    </div>
+                                    <div class="content p-2 text-center" data-bg-color="#f4ede7">
+                                        <h6 class="title">{{ $categorie->nom }}</h6>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
-
+                    @endforeach
+                </div>
+                <button class="cat-scroll-button right">&gt;</button>
             </div>
         </div>
     </div>
@@ -735,5 +735,16 @@
     </div>
     <!-- Testimonial Section End -->
 
+    <script>
+        $(document).ready(function() {
+            $('.cat-scroll-button.left').click(function() {
+                $('.cat-scroll-container').scrollLeft($('.cat-scroll-container').scrollLeft() - 300);
+            });
+
+            $('.cat-scroll-button.right').click(function() {
+                $('.cat-scroll-container').scrollLeft($('.cat-scroll-container').scrollLeft() + 300);
+            });
+        });
+    </script>
 
 @endsection

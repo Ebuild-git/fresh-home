@@ -65,3 +65,56 @@ a:hover + .custom-cursor, button:hover + .custom-cursor {
     height: 30px;
     transform: translate(-50%, -50%) scale(1.2);
 }
+
+.cat-scroll-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cat-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth; /* Ajoute un défilement fluide */
+}
+
+.cat-scroll-container::-webkit-scrollbar {
+    display: none; /* Cache la scrollbar si nécessaire */
+}
+
+.cat-item {
+    flex: 0 0 25%;
+    box-sizing: border-box;
+    margin-right: 20px;
+}
+
+.cat-scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.cat-scroll-button.left {
+    left: 0;
+}
+
+.cat-scroll-button.right {
+    right: 0;
+}
+.cat-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+.cat-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

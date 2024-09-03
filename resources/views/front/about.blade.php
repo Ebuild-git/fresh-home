@@ -12,12 +12,12 @@
                 <div class="col">
 
                     <div class="page-title">
-                        <h1 class="title">à-propos</h1>
+                        <h1 class="title text-white">à-propos</h1>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}">Accueil</a>
+                                <a href="{{ route('home') }}" class="text-white">Accueil</a>
                             </li>
-                            <li class="breadcrumb-item active">à-propos</li>
+                            <li class="breadcrumb-item active text-white">à-propos</li>
                         </ul>
                     </div>
 
@@ -101,7 +101,7 @@
                                 <h6 class="title">
                                     PAIEMENT SÉCURISÉ
                                 </h6>
-                                <img class="img-hover-color " src="{{ Storage::url($infos->about_image) }}" alt="">
+                                <img width="224" height="32" src="https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay.png" class="vc_single_image-img attachment-full" alt="" decoding="async" title="pay" srcset="https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay.png 224w, https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay-220x32.png 220w" sizes="(max-width: 224px) 100vw, 224px">
                             </div>
                         </div>
                     </div>
@@ -168,47 +168,5 @@
         </div>
     </div>
     <!-- Feature Section End -->
-
-    <!-- Instagram Section Start -->
-    <div class="section section-padding border-top">
-        <div class="container">
-
-            <!-- Section Title Start -->
-            <div class="section-title2 text-center">
-                <h3 class="sub-title">Follow us on Instagram</h3>
-                <h2 class="title">@learts_shop</h2>
-            </div>
-            <!-- Section Title End -->
-
-            <div class="instafeed instafeed-carousel instafeed-carousel1">
-                <a class="instafeed-item" href="#">
-                    <img src="/assets/images/instagram/instagram-1.webp" alt="instagram image" />
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a class="instafeed-item" href="#">
-                    <img src="/assets/images/instagram/instagram-2.webp" alt="instagram image" />
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a class="instafeed-item" href="#">
-                    <img src="/assets/images/instagram/instagram-3.webp" alt="instagram image" />
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a class="instafeed-item" href="#">
-                    <img src="/assets/images/instagram/instagram-4.webp" alt="instagram image" />
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a class="instafeed-item" href="#">
-                    <img src="/assets/images/instagram/instagram-2.webp" alt="instagram image" />
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a class="instafeed-item" href="#">
-                    <img src="/assets/images/instagram/instagram-3.webp" alt="instagram image" />
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-
-        </div>
-    </div>
-    <!-- Instagram Section End -->
 
 @endsection

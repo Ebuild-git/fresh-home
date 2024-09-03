@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="/admin/assets/css/dark-theme.css" />
     <link rel="stylesheet" href="{{ asset('admin-css.css?v=') . time() }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('header')
 
 

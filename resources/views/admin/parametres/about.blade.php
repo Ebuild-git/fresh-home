@@ -31,7 +31,7 @@
                             @include('components.alert')
 
 
-                            <form method="POST" action="{{ route('config-about.post') }}" enctype="multipart/form-data">
+                            <form id="upload-form" enctype="multipart/form-data">
                                 @csrf
                                 <div class="text-center bg-primary card my-auto p-1 mb-3">
                                     <h6 class="text-white">
@@ -45,9 +45,6 @@
                                                 Couverture de la page
                                             </label>
                                             <input type="file" name="about_cover" accept="image/*" class="form-control">
-                                            @error('about_cover')
-                                                <span class="text-danger small"> {{ $message }} </span>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-12">
@@ -56,9 +53,6 @@
                                                 Image principal
                                             </label>
                                             <input type="file" name="about_image" accept="image/*" class="form-control">
-                                            @error('about_image')
-                                                <span class="text-danger small"> {{ $message }} </span>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-12">
@@ -68,9 +62,6 @@
                                             </label>
                                             <input type="file" name="about_cover_video" accept="image/*"
                                                 class="form-control">
-                                            @error('about_cover_video')
-                                                <span class="text-danger small"> {{ $message }} </span>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-12">
@@ -79,9 +70,6 @@
                                                 Vidéo
                                             </label>
                                             <input type="file" name="about_video" accept="video/*" class="form-control">
-                                            @error('about_video')
-                                                <span class="text-danger small"> {{ $message }} </span>
-                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -102,9 +90,6 @@
                                             </label>
                                             <input type="text" name="about_titre"
                                                 value="{{ old('about_titre', $config->about_titre) }}" class="form-control">
-                                            @error('about_titre')
-                                                <span class="text-danger small"> {{ $message }} </span>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-12">
@@ -114,9 +99,6 @@
                                             </label>
                                             <textarea name="about_description" class="form-control" rows="10">{{ old('about_description', $config->about_description) }}
                                                 </textarea>
-                                            @error('about_description')
-                                                <span class="text-danger small"> {{ $message }} </span>
-                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -142,6 +124,9 @@
                             </div>
                         </div>
                         <br>
+                        <div class="progress">
+                            <div id="progress-bar" class="progress-bar">0%</div>
+                        </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary btn-sm" type="submit">
                                 <i class="ri-save-line me-1 fs-16 lh-1"></i>
@@ -157,4 +142,71 @@
         </div>
     </div>
 
+
+    <script>
+        $(document).ready(function() {
+            $('#upload-form').on('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
+
+                var formData = new FormData(this);
+
+                $.ajax({
+                    xhr: function() {
+                        var xhr = new XMLHttpRequest();
+                        xhr.upload.addEventListener('progress', function(e) {
+                            if (e.lengthComputable) {
+                                var percentComplete = Math.round((e.loaded / e.total) *
+                                    100);
+                                $('#progress-bar').width(percentComplete + '%');
+                                $('#progress-bar').text(percentComplete + '%');
+                            }
+                        }, false);
+                        return xhr;
+                    },
+                    url: '{{ route('config-about.post') }}', // Change this to your route
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        if (response.status) {
+                            Swal.fire({
+                                title: "Félicitation",
+                                text: response.message,
+                                icon: "success"
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Echec !",
+                                text: response.message,
+                                icon: "error"
+                            });
+                        }
+                    },
+                    error: function(xhr) {
+                        // Afficher les erreurs
+                        if (xhr.status === 422) {
+                            let errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                let input = $('[name="' + key + '"]');
+                                input.addClass("is-invalid");
+                                let errorDiv = $(
+                                    '<div class="invalid-feedback"></div>'
+                                ).text(value[0]);
+                                input.after(errorDiv);
+                            });
+                        } else {
+                            $("#error-messages").html(
+                                "<p>Une erreur inattendue est survenue.</p>"
+                            );
+                        }
+                    },
+                });
+            });
+
+
+
+
+        });
+    </script>
 @endsection

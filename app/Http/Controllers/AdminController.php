@@ -573,7 +573,7 @@ class AdminController extends Controller
             'about_description' =>'nullable|string',
             'about_cover' =>  'image|nullable|max:3024', 
             'about_cover_video' =>  'image|nullable|max:3024', 
-            'about_video' =>  'file|mimetypes:video/mp4|max:30024', 
+            'about_video' =>  'file|mimetypes:video/mp4|max:50024', 
             'photo_commande' =>  'image|nullable|max:3024', 
             'about_image' =>  'image|nullable|max:3024', 
         ]);
@@ -614,10 +614,20 @@ class AdminController extends Controller
 
         if($config->save()){
             //flash message
-            return redirect()->back()->with('success', 'Vos modifications ont été enregistrées.');
+            return response()->json(
+                [
+                    "message" => "Vos modifications ont été enregistrées avec succès.",
+                    "status" => true,
+                ]
+            );
         } else{
             //flash message
-            return redirect()->back()->with('danger', 'Vos modifications n\'ont pas été enregistrées.');
+            return response()->json(
+                [
+                    "message" => "Vos modifications n'ont pas été enregistrées.",
+                    "status" => false,
+                ]
+            );
         }
     }
 

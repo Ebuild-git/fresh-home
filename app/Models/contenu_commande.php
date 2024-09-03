@@ -19,8 +19,5 @@ class contenu_commande extends Model
         return $this->belongsTo(commandes::class ,'id_commande');
     }
    
-    public function pack(){
-        return $this->belongsTo(packs::class ,'id_pack');
-    }
 
 }

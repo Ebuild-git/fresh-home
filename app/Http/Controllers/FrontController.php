@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\categories;
 use App\Models\config;
 use App\Models\Banners;
+use App\Models\contenu_commande;
 use App\Models\gouvernorats;
 use App\Models\produits;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class FrontController extends Controller
@@ -20,11 +22,17 @@ class FrontController extends Controller
         $categories = categories::all();
         $news = produits::Orderby('id', 'desc')->take(8)->get();
         $randoms = produits::inRandomOrder()->limit(8)->get();
+        $topProduits = contenu_commande::select('id_produit', DB::raw('SUM(quantite) as total_quantite'))
+            ->groupBy('id_produit')
+            ->orderByDesc('total_quantite')
+            ->limit(8)
+            ->get();
         return view('front.index')
             ->with('banners', $banners)
             ->with('categories', $categories)
             ->with('news', $news)
-            ->with('randoms', $randoms);
+            ->with('randoms', $randoms)
+            ->with('topProduits', $topProduits);
     }
 
     public function login()
@@ -127,7 +135,7 @@ class FrontController extends Controller
         $key = $request->input('key') ?? null;
         $ordre = $request->input('ordre') ?? null;
         $max_price = $request->input('max_price') ?? null;
-        $min_price = $request->input('min_price')?? null;
+        $min_price = $request->input('min_price') ?? null;
 
         $produits = produits::query();
         if ($ordre) {

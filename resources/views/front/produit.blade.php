@@ -1,5 +1,6 @@
 @extends('front.fixe')
 @section('titre', $produit->nom)
+
 @section('body')
 
 
@@ -263,4 +264,43 @@
     </div>
     <!-- Recommended Products Section End -->
 
+@endsection
+
+
+@section('SEO')
+    @php
+        $productDescription = $produit->description ? strip_tags($produit->description) : $siteName . ' - ' . $productName;
+    @endphp
+
+    <title>{{ $produit->nom }} | {{ config('app.name') }}</title>
+    <meta name="description" content="{{ Str::limit($productDescription, 160) }}">
+    <meta name="keywords" content="{{ $produit->nom }}, {{ $produit->reference ?? $produit->nom }}, {{ config('app.name') }}, acheter, prix {{ $produit->getPrice() }}">
+    <meta property="og:title" content="{{ $produit->nom }} | {{ config('app.name') }}">
+    <meta property="og:description" content="{{ Str::limit($productDescription, 160) }}">
+    <meta property="og:image" content="{{ $productImage }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="product">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $produit->nom }} | {{ config('app.name') }}">
+    <meta name="twitter:description" content="{{ Str::limit($productDescription, 160) }}">
+    <meta name="twitter:image" content="{{ Storage::url($produit->photo) }}">
+
+    <!-- Balises de Schema.org pour l'enrichissement SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "{{ $produit->nom }}",
+        "image": "{{ Storage::url($produit->photo) }}",
+        "description": "{{ $productDescription }}",
+        "sku": "{{ $produit->reference ?? '' }}",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USD",
+            "price": "{{ $productPrice }}",
+            "availability": "{{ $produit->statut == 'disponible' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' }}",
+            "url": "{{ url()->current() }}"
+        }
+    }
+    </script>
 @endsection

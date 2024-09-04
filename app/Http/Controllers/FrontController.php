@@ -21,7 +21,7 @@ class FrontController extends Controller
         $bans = Banners::where('type', "banner")->get();
         foreach ($bans as $ban) {
             $banners[] = [
-                'image' => Storage::url($ban->photo),
+                'photo' => Storage::url($ban->photo),
                 'titre' => $this->addBreaksAfterWords($ban->titre),
                 'titre_complet' => $ban->titre,
             ];

@@ -269,7 +269,7 @@
 
 @section('SEO')
     @php
-        $productDescription = $produit->description ? strip_tags($produit->description) : config('app.name') . ' - ' . $productName;
+        $productDescription = $produit->description ? strip_tags($produit->description) : config('app.name') . ' - ' . $produit->nom;
     @endphp
 
     <title>{{ $produit->nom }} | {{ config('app.name') }}</title>

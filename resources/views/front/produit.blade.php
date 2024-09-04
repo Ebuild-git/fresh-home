@@ -277,7 +277,7 @@
     <meta name="keywords" content="{{ $produit->nom }}, {{ $produit->reference ?? $produit->nom }}, {{ config('app.name') }}, acheter, prix {{ $produit->getPrice() }}">
     <meta property="og:title" content="{{ $produit->nom }} | {{ config('app.name') }}">
     <meta property="og:description" content="{{ Str::limit($productDescription, 160) }}">
-    <meta property="og:image" content="{{ $productImage }}">
+    <meta property="og:image" content="{{ Storage::url($produit->photo) }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="product">
     <meta name="twitter:card" content="summary_large_image">
@@ -296,8 +296,8 @@
         "sku": "{{ $produit->reference ?? '' }}",
         "offers": {
             "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": "{{ $productPrice }}",
+            "priceCurrency": "DNT",
+            "price": "{{ $produit->getPrice() }}",
             "availability": "{{ $produit->statut == 'disponible' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' }}",
             "url": "{{ url()->current() }}"
         }

@@ -59,8 +59,8 @@
                 <div class="col-xl-7 col-lg-8 col-12 mx-auto">
                     <div class="about-us2">
                         <div class="inner">
-                            <h2 class="title">Réveillez vos souvenirs, parfumez votre présent</h2>
-                            <h5 class="sub-title">Bienvenue chez {{ config('app.name') }}</h5>
+                            <h2 class="title">Réveillez vos souvenirs</h2>
+                            <h5 class="sub-title">parfumez votre présent</h5>
                             <div class="desc">
                                 <p>
                                     Fresh Home est la première marque tunisienne spécialisée dans les parfums maisons, née

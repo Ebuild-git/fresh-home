@@ -100,7 +100,7 @@
                     <div class="col-lg-9 col-12 learts-mb-50 order-lg-2">
                         <!-- Products Start -->
                         <div id="shop-products"
-                            class="products isotope-grid row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
+                            class=" row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
 
 
                         </div>

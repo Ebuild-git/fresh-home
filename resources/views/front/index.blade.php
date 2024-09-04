@@ -11,20 +11,9 @@
             <div class="home4-slider swiper-container">
                 <div class="swiper-wrapper">
                     @foreach ($banners as $banner)
-                        @php
-                            function addBreaksAfterWords($text, $wordsPerLine = 4)
-                            {
-                                $words = explode(' ', $text);
-                                $lines = [];
-                                foreach (array_chunk($words, $wordsPerLine) as $chunk) {
-                                    $lines[] = implode(' ', $chunk);
-                                }
-                                return implode('<br>', $lines);
-                            }
-                        @endphp
                         <div class="home4-slide-item swiper-slide" data-swiper-autoplay="5000">
                             <div class="home4-slide-image">
-                                <img src="{{ Storage::url($banner->photo) }}" alt="{{ $banner->titre }}">
+                                <img src="{{ $banner['photo'] }}" alt="{{ $banner['titre_complet'] }}">
                             </div>
                             <div class="home4-slide-content">
                                 <div class=" p-3" style="background-color: #00000056;">
@@ -32,7 +21,7 @@
                                         {{ config('app.name') }}
                                     </span>
                                     <h2 class="title text-white">
-                                        {!! addBreaksAfterWords($banner->titre) !!}
+                                        {!! $banner['titre'] !!}
                                     </h2>
                                 </div>
                                 <div class="link">

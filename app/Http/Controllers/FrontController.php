@@ -17,8 +17,15 @@ use Illuminate\Support\Facades\Storage;
 class FrontController extends Controller
 {
     public function index(Request $request)
-    {
-        $banners = Banners::where('type', "banner")->get();
+    {   $banners = [];
+        $bans = Banners::where('type', "banner")->get();
+        foreach ($bans as $ban) {
+            $banners[] = [
+                'image' => Storage::url($ban->photo),
+                'titre' => $this->addBreaksAfterWords($ban->titre),
+                'titre_complet' => $ban->titre,
+            ];
+        }
         $categories = categories::all();
         $news = produits::Orderby('id', 'desc')->take(8)->get();
         $randoms = produits::inRandomOrder()->limit(8)->get();
@@ -33,6 +40,16 @@ class FrontController extends Controller
             ->with('news', $news)
             ->with('randoms', $randoms)
             ->with('topProduits', $topProduits);
+    }
+
+    function addBreaksAfterWords($text, $wordsPerLine = 4)
+    {
+        $words = explode(' ', $text);
+        $lines = [];
+        foreach (array_chunk($words, $wordsPerLine) as $chunk) {
+            $lines[] = implode(' ', $chunk);
+        }
+        return implode('<br>', $lines);
     }
 
     public function login()

@@ -9,7 +9,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/icons/icon-black.png">
+    @if ($infos->icon)
+        <link rel="shortcut icon" type="image/x-icon" href="{{ Storage::url($infos->icon) }}">
+    @else
+        <link rel="shortcut icon" type="image/x-icon" href="/icons/icon-black.png">
+    @endif
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
     <!-- CSS
  ============================================ -->

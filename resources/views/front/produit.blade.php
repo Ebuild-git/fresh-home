@@ -272,7 +272,6 @@
         $productDescription = $produit->description ? strip_tags($produit->description) : config('app.name') . ' - ' . $produit->nom;
     @endphp
 
-    <title>{{ $produit->nom }} | {{ config('app.name') }}</title>
     <meta name="description" content="{{ Str::limit($productDescription, 160) }}">
     <meta name="keywords" content="{{ $produit->nom }}, {{ $produit->reference ?? $produit->nom }}, {{ config('app.name') }}, acheter, prix {{ $produit->getPrice() }}">
     <meta property="og:title" content="{{ $produit->nom }} | {{ config('app.name') }}">

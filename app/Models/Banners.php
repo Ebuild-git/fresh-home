@@ -32,6 +32,8 @@ class Banners extends Model
             return "page de paiement";
         } elseif($this->type  == "produit")
         {
+            return "Page de produit";
+        }else{
             return "Page inconnue";
         }
     }

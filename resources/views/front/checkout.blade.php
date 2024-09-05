@@ -11,16 +11,16 @@
                 <div class="col">
 
                     <div class="page-title">
-                        <h1 class="title">
+                        <h1 class="title text-white">
                             Paiement
                         </h1>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
+                            <li class="breadcrumb-item text-white">
                                 <a href="{{ route('home') }}">
                                     Accueil
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active">
+                            <li class="breadcrumb-item text-white active">
                                 Paiement
                             </li>
                         </ul>

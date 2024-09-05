@@ -30,7 +30,8 @@ class Banners extends Model
             return "page de favoris";
         } elseif ($this->type == "checkout") {
             return "page de paiement";
-        } else {
+        } elseif($this->type  == "produit")
+        {
             return "Page inconnue";
         }
     }

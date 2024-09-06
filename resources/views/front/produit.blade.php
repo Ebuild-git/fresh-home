@@ -94,58 +94,59 @@
                         <div class="product-description">
                             <p>{{ $produit->description }}</p>
                         </div>
-                        <table class="w-100">
-                            <tr>
-                                <td>
-                                    <div class="product-variations">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="label">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="label">
+                                                    <b>
                                                         <span>Quantité</span>
-                                                    </td>
-                                                    <td class="value">
-                                                        <div class="product-quantity">
-                                                            <span class="qty-btn minus">
-                                                                <i class="ti-minus"></i>
-                                                            </span>
-                                                            <input type="text" class="input-qty" id="input-qty"
-                                                                value="1">
-                                                            <span class="qty-btn plus">
-                                                                <i class="ti-plus"></i>
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="product-buttons">
-                                        @auth
-                                            <a href="javascript:void();"
-                                                class="btn btn-icon btn-outline-body btn-hover-dark hintT-top add-to-wish"
-                                                data-id="{{ $produit->id }}" data-hint="Ajouter aux favoris">
-                                                <i class="far fa-heart"></i>
-                                            </a>
-                                        @endauth
-                                        <a href="javascript:void();" class="btn btn-dark btn-outline-hover-dark add-to-cart"
-                                            data-id="{{ $produit->id }}">
-                                            <i class="fas fa-shopping-cart"></i>
-                                            Ajouter au panier
+                                                        &nbsp; &nbsp; &nbsp; &nbsp;
+                                                    </b>
+                                                </td>
+                                                <td class="value">
+                                                    <div class="product-quantity">
+                                                        <span class="qty-btn minus">
+                                                            <i class="ti-minus"></i>
+                                                        </span>
+                                                        <input type="text" class="input-qty" id="input-qty"
+                                                            value="1">
+                                                        <span class="qty-btn plus">
+                                                            <i class="ti-plus"></i>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="product-buttons">
+                                    @auth
+                                        <a href="javascript:void();"
+                                            class="btn btn-icon btn-outline-body btn-hover-dark hintT-top add-to-wish"
+                                            data-id="{{ $produit->id }}" data-hint="Ajouter aux favoris">
+                                            <i class="far fa-heart"></i>
                                         </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                                    @endauth
+                                    <a href="javascript:void();" class="btn btn-dark btn-outline-hover-dark add-to-cart"
+                                        data-id="{{ $produit->id }}">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        Ajouter au panier
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <div style="text-align: left !important;">
                             <table>
                                 <tbody>
                                     <tr>
                                         <td class="label">
                                             <b>
-                                                <span>REFERENCE</span> :
+                                                <span>Référence </span> :
                                             </b>
                                         </td>
                                         <td class="value">{{ $produit->reference }}</td>

@@ -132,7 +132,7 @@ class FrontController extends Controller
             $message = "Produit non disponible!";
             abort(404, $message);
         }
-        $autres = produits::where('id_categorie', $produit->id_categorie)->take(20)->get();
+        $autres = produits::where('id_categorie', $produit->id_categorie)->where('id','!=',$produit->id)->take(20)->get();
         $banner = Banners::where('type', "contact")->first();
         return view('front.produit')
             ->with('produit', $produit)

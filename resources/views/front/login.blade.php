@@ -12,14 +12,14 @@
                 <div class="col">
 
                     <div class="page-title">
-                        <h1 class="title">Connexion et inscription</h1>
+                        <h1 class="title text-white">Connexion et inscription</h1>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
+                            <li class="breadcrumb-item text-white">
                                 <a href="{{route('home') }}">
                                     Accueil
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active">Connexion et inscription</li>
+                            <li class="breadcrumb-item active text-white">Connexion et inscription</li>
                         </ul>
                     </div>
 

@@ -11,14 +11,14 @@
                 <div class="col">
 
                     <div class="page-title">
-                        <h1 class="title">Favoris</h1>
+                        <h1 class="title text-white">Favoris</h1>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
+                            <li class="breadcrumb-item text-white">
                                 <a href="{{ route('home') }}">
                                     Accueil
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active">Favoris</li>
+                            <li class="breadcrumb-item active text-white" >Favoris</li>
                         </ul>
                     </div>
 

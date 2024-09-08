@@ -42,7 +42,7 @@ class FrontController extends Controller
             ->with('topProduits', $topProduits);
     }
 
-    function addBreaksAfterWords($text, $wordsPerLine = 4)
+    function addBreaksAfterWords($text, $wordsPerLine = 7)
     {
         $words = explode(' ', $text);
         $lines = [];

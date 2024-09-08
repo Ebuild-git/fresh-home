@@ -7,7 +7,7 @@
 
     <!-- Slider main container Start -->
     <div class="section">
-        <div class="container">
+        <div>
             <div class="home4-slider swiper-container">
                 <div class="swiper-wrapper">
                     @foreach ($banners as $banner)

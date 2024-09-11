@@ -38,15 +38,21 @@ $(document).on("click", ".add-to-cart", function (e) {
             if (response.status) {
                 fetch_cart();
                 Swal.fire({
-                    title: "Félicittion !",
+                    title: "Félicitation !",
                     text: response.message,
                     icon: "success",
+                    timer: 2000,
+                    showCancelButton: false,
+                    showConfirmButton: false
                 });
             } else {
                 Swal.fire({
                     title: "Echec !",
                     text: response.message,
                     icon: "error",
+                    timer: 2000,
+                    showCancelButton: false,
+                    showConfirmButton: false
                 });
             }
         },
@@ -75,12 +81,18 @@ $(document).on("click", ".delete-item-to-cart", function (e) {
                     title: "Félicitation !",
                     text: response.message,
                     icon: "success",
+                    timer: 2000,
+                    showCancelButton: false,
+                    showConfirmButton: false
                 });
             } else {
                 Swal.fire({
                     title: "Echec !",
                     text: response.message,
                     icon: "error",
+                    timer: 2000,
+                    showCancelButton: false,
+                    showConfirmButton: false
                 });
             }
         },
@@ -118,12 +130,18 @@ $(document).on("click", ".btn-delete-list-cart", function (e) {
                     title: "Félicitation !",
                     text: response.message,
                     icon: "success",
+                    timer: 2000,
+                    showCancelButton: false,
+                    showConfirmButton: false
                 });
             } else {
                 Swal.fire({
                     title: "Echec !",
                     text: response.message,
                     icon: "error",
+                    timer: 2000,
+                    showCancelButton: false,
+                    showConfirmButton: false
                 });
             }
         },

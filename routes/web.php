@@ -44,6 +44,8 @@ Route::middleware(['check.country.cookie'])->group(function () {
     Route::get('/print_bordereau', [HomeController::class, 'print_bordereau'])->name('print_bordereau');
     Route::get('/error-page', [FrontController::class, 'error_page'])->name('error-page');
     Route::post('/client/ajouter_favoris', [FavorisController::class, 'add']);
+    Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
+    Route::post('/commander', [PayementController::class, 'commander'])->name('commander');
 
 
     //route de gestion du panier
@@ -61,14 +63,10 @@ Route::middleware(['check.country.cookie'])->group(function () {
     Route::middleware(['auth'])->group(function () {
         
         Route::get('/profile', [FrontController::class, 'profile'])->name('profile');
-        Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
 
         //paiement et facture
-        Route::get('/checkout', [FrontController::class, 'checkout'])->name('checkout');
         Route::get('/payment-success/{token}', [PayementController::class, 'payment_success'])->name('payment-success');
         Route::get('/payment-failure', [PayementController::class, 'payment_failure'])->name('payment-failure');
-        Route::post('/commander', [PayementController::class, 'commander'])->name('commander');
-    
 
 
         //gestions des favoris

@@ -1,6 +1,11 @@
 <div>
     <form class="my-3" wire:submit="login">
         <x-AlertFront></x-AlertFront>
+        @if (session()->has('success-commande'))
+            <div class="alert alert-success">
+                {{ session('success-commande') }}
+            </div>
+        @endif
         <div class="form-group">
             <label for="email" class="form-label">Email<span class="text-danger">
                     *
@@ -34,7 +39,7 @@
                 ?
             </a>
         </div>
-        <button class="btn btn-dark btn-outline-hover-dark" type="submit"> 
+        <button class="btn btn-dark btn-outline-hover-dark" type="submit">
             <x-Loading></x-Loading>
             Connexion
         </button>

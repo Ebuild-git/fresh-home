@@ -47,9 +47,44 @@ class PayementController extends Controller
 
     public function commander(Request $request)
     {
-        $user = Auth::user();
+        if (Auth::check()) {
+            $user = Auth::user();
+            $user = [
+                "id" => $user->id,
+                'nom' => $user->nom,
+                'id_gouvernorat' => $user->id_gouvernorat,
+                'adresse' => $user->adresse,
+                'phone' => $user->phone,
+                'email' => $user->email,
+            ];
+        } else {
+            $this->validate($request, [
+                'nom' => 'required|string|max:100',
+                'adresse' => 'required|string|max:150',
+                'phone' => 'required|string|max:100',
+                'id_gouvernorat' => 'required|integer',
+                'email' => 'required|email'
+            ], [
+                'nom.required' => "Veuillez saisir votre nom",
+                'adresse.required' => "Veuillez saisir votre adresse",
+                'phone.required' => "Veuillez saisir votre numéro de téléphone",
+                'id_gouvernorat.required' => "Veuillez sélectionner votre gouvernorat",
+                'email.required' => "Veuillez saisir votre email",
+                'email.email' => "Veuillez saisir un email valide"
+            ]);
+
+            $user = [
+                "id" => null,
+                'nom' => $request->nom,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'adresse' => $request->adresse,
+                'id_gouvernorat' => $request->id_gouvernorat,
+            ];
+        }
+
         // on se rassur que l'user a tous mis comme coordonner
-        if(!$user->nom || !$user->id_gouvernorat || !$user->adresse || !$user->phone){
+        if (!$user['nom'] || !$user['id_gouvernorat'] || !$user['adresse'] || !$user['phone']) {
             return redirect()
                 ->back()
                 ->with('error', "Erreur de création de votre commande car vous n'avez pas fourni tous les coordonnées nécessaires!");
@@ -69,14 +104,13 @@ class PayementController extends Controller
 
         //Enregistrer la commande
         $commande = new commandes();
-        $commande->adresse = $user->adresse;
-        $commande->id_gouvernorat = $user->id_gouvernorat;
-        $commande->nom = $user->nom;
-        $commande->note = $user->note;
-        $commande->email = $user->email;
-        $commande->phone = $user->phone;
-        $commande->id_user = $user->id;
-        $commande->by = $user->id;
+        $commande->adresse = $user['adresse'];
+        $commande->id_gouvernorat = $user['id_gouvernorat'];
+        $commande->nom = $user['nom'];
+        $commande->email = $user['email'];
+        $commande->phone = $user['phone'];
+        $commande->id_user = $user['id'];
+        $commande->by = $user['id'];
         $commande->mode_paiement = "offline";
         if ($commande->save()) {
             $commande->update(['token' => $token]);
@@ -120,13 +154,20 @@ class PayementController extends Controller
                     ]
                 );
             }
-            $this->make_notification($commande);
+            $this->make_notification($commande, $user);
 
             //supprimer le panier
             session()->forget('panier_front');
-            return redirect()
-                ->route('profile')
-                ->with('success', 'Commande créée avec succès, veuillez patienter pendant le paiement sur Konnect');
+
+            if (Auth::check()) {
+                return redirect()
+                    ->route('profile')
+                    ->with('success', 'Commande créée avec succès');
+            } else {
+                return redirect()
+                    ->route('login')
+                    ->with('success-commande', 'Commande créée avec succès');
+            }
         } else {
             return redirect()
                 ->back()
@@ -138,16 +179,14 @@ class PayementController extends Controller
 
 
 
-    public function make_notification($commande)
+    public function make_notification($commande, $user)
     {
-        $user = Auth::user();
-
         //generer la notification
         $notif = new notifications();
         $notif->type = "commande";
-        $notif->titre =  $user->nom;
+        $notif->titre =  $user['nom'];
         $notif->url = "/admin/commande/" . $commande->id;
-        $notif->message = "Nouvelle commande de " .  $this->user->nom;
+        $notif->message = "Nouvelle commande de " .  $user['nom'];
         $notif->save();
 
         //envoyer le mail de confirmation
@@ -156,75 +195,5 @@ class PayementController extends Controller
         } catch (Exception $e) {
             Log::error('Error sending email: ' . $e->getMessage());
         }
-    }
-
-
-
-
-
-    public function payment_success(Request $request, $token)
-    {
-
-        $commande = commandes::where('token', $token)->first();
-        if (!$commande) {
-            abort(404, "Commande introuvable");
-            return;
-        }
-
-        //generaation de l descrition de la commande a envoyer a Jax
-
-        //envouyer la commande jax
-        $dataToSend = [
-            "referenceExterne" => "",
-            "nomContact" => $commande->nom . " " . $commande->prenom ?? "",
-            "tel" => $commande->phone ?? "",
-            "tel2" =>  "",
-            "adresseLivraison" => $commande->adresse ?? "",
-            "governorat" => $commande->id_gouvernorat,
-            "delegation" => $commande->gouvernorat->nom,
-            "description" => $commande->ProduitsText(),
-            "cod" => $commande->montant(),
-            "echange" => 0
-        ];
-
-        try {
-            $response = $this->JaxApi->CreateColis($dataToSend);
-            if ($response->successful()) {
-                $jax = $response->json();
-            } else {
-                $jax = null;
-            }
-        } catch (\Exception $e) {
-            $jax = null;
-        }
-        // Vérifiez que la réponse contient bien le code
-        $sidCode = isset($jax['code']) ? $jax['code'] : null;
-
-        if ($sidCode) {
-            $commande->code_in_api = $sidCode;
-        }
-
-
-        $commande->paymentRef = $request->payment_ref;
-        $commande->etat = 'confirmé';
-        $commande->save();
-
-        // Mettre à jour le stock des produits commandés
-        foreach ($commande->contenus as $contenus) {
-            $article = produits::find($contenus->produit->id_produit);
-            if ($article) {
-                $article->diminuer_stock($contenus->produit->quantite);
-            }
-        }
-
-
-        session()->forget('panier_front');
-        return redirect()->route('orders')->with('success', "Votre commande a été payé !");
-    }
-
-
-    public function payment_failure(Request $request)
-    {
-        abort(404, "echec du paiement");
     }
 }

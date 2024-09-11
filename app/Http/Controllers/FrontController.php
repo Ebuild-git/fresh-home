@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\categories;
 use App\Models\config;
 use App\Models\Banners;
+use App\Models\commandes;
 use App\Models\contenu_commande;
 use App\Models\gouvernorats;
 use App\Models\produits;
@@ -17,7 +18,8 @@ use Illuminate\Support\Facades\Storage;
 class FrontController extends Controller
 {
     public function index(Request $request)
-    {   $banners = [];
+    {
+        $banners = [];
         $bans = Banners::where('type', "banner")->get();
         foreach ($bans as $ban) {
             $banners[] = [
@@ -132,7 +134,7 @@ class FrontController extends Controller
             $message = "Produit non disponible!";
             abort(404, $message);
         }
-        $autres = produits::where('id_categorie', $produit->id_categorie)->where('id','!=',$produit->id)->take(20)->get();
+        $autres = produits::where('id_categorie', $produit->id_categorie)->where('id', '!=', $produit->id)->take(20)->get();
         $banner = Banners::where('type', "contact")->first();
         return view('front.produit')
             ->with('produit', $produit)
@@ -180,7 +182,7 @@ class FrontController extends Controller
                 ->orWhere('reference', 'like', '%' . $key . '%')
                 ->orWhere('description', 'like', '%' . $key . '%');
         }
-        $produits = $produits->select('nom','photo','id','prix')->paginate(25);
+        $produits = $produits->select('nom', 'photo', 'id', 'prix')->paginate(25);
 
         $html = "";
         $html .= view('components.shop-liste', compact('produits'))->render();
@@ -199,9 +201,13 @@ class FrontController extends Controller
     {
         $user = auth()->user();
         $banner = Banners::where('type', "profile")->first();
+        $commandes = commandes::where('id_user', $user->id)
+            ->Orderby("id", "Desc")
+            ->get();
         return view('front.profile')
             ->with('user', $user)
-            ->with('banner', $banner);
+            ->with('banner', $banner)
+            ->with('commandes', $commandes);
     }
 
     public function checkout()

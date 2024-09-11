@@ -100,35 +100,43 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>Order</th>
+                                                <th>ID</th>
+                                                <th>Satut</th>
+                                                <th>Montant</th>
                                                 <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
+                                                <th>Mode de paiement</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Aug 22, 2018</td>
-                                                <td>Pending</td>
-                                                <td>$3000</td>
-                                                <td><a href="shopping-cart.html">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>July 22, 2018</td>
-                                                <td>Approved</td>
-                                                <td>$200</td>
-                                                <td><a href="shopping-cart.html">View</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>June 12, 2017</td>
-                                                <td>On Hold</td>
-                                                <td>$990</td>
-                                                <td><a href="shopping-cart.html">View</a></td>
-                                            </tr>
+                                            @forelse ($commandes as $commande)
+                                                <tr>
+                                                    <td> {{ $commande->id }} </td>
+                                                    <td> {{ $commande->statut }} </td>
+                                                    <td> {{ $commande->montant() }} <x-devise></x-devise> </td>
+                                                    <td> {{ $commande->created_at->format('d-m-Y  H:m') }} </td>
+                                                    <td> 
+                                                        @if ($commande->mode_paiement == "offline")
+                                                            A la livraison
+                                                        @else
+                                                            En ligne
+                                                        @endif    
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route("print_commande2",$commande->token) }}" class="btn btn-sm btn-dark">
+                                                            Télécharger
+                                                        </a>
+                                                    </td>
+                                                </tr> 
+                                            @empty
+                                                <tr>
+                                                    <td colspan="6">
+                                                        <div class="text-center p-3">
+                                                            Aucune commandes disponible !
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforelse
                                         </tbody>
                                     </table>
                                 </div>

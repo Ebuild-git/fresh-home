@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
+        $this->call(GouvernoratsTableSeeder::class);
 
         foreach ($this->permissions as $permission) {
             Permission::create(['name' => $permission]);

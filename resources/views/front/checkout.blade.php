@@ -102,50 +102,53 @@
                 </div>
                 <div class="col-lg-6 order-lg-1 learts-mb-30">
                     <div class="order-payment">
-                        <div class="payment-method">
-                            <div class="p-2">
-                                <h4 class="title">Adresse de facturation </h4>
-                                <div class="text-end">
-                                    <small>
-                                        <a href="">
-                                            <b>Modifier</b>
-                                        </a>
-                                    </small>
+                        <form action="{{ route('commander') }}" method="post">
+                            @csrf
+                            <div class="payment-method">
+                                <div class="p-2">
+                                    <h4 class="title">Adresse de facturation </h4>
+                                    <div class="text-end">
+                                        <small>
+                                            <a href="">
+                                                <b>Modifier</b>
+                                            </a>
+                                        </small>
+                                    </div>
+                                    <address>
+                                        <p>
+                                            <strong>
+                                                {{ $user->nom ?? '' }} 
+                                                {{ $user->prenom ?? '' }}
+                                            </strong>
+                                        </p>
+                                        <p>
+                                            {{ $user->email ?? '' }} <br>
+                                            {{ $user->adresse ?? '' }} <br>
+                                            <b> Mobile:</b> {{ $user->phone }}
+                                        </p>
+                                    </address>
                                 </div>
-                                <address>
-                                    <p>
-                                        <strong>
-                                            {{ $user->nom ?? '' }} 
-                                            {{ $user->prenom ?? '' }}
-                                        </strong>
-                                    </p>
-                                    <p>
-                                        {{ $user->email ?? '' }} <br>
-                                        {{ $user->adresse ?? '' }} <br>
-                                        <b> Mobile:</b> {{ $user->phone }}
-                                    </p>
-                                </address>
-                            </div>
-                            <div class="accordion" id="paymentMethod">
-                                <div class="card active">
-                                    <div class="card-header">
-                                        <button data-bs-toggle="collapse" data-bs-target="#cashkPayments">
-                                            Paiement à la livraison
-                                        </button>
+                                <div class="accordion" id="paymentMethod">
+                                    <div class="card active">
+                                        <div class="card-header">
+                                            <button data-bs-toggle="collapse" data-bs-target="#cashkPayments">
+                                                Paiement à la livraison
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-center">
-                            <p class="payment-note">
-                                Vos données personnelles seront utilisées pour traiter votre commande, soutenir votre
-                                expérience sur ce site Web et à d'autres fins décrites dans notre politique de
-                                confidentialité.
-                            </p>
-                            <button class="btn btn-dark btn-outline-hover-dark">
-                                passer commande
-                            </button>
-                        </div>
+                            <div class="text-center">
+                                <p class="payment-note">
+                                    Vos données personnelles seront utilisées pour traiter votre commande, soutenir votre
+                                    expérience sur ce site Web et à d'autres fins décrites dans notre politique de
+                                    confidentialité.
+                                </p>
+                                <button class="btn btn-dark btn-outline-hover-dark" type="submit">
+                                    passer commande
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

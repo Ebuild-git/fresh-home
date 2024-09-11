@@ -49,10 +49,26 @@
                     </span>
                 @enderror
             </div>
-            <div class="col-12 col-md-12 learts-mb-30">
+            <div class="col-12 col-md-6 learts-mb-30">
                 <label for="adresse">Adresse <abbr class="required">*</abbr></label>
                 <input type="text" id="adresse" wire:model='adresse'>
                 @error('adresse')
+                    <span class="invalid-feedback">
+                        {{ $message }}
+                    </span>
+                @enderror
+            </div>
+            <div class="col-12 col-md-6 learts-mb-30">
+                <label for="adresse">Gouvernorat <abbr class="required">*</abbr></label>
+                <select id="id_gouvernorat" wire:model='id_gouvernorat' class="form-control-select-x">
+                    <option value=""></option>
+                    @foreach ($gouvernorats as $item)
+                        <option value="{{ $item->id }}">
+                            {{ $item->nom }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_gouvernorat')
                     <span class="invalid-feedback">
                         {{ $message }}
                     </span>
@@ -68,4 +84,13 @@
             </div>
         </div>
     </form>
+    <style>
+        .form-control-select-x{
+            width: 100% !important;
+            border: solid 1px white !important;
+            height: 40px !important;
+            margin-top: 10px !important;
+            border-bottom: solid 1px rgba(68, 67, 67, 0.13) !important;
+        }
+    </style>
 </fieldset>

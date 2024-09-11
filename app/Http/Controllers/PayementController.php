@@ -47,112 +47,9 @@ class PayementController extends Controller
 
     public function commander(Request $request)
     {
-        //validation input
-        $this->validate($request, [
-            'adresse' => 'required|string',
-            'id_gouvernorat' => 'required|integer|exists:gouvernorats,id',
-            'code_postal' => 'nullable|string',
-            'nom' => 'required|string',
-            'note' => 'nullable|string',
-            'email' => 'required|email',
-            'telephone' => 'required',
-            'transaction_type' => 'required|in:online,offline'
-        ]);
-
-
-
-        $token = $this->make_commande($request);
-        //dans le cas ou la fonction returne un redirect
-        if ($token instanceof \Illuminate\Http\RedirectResponse) {
-            return $token;
-        }
-        if ($request->transaction_type == "online") {
-            return $this->online($token);
-        } else {
-            session()->forget('panier_front');
-            return redirect()->route('orders')->with('success', "Votre commande a été créé !");
-        }
-    }
-
-
-
-    public function online($token)
-    {
-
-        $konnect_key = config("app.konnect_key");
-        $konnect_wallet = config("app.konnect_wallet");
-        $commande = commandes::where('token', $token)->first();
-        try {
-            $client = new Client();
-            if ($commande->devise == "dinar") {
-                $devise = "TND";
-                $montant = intval($commande->montant()) * 1000;
-            } else {
-                $devise = "USD";
-                $montant = intval($commande->montant()) * 100;
-            }
-
-            $response = $client->request('POST', "https://api.konnect.network/api/v2/payments/init-payment", [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'x-api-key' => $konnect_key,
-                ],
-                'json' => [
-                    "receiverWalletId" => $konnect_wallet,
-                    "token" => $devise,
-                    "amount" => $montant,
-                    "type" => "immediate",
-                    "acceptedPaymentMethods" => ["wallet", "bank_card", "e-DINAR"],
-                    "lifespan" => 10,
-                    "checkoutForm" => false,
-                    "addPaymentFeesToAmount" => true,
-                    "firstName" => $this->user->nom,
-                    "phoneNumber" => $this->user->phone,
-                    "email" => $this->user->email,
-                    "orderId" => $commande->id,
-                    "webhook" => config("app.url"),
-                    "silentWebhook" => true,
-                    "successUrl" =>  route("payment-success", ['token' => $token]),
-                    "failUrl" =>  route("payment-failure"),
-                    "theme" => "light",
-                ],
-            ]);
-
-            $responseData = json_decode($response->getBody()->getContents(), true);
-            // Extract necessary information from the response
-            if (isset($responseData['payUrl']) && isset($responseData['paymentRef'])) {
-                // Extract the payUrl and paymentRef
-                $payUrl = $responseData['payUrl'];
-                $paymentRef = $responseData['paymentRef'];
-                Session::put('paymentRef', $paymentRef);
-                return redirect()->away($payUrl);
-            } else {
-                return redirect()
-                    ->route('error-page')
-                    ->with('error', "Une erreur s'est produite avec le paiement en ligne [ code 2]");
-            }
-        } catch (RequestException $e) {
-            Log::error('Error making payment request: ' . $e->getMessage());
-            return redirect()
-                ->route('error-page')
-                ->with('error', "Une erreur s'est produite avec le paiement en ligne [ code 3]");
-        } catch (Throwable $e) {
-            Log::error("Error making payment request: " . $e);
-            return redirect()
-                ->route('error-page')
-                ->with('error', "Une erreur s'est produite avec le paiement en ligne [ code 1]");
-        }
-    }
-
-
-
-
-
-
-    public function make_commande($request)
-    {
 
         $config = config::first();
+        $user = Auth::user();
         $add_frais = true;
         $token = strtolower(str()->random(45));
         $pays =  request()->cookie('countryName') ?? "TN";
@@ -166,16 +63,15 @@ class PayementController extends Controller
 
         //Enregistrer la commande
         $commande = new commandes();
-        $commande->adresse = $request->adresse;
-        $commande->id_gouvernorat = $request->id_gouvernorat;
-        $commande->nom = $request->nom;
-        $commande->note = $request->note;
-        $commande->email = $request->email;
-        $commande->phone = $request->telephone;
-        //null dans le cas ou on est avec un client passager
-        $commande->id_user = $this->user->id ?? null;
-        $commande->by = $this->user->id ?? null;
-        $commande->mode_paiement = $request->transaction_type;
+        $commande->adresse = $user->adresse;
+        $commande->id_gouvernorat = $user->id_gouvernorat;
+        $commande->nom = $user->nom;
+        $commande->note = $user->note;
+        $commande->email = $user->email;
+        $commande->phone = $user->phone;
+        $commande->id_user = $user->id;
+        $commande->by = $user->id;
+        $commande->mode_paiement = "offline";
         if ($commande->save()) {
             $commande->update(['token' => $token]);
 
@@ -199,7 +95,7 @@ class PayementController extends Controller
             if ($commande->montant() <= 0) {
                 $commande->delete();
                 return redirect()
-                    ->route('error-page')
+                    ->back()
                     ->with("error", "Echec de la création de la commande [ Erreur 13 ]");
             }
 
@@ -214,13 +110,7 @@ class PayementController extends Controller
             if ($pays == "TN") {
                 $commande->update(
                     [
-                        'devise' => "dinar"
-                    ]
-                );
-            } else {
-                $commande->update(
-                    [
-                        'devise' => "eruro"
+                        'devise' => "DT"
                     ]
                 );
             }
@@ -228,43 +118,30 @@ class PayementController extends Controller
 
             //supprimer le panier
             session()->forget('panier_front');
-
-            return  $token;
+            return redirect()
+                ->route('profile')
+                ->with('success', 'Commande créée avec succès, veuillez patienter pendant le paiement sur Konnect');
         } else {
             return redirect()
-                ->route('error-page')
+                ->back()
                 ->with("error", "Echec de la création de la commande");
         }
     }
 
 
-    public function montant_total()
-    {
-        $panier = session('panier_front');
-        $montant = 0;
-        $config = config::first();
-        foreach ($panier as $item) {
-            $produit = produits::find($item['id_produit']);
-            if ($produit) {
-                $montant += $produit->prix_vente * $item['quantite'];
-            }
-        }
-        $tva = $config->tva ?? 0;
-        $timbre = $config->timbre ?? 0;
-        $frais = $config->frais ?? 0;
-        $montant_total = $montant + ($montant * $tva / 100) + $timbre + $frais;
-        return $montant_total;
-    }
+
 
 
     public function make_notification($commande)
     {
+        $user = Auth::user();
+
         //generer la notification
         $notif = new notifications();
         $notif->type = "commande";
-        $notif->titre =  $this->user->nom;
+        $notif->titre =  $user->nom;
         $notif->url = "/admin/commande/" . $commande->id;
-        $notif->message = "Nouvelle commande";
+        $notif->message = "Nouvelle commande de " .  $this->user->nom;
         $notif->save();
 
         //envoyer le mail de confirmation

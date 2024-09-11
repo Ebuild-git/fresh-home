@@ -91,8 +91,10 @@
         <table class="header-tb">
             <tr>
                 <td>
-                    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path(Storage::url($config->logo)))) }}"
-                        height="50" alt="logo" srcset="">
+                    @if ($config->logo)
+                        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path(Storage::url($config->logo)))) }}"
+                            height="50" alt="logo" srcset="">
+                    @endif
                 </td>
                 <td>
                     <div class="text-end">
@@ -236,7 +238,7 @@
             <b>Direction</b>
         </div>
         <footer class="footer">
-            STE MS Cosmetics <br> <br>
+            {{config("app.name") }} <br> <br>
             {{ $config->adresse ?? '' }} <br>
             Tél : {{ $config->telephone ?? '' }} <br>
             @if ($config->matricule)

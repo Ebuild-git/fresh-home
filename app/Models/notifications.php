@@ -11,6 +11,7 @@ class notifications extends Model
 
     protected $fillable = [
         'titre',
+        'url',
         'message',
         'statut',
         'type'

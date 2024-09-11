@@ -96,7 +96,7 @@
                             @endguest
                             @auth
                                 <a href="{{ route('profile') }}">
-                                    {{ Auth::user()->nom }}
+                                    {{ Str::limit(Auth::user()->nom, 7) }}
                                 </a>
                             @endauth
                         </div>
@@ -161,7 +161,7 @@
                             @endguest
                             @auth
                                 <a href="{{ route('profile') }}">
-                                    {{ Auth::user()->nom }}
+                                    {{ Str::limit(Auth::user()->nom, 7) }}
                                 </a>
                             @endauth
                         </div>
@@ -231,7 +231,7 @@
                             @endguest
                             @auth
                                 <a href="{{ route('profile') }}">
-                                    {{ Auth::user()->nom }}
+                                    {{ Str::limit(Auth::user()->nom, 7) }}
                                 </a>
                             @endauth
                         </div>
@@ -300,7 +300,7 @@
                             @endguest
                             @auth
                                 <a href="{{ route('profile') }}">
-                                    {{ Auth::user()->nom }}
+                                    {{ Str::limit(Auth::user()->nom, 7) }}
                                 </a>
                             @endauth
                         </div>
@@ -447,7 +447,7 @@
                         @endguest
                         @auth
                             <a href="{{ route('profile') }}">
-                                {{ Auth::user()->nom }}
+                                {{ Str::limit(Auth::user()->nom, 7) }}
                             </a>
                         @endauth
                     </div>

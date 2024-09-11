@@ -47,9 +47,15 @@ class PayementController extends Controller
 
     public function commander(Request $request)
     {
+        $user = Auth::user();
+        // on se rassur que l'user a tous mis comme coordonner
+        if(!$user->nom || !$user->id_gouvernorat || !$user->adresse || !$user->phone){
+            return redirect()
+                ->back()
+                ->with('error', "Erreur de création de votre commande car vous n'avez pas fourni tous les coordonnées nécessaires!");
+        }
 
         $config = config::first();
-        $user = Auth::user();
         $add_frais = true;
         $token = strtolower(str()->random(45));
         $pays =  request()->cookie('countryName') ?? "TN";

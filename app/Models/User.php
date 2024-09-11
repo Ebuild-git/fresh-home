@@ -74,6 +74,10 @@ class User extends Authenticatable
     }
 
 
+    public function gouvernorat(){
+        return $this->belongsTo(gouvernorats::class, 'id_gouvernorat','id');
+    }
+
 
 
 }

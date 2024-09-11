@@ -109,7 +109,7 @@
                                     <h4 class="title">Adresse de facturation </h4>
                                     <div class="text-end">
                                         <small>
-                                            <a href="">
+                                            <a href="{{ route('profile') }}" class="text-danger">
                                                 <b>Modifier</b>
                                             </a>
                                         </small>
@@ -124,7 +124,15 @@
                                         <p>
                                             {{ $user->email ?? '' }} <br>
                                             {{ $user->adresse ?? '' }} <br>
-                                            <b> Mobile:</b> {{ $user->phone }}
+                                            <b> Mobile:</b> {{ $user->phone }} <br>
+                                            <b>Gouvernorat : </b>
+                                            @if ($user->gouvernorat)
+                                                {{ $user->gouvernorat->nom }}
+                                            @else
+                                                <b class="text-danger">
+                                                    Non défini.
+                                                </b>
+                                            @endif
                                         </p>
                                     </address>
                                 </div>

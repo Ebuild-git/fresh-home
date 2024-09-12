@@ -48,7 +48,7 @@
                 <div class="col-xl-7 col-lg-8 col-12 mx-auto">
                     <div class="about-us2">
                         <div class="inner">
-                            <h2 class="title">Réveillez vos souvenirs</h2>
+                            <h5 class="title">Réveillez vos souvenirs</h5>
                             <h5 class="sub-title">parfumez votre présent</h5>
                             <div class="desc">
                                 <p>
@@ -185,7 +185,6 @@
                         <div class="tab-pane fade" id="tab-sale-items">
                             <!-- Products Start -->
                             <div class="products row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
-
                                 @foreach ($randoms as $produit)
                                     <div class="col">
                                         <div class="product">

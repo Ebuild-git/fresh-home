@@ -30,7 +30,7 @@ class FrontController extends Controller
         }
         $categories = categories::all();
         $news = produits::Orderby('id', 'desc')->take(8)->get();
-        $randoms = produits::inRandomOrder()->limit(8)->get();
+        $randoms = produits::inRandomOrder()->whereNotNull('id_promotion')->limit(8)->get();
         $topProduits = contenu_commande::select('id_produit', DB::raw('SUM(quantite) as total_quantite'))
             ->groupBy('id_produit')
             ->orderByDesc('total_quantite')

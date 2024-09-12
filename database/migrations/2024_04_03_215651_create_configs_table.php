@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('footer_text')->nullable()->default(null);
             $table->string('telephone')->nullable()->default(null);
             $table->string('adresse')->nullable()->default(null);
+            $table->string('adresse2')->nullable()->default(null);
             $table->decimal("frais", 10,3)->default(0);
             $table->decimal("tva", 13, 3)->default(0);
             $table->decimal('timbre', 13, 2)->default(0);

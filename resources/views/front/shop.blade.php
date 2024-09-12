@@ -40,10 +40,10 @@
                     <!-- Isotop Filter Start -->
                     <div class="col-md col-12 align-self-center learts-mb-20">
                         <div class="isotope-filter shop-product-filter" data-target="#shop-products">
-                            <button class="active" data-filter="*">all</button>
-                            <button data-filter=".featured">Hot Products</button>
+                            <button class="active" data-filter="*">Tous les produits</button>
+                          {{--   <button data-filter=".featured">Hot Products</button>
                             <button data-filter=".new">New Products</button>
-                            <button data-filter=".sales">Sales Products</button>
+                            <button data-filter=".sales">Sales Products</button> --}}
                         </div>
                     </div>
                     <!-- Isotop Filter End -->

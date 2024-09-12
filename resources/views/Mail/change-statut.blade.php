@@ -60,7 +60,7 @@
 
 <body>
     <div class="container">
-        <img src="/icons/icon-black.png" alt=" Logo" class="logo">
+        <img src="{{ url('/icons/icon-black.png') }}" alt=" Logo" class="logo">
         <h2>Mise à Jour du Statut de Commande</h2>
 
         <center>

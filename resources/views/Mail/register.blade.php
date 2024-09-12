@@ -39,7 +39,7 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <img src="/icons/icon-black.png" alt="{{ url('/icons/logo.png') }}">
+            <img src="{{ url('/icons/icon-black.png') }}" alt="{{ url('/icons/logo.png') }}">
             <h1>Bienvenue chez {{ config('app.name') }}</h1>
         </div>
         <div class="content">

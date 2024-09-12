@@ -48,7 +48,7 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <img src="logo.png" alt="Mystory-Cosmetics Logo">
+            <img src="/icons/icon-black.png" alt="Mystory-Cosmetics Logo">
             <h1>Merci pour votre commande</h1>
             <h4>
                 Référence : {{ $commande->id }}

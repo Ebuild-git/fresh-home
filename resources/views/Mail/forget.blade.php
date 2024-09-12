@@ -41,7 +41,7 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <img src="{{ url('/icons/logo.png') }}" alt="Mystory-Cosmetics Logo">
+            <img src="/icons/icon-black.png" alt="Mystory-Cosmetics Logo">
             <h1>Réinitialisation de votre mot de passe</h1>
         </div>
         <div class="content">

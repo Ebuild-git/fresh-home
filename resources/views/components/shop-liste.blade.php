@@ -53,4 +53,10 @@
     </div>
 
 @empty
+<div class="grid-item col sales">
+    <div class="text-center p-3">
+        <h4>Aucun produit disponible</h4>
+        <a href="{{ route('shop') }}">Voir tous les produits</a>
+    </div>
+</div>
 @endforelse

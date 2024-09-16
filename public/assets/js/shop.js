@@ -3,6 +3,7 @@ let id_categorie = $("#IDcategorie").val();;
 let key = null;
 let max_price = null;
 let min_price = null;
+let promotion = "false";
 
 function set_price(max,min) {
     max_price = max;
@@ -10,6 +11,16 @@ function set_price(max,min) {
     fetch_shop();
 }
 
+function show_promotion(){
+    promotion = "true";
+    fetch_shop();
+}
+
+
+function show_normal(){
+    promotion = "false";
+    fetch_shop();
+}
 
 function fetch_shop() {
     $.get(
@@ -20,6 +31,7 @@ function fetch_shop() {
             key: key,
             max_price: max_price,
             min_price: min_price,
+            promotion: promotion,
         },
         function (response) {
             $("#shop-products").html(response.html);

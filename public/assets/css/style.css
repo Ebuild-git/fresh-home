@@ -10347,7 +10347,7 @@ body.offcanvas-open .sticky-header {
 }
 .product-info .price span.new {
   margin-left: 10px;
-  color: #F8796C;
+  color: #000000 !important;
 }
 .product-info .product-buttons {
   position: absolute;
@@ -10537,7 +10537,7 @@ body.offcanvas-open .sticky-header {
 }
 .product2-info .price span.new {
   margin-left: 10px;
-  color: #F8796C;
+  color: #000000;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
   .product2-info {
@@ -10683,7 +10683,7 @@ body.offcanvas-open .sticky-header {
 }
 .list-product .content .price span.new {
   margin-left: 10px;
-  color: #F8796C;
+  color: #000000;
 }
 .list-product .content .ratting {
   line-height: 1;
@@ -13349,7 +13349,7 @@ body.offcanvas-open .sticky-header {
 }
 .widget-products .product .content .price span.new {
   margin-left: 10px;
-  color: #F8796C;
+  color: #000000;
 }
 .widget-products .product .content .ratting {
   line-height: 1;

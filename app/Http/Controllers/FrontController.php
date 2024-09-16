@@ -155,6 +155,7 @@ class FrontController extends Controller
         $ordre = $request->input('ordre') ?? null;
         $max_price = $request->input('max_price') ?? null;
         $min_price = $request->input('min_price') ?? null;
+        $promotion = $request->input('promotion') ?? "false";
 
         $produits = produits::query();
         if ($ordre) {
@@ -167,6 +168,9 @@ class FrontController extends Controller
             if ($ordre == "popularity") {
                 $produits->orderBy('created_at', 'desc');
             }
+        }
+        if($promotion == "true"){
+            $produits->whereNotNull('id_promotion');
         }
         if ($id_categorie) {
             $produits->where('id_categorie', $id_categorie);

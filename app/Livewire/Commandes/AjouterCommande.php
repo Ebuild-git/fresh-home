@@ -11,6 +11,7 @@ use App\Models\produits;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
+use App\Services\JaxService;
 
 class AjouterCommande extends Component
 {
@@ -72,7 +73,7 @@ class AjouterCommande extends Component
         session(['panier' => $panier]);
     }
 
-    public function order()
+    public function order(JaxService $JaxApi)
     {
         //validation du formulaire
         $this->validate([
@@ -160,25 +161,8 @@ class AjouterCommande extends Component
 
                 //delete session panier
                 session()->forget('panier');
-
-
-                $token = config('app.client_jax_token');
-                $apiUrl = config('app.jax_url_api');
-                $dataToSend = [
-                    "referenceExterne" => "",
-                    "nomContact" => $commande->nom . " " . $commande->prenom ?? "",
-                    "tel" => $commande->phone ?? "",
-                    "tel2" => "",
-                    "adresseLivraison" => $commande->adresse ?? "",
-                    "governorat" => $commande->id_gouvernorat,
-                    "delegation" => $commande->gouvernorat->nom,
-                    "description" => $commande->ProduitsText(),
-                    "cod" => $commande->montant(),
-                    "echange" => 0
-                ];
-
                 try {
-                    $response = Http::withToken($token)->post($apiUrl . "/user/colis/add", $dataToSend);
+                    $response = $response = $JaxApi->CreateColis($commande->id);;
                     if ($response->successful()) {
                         $jax = $response->json();
                     } else {

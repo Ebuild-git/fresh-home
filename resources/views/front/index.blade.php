@@ -91,13 +91,7 @@
     </div>
     <!-- Category Banner Section End -->
 
-    <!-- Separator -->
-    <div class="section">
-        <div class="container">
-            <hr class="m-0">
-        </div>
-    </div>
-    <!-- Separator -->
+
 
     <!-- Product Section Start -->
     <div class="section section-padding">

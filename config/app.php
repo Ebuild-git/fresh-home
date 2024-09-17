@@ -62,9 +62,6 @@ return [
     'asset_url' => env('ASSET_URL', '/'),
     'client_jax_token' => env('CLIENT_JAX_TOKEN', ''),
     'jax_url_api' => env('JAX_URL_API', ''),
-    'konnect_key' => env('KONNECT_KEY', ''),
-    'konnect_wallet' => env('KONNECT_WALLET', ''),
-    'konnect_api' => env('KONNECT_API', ''),
 
     /*
     |--------------------------------------------------------------------------

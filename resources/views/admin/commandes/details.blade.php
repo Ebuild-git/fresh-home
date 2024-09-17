@@ -49,6 +49,14 @@
                                 </button>
                             </div>
                         </div>
+                        @if ($ResponseJax)
+                            <div>
+                                <b class="text-primary">Statut Jax :</b>
+                                <span>
+                                    {{$ResponseJax->original }}
+                                </span>
+                            </div>
+                        @endif
                         <br>
                     </div>
                     <div class="card-body">

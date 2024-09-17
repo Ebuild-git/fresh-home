@@ -160,12 +160,10 @@
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 <button type="button" class="btn btn-sm btn-primary"
                                                     wire:click="confirmer({{ $commande->id }})">
-                                                    <i class="ri-checkbox-circle-line"></i>
                                                     Valider
                                                 </button>
                                                 <button type="button" class="btn btn-sm btn-danger"
                                                     wire:click="annuler({{ $commande->id }})">
-                                                    <i class="ri-close-line"></i>
                                                     Annluer
                                                 </button>
                                             </div>
@@ -210,7 +208,7 @@
                                 @can('order_edit')
                                     <button class="btn btn-sm btn-primary"
                                         onclick="add_note({{ $commande->id }},'{{ $commande->nom }}')">
-                                        <i class="ri-sticky-note-add-line"></i> Note
+                                        Note
                                     </button>
                                 @endcan
                                 <button class="btn btn-info btn-sm" type="button" title="Imprimer la commande"

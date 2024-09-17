@@ -3,77 +3,56 @@
 namespace App\Http\Controllers;
 
 use App\Models\commandes;
-use Illuminate\Http\Request;
+use App\Models\gouvernorats;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
+use App\Services\JaxService;
 
 class JaxApi extends Controller
 {
+
     protected $token;
     protected $apiUrl;
+    protected $jaxService;
 
-    public function __construct()
+    public function __construct(JaxService $JaxService)
     {
         $this->token = config('app.client_jax_token');
         $this->apiUrl = config('app.jax_url_api');
+        $this->jaxService = $JaxService;
     }
-
-    public function GetAllGouvernorat()
-    {
-        $response = Http::withToken($this->token)->get($this->apiUrl . "/gouvernorats");
-        return $response;
-       
-    }
-
-
-    public function GetStatutColis($id_colis)
-    {
-        $response = Http::withToken($this->token)->get($this->apiUrl . "/user/colis/getstatubyean/" . $id_colis);
-        if ($response->successful()) {
-            $data = $response->json();
-            return response()->json($data);
-        } else {
-            return response()->json(['error' => 'Erreur lors de la requête'], $response->status());
-        }
-    }
-
-
-    public function GetAllColisStatut()
-    {
-        $response = Http::withToken($this->token)->get($this->apiUrl . "/statuts");
-        if ($response->successful()) {
-            $data = $response->json();
-            return response()->json($data);
-        } else {
-            return response()->json(['error' => 'Erreur lors de la requête'], $response->status());
-        }
-    }
-
-
-    public function CreateColis($dataToSend)
-    {
-        $response = Http::withToken($this->token)->post($this->apiUrl . "/user/colis/add", $dataToSend);
-        return $response;
-    }
-
 
     public function refresh()
     {
-        $commandes = commandes::whereNotNull('code_in_api')
-        ->where('statut','!=','Livré')
-        ->where('etat','confirmé')
-        ->get();
-        foreach ($commandes as $commande) {
-            $data = $this->GetStatutColis($commande->code_in_api);
-            $statut = $data->original;
-                $commande->statut = $statut;
-                $commande->save();
-
-        }
-        if(Auth::check()){
-            return redirect()->route('commandes')->with('success',"Recharge effectué !");
-        }
-        return 'Les nouveaux statuts des commandes ont été mis à jour';
+       $this->jaxService->refresh();
+       return redirect()->route('commandes')->with('success', "Recharge effectué !");
     }
-    
+
+
+    public function ImportGouvernoratsFromApi()
+    {
+        $response = $this->jaxService->GetAllGouvernorat();
+        if ($response->successful()) {
+            $data = $response->json();
+            $data = response()->json($data);
+            foreach ($data->original as $key => $value) {
+                $gouv = gouvernorats::where('nom',$value['nom'])->first();
+                if($gouv){
+                    // le gouvernorat existe déjà, on met à jour l'id_in_api
+                    $gouv->id_in_api = $value['id'];
+                    $gouv->save();  
+                }else{
+                    // le gouvernorat n'existe pas, on le crée
+                    $gouvernorat = new gouvernorats();
+                    $gouvernorat->nom = $value['nom'];
+                    $gouvernorat->id_in_api = $value['id'];
+                    $gouvernorat->save();
+                }
+            }
+            return 'Les gouvernorats ont été enregistrés avec succès';
+        } else {    
+            return response()->json(['error' => 'Erreur lors de la requête'], $response->status());
+        }
+
+       
+    }
 }

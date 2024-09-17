@@ -14,21 +14,25 @@ use App\Exports\ExportUser;
 use App\Http\Traits\ListGouvernorats;
 use App\Models\clients;
 use App\Models\contenu_commande;
-use App\Models\domaines;
 use App\Models\historiques_stock;
 use App\Models\notifications;
-use App\Models\templates;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Gate;
+use App\Services\JaxService;
 
 
 class AdminController extends Controller
 {
     use ListGouvernorats;
+    protected $jaxService;
+
+    public function __construct(JaxService $JaxService)
+    {
+        $this->jaxService = $JaxService;
+    }
 
 
 
@@ -381,11 +385,19 @@ class AdminController extends Controller
     public function details_commande($id)
     {
         $commande = commandes::find($id);
+        $ResponseJax = null;
         if (!$commande) {
             $message = "Commande introuvable !";
             abort(404, $message);
         }
-        return view('admin.commandes.details', compact('commande'));
+        if ($commande->code_in_api) {
+            // Appel au service JAX pour obtenir le statut du colis
+            $ResponseJax = $this->jaxService->GetStatutColis($commande->code_in_api);
+            if (!($ResponseJax instanceof \Illuminate\Http\JsonResponse)) {
+                $ResponseJax = response()->json($ResponseJax);
+            }
+        }
+        return view('admin.commandes.details', compact('commande','ResponseJax'));
     }
 
 

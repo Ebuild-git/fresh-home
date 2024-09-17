@@ -78,8 +78,7 @@ Route::middleware(['check.country.cookie'])->group(function () {
 });
 
 
-Route::get('/init', [Init::class, 'store'])->name('init');
-Route::get('/import', [Init::class, 'import'])->name('import');
+Route::get('/init', [JaxApi::class, 'ImportGouvernoratsFromApi'])->name('init');
 Route::get('/refresh-statut', [JaxApi::class, 'refresh'])->name('init-refresh');
 
 

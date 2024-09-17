@@ -7,7 +7,7 @@ use App\Models\gouvernorats;
 use App\Models\produits;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\Http;
+use App\Services\JaxService;
 
 class ListCommande extends Component
 {
@@ -105,12 +105,9 @@ class ListCommande extends Component
     }
 
 
-    public function confirmer($id)
+    public function confirmer(JaxService $JaxApi,$id)
     {
-        $token = config('app.client_jax_token');
-        $apiUrl = config('app.jax_url_api');
         $commande = commandes::find($id);
-
         //on retire maintenant le stock
         foreach ($commande->contenus as $contenus) {
             $article = produits::find($contenus->produit->id_produit);
@@ -119,23 +116,8 @@ class ListCommande extends Component
             }
         }
 
-
-
-        $dataToSend = [
-            "referenceExterne" => "",
-            "nomContact" => $commande->nom . " " . $commande->prenom ?? "",
-            "tel" => $commande->phone ?? "",
-            "tel2" =>  "",
-            "adresseLivraison" => $commande->adresse ?? "",
-            "governorat" => $commande->id_gouvernorat,
-            "delegation" =>  $commande->gouvernorat->nom,
-            "description" => $commande->ProduitsText(),
-            "cod" => $commande->montant(),
-            "echange" => 0
-        ];
-
         try {
-            $response = Http::withToken($token)->post($apiUrl . "/user/colis/add", $dataToSend);
+            $response = $JaxApi->CreateColis($commande->id);
             if ($response->successful()) {
                 $jax = $response->json();
             } else {
@@ -144,16 +126,12 @@ class ListCommande extends Component
         } catch (\Exception $e) {
             $jax = null;
         }
-        // Vérifiez que la réponse contient bien le code
+        // Vérifiez que la rép;onse contient bien le code
         $sidCode = isset($jax['code']) ? $jax['code'] : null;
 
         if ($sidCode) {
             $commande->code_in_api = $sidCode;
         }
-
-
-
-
 
         if ($commande) {
             $commande->etat = "confirmé";

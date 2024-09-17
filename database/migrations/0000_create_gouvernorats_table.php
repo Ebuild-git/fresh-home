@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('gouvernorats', function (Blueprint $table) {
             $table->id();
             $table->string("nom");
-            $table->integer("id_in_api")->unique();
+            $table->integer("id_in_api");
             $table->timestamps();
         });
     }

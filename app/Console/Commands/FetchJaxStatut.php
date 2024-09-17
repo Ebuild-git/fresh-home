@@ -13,7 +13,7 @@ class FetchJaxStatut extends Command
      *
      * @var string
      */
-    protected $signature = 'app:fetch-jax-statut';
+    protected $signature = 'C';
 
     /**
      * The console command description.
@@ -28,13 +28,6 @@ class FetchJaxStatut extends Command
     public function handle()
     {
         // Appelle ta route ici
-        $response = Http::get(route('init-refresh'));
-
-        // Logique supplémentaire si nécessaire
-        if ($response->successful()) {
-            Log::error('--> bonne execution de la route');
-        } else {
-            Log::error('Erreur lors de l\'exécution de la route de fetch api');
-        }
+        Http::get(route('init-refresh'));
     }
 }

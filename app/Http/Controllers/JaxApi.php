@@ -23,8 +23,12 @@ class JaxApi extends Controller
 
     public function refresh()
     {
-       $this->jaxService->refresh();
-       return redirect()->route('commandes')->with('success', "Recharge effectué !");
+        $this->jaxService->refresh();
+        if (auth::check()) {
+            return redirect()
+                ->route('commandes')
+                ->with('success', "Recharge effectué !");
+        }
     }
 
 
@@ -35,12 +39,12 @@ class JaxApi extends Controller
             $data = $response->json();
             $data = response()->json($data);
             foreach ($data->original as $key => $value) {
-                $gouv = gouvernorats::where('nom',$value['nom'])->first();
-                if($gouv){
+                $gouv = gouvernorats::where('nom', $value['nom'])->first();
+                if ($gouv) {
                     // le gouvernorat existe déjà, on met à jour l'id_in_api
                     $gouv->id_in_api = $value['id'];
-                    $gouv->save();  
-                }else{
+                    $gouv->save();
+                } else {
                     // le gouvernorat n'existe pas, on le crée
                     $gouvernorat = new gouvernorats();
                     $gouvernorat->nom = $value['nom'];
@@ -49,10 +53,8 @@ class JaxApi extends Controller
                 }
             }
             return 'Les gouvernorats ont été enregistrés avec succès';
-        } else {    
+        } else {
             return response()->json(['error' => 'Erreur lors de la requête'], $response->status());
         }
-
-       
     }
 }

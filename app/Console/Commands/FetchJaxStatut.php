@@ -13,7 +13,7 @@ class FetchJaxStatut extends Command
      *
      * @var string
      */
-    protected $signature = 'C';
+    protected $signature = 'app:fetch-jax-statut';
 
     /**
      * The console command description.

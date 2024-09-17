@@ -13,14 +13,6 @@ class FetchJaxStatut extends Command
 
     protected $jaxService;
 
-    public function __construct(JaxService $JaxService)
-    {
-        $this->jaxService = $JaxService;
-    }
-
-
-
-
     /**
      * The name and signature of the console command.
      *
@@ -38,6 +30,13 @@ class FetchJaxStatut extends Command
     /**
      * Execute the console command.
      */
+
+    public function __construct(JaxService $jaxService)
+    {
+        parent::__construct();
+        $this->jaxService = $jaxService;
+    }
+
     public function handle()
     {
         $commandes = commandes::whereNotNull('code_in_api')

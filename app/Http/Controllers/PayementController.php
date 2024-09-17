@@ -8,16 +8,11 @@ use App\Models\config;
 use App\Models\contenu_commande;
 use App\Models\notifications;
 use App\Models\produits;
-use App\Models\User;
 use Exception;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
-use Throwable;
 
 class PayementController extends Controller
 {

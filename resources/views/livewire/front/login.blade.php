@@ -20,7 +20,7 @@
         </div>
         <div class="form-group mt-3">
             <label for="password" class="form-label">
-                Mot de passe
+                {{ __('password') }}
                 <span class="text-danger">
                     *
                 </span></label>
@@ -34,14 +34,13 @@
         </div>
         <div class="text-end">
             <a href="{{ route('forgotpassword') }}" class="text-muted fs-7 fw-500">
-                <i class="fa-solid fa-lock-keyhole mx-2 fs-7"></i>Mot
-                de passe oublié
-                ?
+                <i class="fa-solid fa-lock-keyhole mx-2 fs-7"></i>
+                {{ __('password_oublier') }}
             </a>
         </div>
         <button class="btn btn-dark btn-outline-hover-dark" type="submit">
             <x-Loading></x-Loading>
-            Connexion
+            {{ __('connexion') }}
         </button>
     </form>
 

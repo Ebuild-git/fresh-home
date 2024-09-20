@@ -11,6 +11,7 @@ use App\Http\Controllers\Init;
 use App\Http\Controllers\JaxApi;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\PayementController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,17 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['check.country.cookie'])->group(function () {
+
+
+
+
+    Route::get('/change-lang/{lang}', function ($lang) {
+        if (in_array($lang, ['en', 'fr'])) {
+            session(['locale' => $lang]);
+        }
+        return redirect()->back();
+    })->name('change.lang');
+
 
 
     Route::get('/view_produit/{id}', [HomeController::class, 'view_produit']);
@@ -58,10 +70,10 @@ Route::middleware(['check.country.cookie'])->group(function () {
     //gestion des contact et formulaires
     Route::resource('/front-contact', ContactController::class);
 
-   
+
     // Route du client
     Route::middleware(['auth'])->group(function () {
-        
+
         Route::get('/profile', [FrontController::class, 'profile'])->name('profile');
 
         //paiement et facture

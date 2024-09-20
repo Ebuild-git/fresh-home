@@ -14,7 +14,7 @@
                         <h1 class="title text-white">Contact</h1>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item text-white">
-                                <a href="{{ route('home') }}">Accueil</a>
+                                <a href="{{ route('home') }}">{{ __('accueil') }}</a>
                             </li>
                             <li class="breadcrumb-item active text-white">Contact</li>
                         </ul>
@@ -31,11 +31,9 @@
             <!-- Section Title Start -->
             <div class="section-title2 text-center">
                 <h2 class="title">
-                    Restez en contact avec nous
+                    {{ __('contact_1') }}
                 </h2>
-                <p>Been tearing your hair out to find the perfect gift for your loved ones? Try visiting our nationwide
-                    local stores. You can also contact us to become partner or distributor. Call us, send us an email or
-                    make an appointment now.</p>
+                <p>{{ __('contact_2') }}</p>
             </div>
             <!-- Section Title End -->
 
@@ -43,7 +41,7 @@
             <div class="row learts-mb-n30">
                 <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
                     <div class="contact-info">
-                        <h4 class="title">ADDRESSE</h4>
+                        <h4 class="title">{{ __('adresse') }}</h4>
                         @if ($infos->adresse)
                             <span class="info">
                                 <i class="icon fas fa-map-marker-alt"></i>
@@ -75,9 +73,11 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 learts-mb-30">
                     <div class="contact-info">
-                        <h4 class="title"> DISPONIBLILITE</h4>
-                        <span class="info"><i class="icon far fa-clock"></i> Lundi - vendredi : 09:00 – 20:00 <br> samedi
-                            - Dimande : 10:30 – 22:00</span>
+                        <h4 class="title"> {{ __('disponibilite') }}</h4>
+                        <span class="info">
+                            <i class="icon far fa-clock"></i> Lundi - vendredi : 09:00 – 20:00 <br> samedi
+                            - Dimande : 10:30 – 22:00
+                        </span>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
             <!-- Section Title Start -->
             <div class="section-title2 text-center">
                 <h2 class="title">
-                    Contactez-nous
+                    {{ __('contact_5') }}
                 </h2>
             </div>
             <!-- Section Title End -->
@@ -138,7 +138,7 @@
                                 @endif
                                 <div class="col-12 text-center learts-mb-30">
                                     <button class="btn btn-dark btn-outline-hover-dark">
-                                        Envoyer le message
+                                        {{ __('contact_6') }}
                                     </button>
                                 </div>
                             </div>

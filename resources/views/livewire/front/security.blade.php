@@ -1,13 +1,15 @@
 <form wire:submit='update'>
     <fieldset>
-        <legend>Changement de mot de passe</legend>
+        <legend>
+            {{ __('changement_2') }}
+        </legend>
         <p class="alert alert-info">
-            Vous devez entrer votre mot de passe actuel pour modifier votre mot de passe.
+            {{ __('infos_2') }}
         </p>
         <div class="row learts-mb-n30">
             <div class="col-12 learts-mb-30">
                 <label for="current-pwd">
-                    Mot de passe actuel
+                    {{ __('password') }}
                     <abbr class="required">*</abbr>
                 </label>
                 <input type="password" id="current-pwd" wire:model='current_pwd' required>
@@ -19,7 +21,7 @@
             </div>
             <div class="col-12 col-sm-6 learts-mb-30">
                 <label for="new-pwd">
-                    Nouveau mot de passe
+                    {{ __('new_password') }}
                     <abbr class="required">*</abbr>
                 </label>
                 <input type="password" id="new-pwd" wire:model='password' required>
@@ -31,7 +33,7 @@
             </div>
             <div class="col-12 col-sm-6 learts-mb-30">
                 <label for="confirm-pwd">
-                    Confirmation du nouveau mot de passe<abbr class="required">*</abbr>
+                    {{ __('confirm_password') }} <abbr class="required">*</abbr>
                 </label>
                 <input type="password" id="confirm-pwd" wire:model='password_confirmation' required>
                 @error('password_confirmation')

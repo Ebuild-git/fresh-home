@@ -1,5 +1,5 @@
 @extends('front.fixe')
-@section('titre', 'Paiement')
+@section('titre',  __('text_paiement'))
 @section('body')
 
     <div class="offcanvas-overlay"></div>
@@ -13,16 +13,16 @@
 
                     <div class="page-title">
                         <h1 class="title text-white">
-                            Paiement
+                            {{ __('text_paiement') }}
                         </h1>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item text-white">
                                 <a href="{{ route('home') }}">
-                                    Accueil
+                                    {{ __('accueil') }}
                                 </a>
                             </li>
                             <li class="breadcrumb-item text-white active">
-                                Paiement
+                                {{ __('text_paiement') }}
                             </li>
                         </ul>
                     </div>
@@ -37,7 +37,9 @@
     <div class="section section-padding">
         <div class="container">
             <div class="section-title2 text-center">
-                <h2 class="title">Votre commande</h2>
+                <h2 class="title">
+                    {{ __('continuer_commande') }}
+                </h2>
             </div>
             <div class="row learts-mb-n30">
                 <div class="col-lg-6 order-lg-2 learts-mb-30">
@@ -45,8 +47,12 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="name">Produits</th>
-                                    <th class="total">Sous-total</th>
+                                    <th class="name">
+                                        {{ __('produit') }}
+                                    </th>
+                                    <th class="total">
+                                        {{ __('sous-total') }}
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,7 +75,9 @@
                             </tbody>
                             <tfoot>
                                 <tr class="subtotal">
-                                    <th>Frais de livraison</th>
+                                    <th>
+                                        {{ __('frais_livraison') }}
+                                    </th>
                                     <td>
                                         <span>
                                             {{ $frais_livraison }}
@@ -78,7 +86,9 @@
                                     </td>
                                 </tr>
                                 <tr class="subtotal">
-                                    <th>Sous-total</th>
+                                    <th>
+                                        {{ __('sous-total') }}
+                                    </th>
                                     <td>
                                         <span>
                                             {{ $montant }}
@@ -118,11 +128,15 @@
                             @auth
                                 <div class="payment-method">
                                     <div class="p-2">
-                                        <h4 class="title">Adresse de facturation </h4>
+                                        <h4 class="title">
+                                            {{ __('adresse_facturation') }}
+                                        </h4>
                                         <div class="text-end">
                                             <small>
                                                 <a href="{{ route('profile') }}" class="text-danger">
-                                                    <b>Modifier</b>
+                                                    <b>
+                                                        {{ __('modifier') }}
+                                                    </b>
                                                 </a>
                                             </small>
                                         </div>
@@ -136,13 +150,14 @@
                                             <p>
                                                 {{ $user->email ?? '' }} <br>
                                                 {{ $user->adresse ?? '' }} <br>
-                                                <b> Mobile:</b> {{ $user->phone }} <br>
-                                                <b>Gouvernorat : </b>
+                                                <b>{{ __('telephone') }}</b> 
+                                                {{ $user->phone }} <br>
+                                                <b>{{ __('gouvernorat') }} : </b>
                                                 @if ($user->gouvernorat)
                                                     {{ $user->gouvernorat->nom }}
                                                 @else
                                                     <b class="text-danger">
-                                                        Non défini.
+                                                        {{ __('non_defini') }}
                                                     </b>
                                                 @endif
                                             </p>
@@ -152,7 +167,7 @@
                                         <div class="card active">
                                             <div class="card-header">
                                                 <button data-bs-toggle="collapse" data-bs-target="#cashkPayments">
-                                                    Paiement à la livraison
+                                                    {{ __('paiement_livraison') }}
                                                 </button>
                                             </div>
                                         </div>
@@ -161,19 +176,27 @@
                             @endauth
                             @guest
                                 <div>
-                                    <h4 class="title">Adresse de facturation </h4>
+                                    <h4 class="title">
+                                        {{ __('adresse_facturation') }}
+                                     </h4>
                                     <br>
                                 </div>
                                 <div class="row learts-mb-n30">
                                     <div class="col-md-12 col-12 learts-mb-30">
                                         <div class="single-input-item">
-                                            <label for="nom">Nom <abbr class="required">*</abbr></label>
+                                            <label for="nom">
+                                                {{ __('nom') }}
+                                                 <abbr class="required">*</abbr>
+                                                </label>
                                             <input type="text" id="nom" value="{{ old('nom') }}" name='nom'>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12 learts-mb-30">
                                         <div class="single-input-item">
-                                            <label for="telphone">Téléphone<abbr class="required">*</abbr></label>
+                                            <label for="telphone">
+                                                {{ __('telephone') }}
+                                                <abbr class="required">*</abbr>
+                                            </label>
                                             <input type="text" id="telphone" value="{{ old('phone') }}" name="phone">
                                         </div>
                                     </div>
@@ -182,11 +205,13 @@
                                         <input type="email" id="email" value="{{ old('email') }}" name='email'>
                                     </div>
                                     <div class="col-12 col-md-6 learts-mb-30">
-                                        <label for="adresse">Adresse </label>
+                                        <label for="adresse">
+                                            {{ __('adresse') }}
+                                        </label>
                                         <input type="text" id="adresse" value="{{ old('adresse') }}" name='adresse'>
                                     </div>
                                     <div class="col-12 col-md-6 learts-mb-30">
-                                        <label for="adresse">Gouvernorat <abbr class="required">*</abbr></label>
+                                        <label for="adresse">{{ __('gouvernorat') }} <abbr class="required">*</abbr></label>
                                         <select id="id_gouvernorat" name='id_gouvernorat' class="form-control-select-x">
                                             <option value=""></option>
                                             @foreach ($gouvernorats as $item)
@@ -201,12 +226,10 @@
                             @endguest
                             <div class="text-center">
                                 <p class="payment-note">
-                                    Vos données personnelles seront utilisées pour traiter votre commande, soutenir votre
-                                    expérience sur ce site Web et à d'autres fins décrites dans notre politique de
-                                    confidentialité.
+                                    {{ __('commande_2') }}
                                 </p>
                                 <button class="btn btn-dark btn-outline-hover-dark" type="submit">
-                                    passer commande
+                                    {{ __('commande_3') }}
                                 </button>
                             </div>
                         </form>

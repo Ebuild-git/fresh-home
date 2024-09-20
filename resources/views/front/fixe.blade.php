@@ -44,7 +44,7 @@
     @yield('SEO')
 
     <style>
-        .form-control-select-x{
+        .form-control-select-x {
             width: 100% !important;
             border: solid 1px white !important;
             height: 40px !important;
@@ -52,25 +52,42 @@
             border-bottom: solid 1px rgba(68, 67, 67, 0.13) !important;
         }
     </style>
-    
+
 </head>
 
 <body>
-    @if ($infos->header_text)
-        <!-- Topbar Section Start -->
-        <div class="topbar-section section bg-dark">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
+
+    <!-- Topbar Section Start -->
+    <div class="topbar-section section bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10">
+                    @if ($infos->header_text)
                         <p class="text-center my-2 text-white">
                             {{ $infos->header_text }}
                         </p>
-                    </div>
+                    @endif
+                </div>
+                <div class="col-sm-2">
+                    <p class="text-end my-2 text-white">
+                        <select name="lang" id="lang" onchange="changeLanguage()">
+                            <option value=""></option>
+                            <option value="fr" {{ app()->getLocale() == 'fr' ? 'selected' : '' }}>Français</option>
+                            <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
+                        </select>
+
+                        <script>
+                            function changeLanguage() {
+                                var lang = document.getElementById("lang").value;
+                                window.location.href = "/change-lang/" + lang;
+                            }
+                        </script>
+                    </p>
                 </div>
             </div>
         </div>
-        <!-- Topbar Section End -->
-    @endif
+    </div>
+    <!-- Topbar Section End -->
 
     <!-- Header Section Start -->
     <div class="header-section header-menu-center section bg-white d-none d-xl-block">
@@ -361,11 +378,11 @@
                 <form action="{{ route('shop') }}" method="get">
                     <div class="row mb-n3">
                         <div class="col-lg-8 col-12 mb-3">
-                            <input type="text" name="key" placeholder="Rechercher des produits...">
+                            <input type="text" name="key" placeholder="{{ __('shop_3') }}">
                         </div>
                         <div class="col-lg-4 col-12 mb-3">
                             <select class="search-select select2-basic">
-                                <option value="0">All Categories</option>
+                                <option value="0">{{ __('categories') }}</option>
                                 <option value="kids-babies">Kids &amp; Babies</option>
                                 <option value="home-decor">Home Decor</option>
                                 <option value="gift-ideas">Gift ideas</option>
@@ -379,8 +396,8 @@
                 </form>
             </div>
             <p class="search-description text-body-light mt-2">
-                <span># Tapez au moins 1 caractère pour rechercher</span>
-                <span># Appuyez sur Entrée pour rechercher ou ESC pour fermer</span>
+                <span>{{ __('recherche_1') }}</span>
+                <span>{{ __('recherche_2') }}</span>
             </p>
 
         </div>
@@ -392,7 +409,7 @@
         <div class="inner">
             <div class="head">
                 <span class="title">
-                    liste de souhaits
+                    {{ __('liste_souhait') }}
                 </span>
                 <button class="offcanvas-close">×</button>
             </div>
@@ -407,7 +424,7 @@
     <div id="offcanvas-cart" class="offcanvas offcanvas-cart panier-modal">
         <div class="inner">
             <div class="head">
-                <span class="title">Cart</span>
+                <span class="title">{{ __('panier') }}</span>
                 <button class="offcanvas-close">×</button>
             </div>
             <div class="body customScroll">
@@ -415,7 +432,7 @@
             </div>
             <div class="foot">
                 <div class="sub-total">
-                    <strong>Sous-total :</strong>
+                    <strong>{{ __('sous_total') }} :</strong>
                     <span class="amount">
                         <span class="montant">0</span>
                         <x-devise></x-devise>
@@ -424,10 +441,10 @@
                 </div>
                 <div class="buttons">
                     <a href="{{ route('cart') }}" class="btn btn-dark btn-hover-primary">
-                        Voir le panier
+                        {{ __('add_cart') }}
                     </a>
                     <a href="{{ route('checkout') }}" class="btn btn-outline-dark">
-                        Aller au paiement
+                        {{ __('paiement') }}
                     </a>
                 </div>
             </div>
@@ -517,9 +534,9 @@
                     <div class="row">
                         <div class="col">
                             <ul class="widget-list">
-                                <li><a href="{{ route('about') }}">à-propos</a></li>
-                                <li><a href="{{ route('front-contact.index') }}">Contact</a></li>
-                                <li><a href="{{ route('shop') }}">Shop</a></li>
+                                <li><a href="{{ route('about') }}">{{ __('about') }}</a></li>
+                                <li><a href="{{ route('front-contact.index') }}">{{ __('contact') }}</a></li>
+                                <li><a href="{{ route('shop') }}">{{ __('shop') }}</a></li>
                             </ul>
                         </div>
                         <div class="col">
@@ -563,7 +580,7 @@
     <div class="footer2-copyright section">
         <div class="container">
             <p class="copyright text-center">
-                &copy; 2024 . All Rights Reserved
+                &copy; 2024 . {{ __('all_rights') }}
                 <a href="https://www.e-build.tn" target="__blank" style="color: #da1226;">
                     <b>Ebuild</b>
                 </a>

@@ -1,5 +1,5 @@
 @extends('front.fixe')
-@section('titre', 'à-propos')
+@section('titre', __('about'))
 @section('body')
 
 
@@ -12,12 +12,18 @@
                 <div class="col">
 
                     <div class="page-title">
-                        <h1 class="title text-white">à-propos</h1>
+                        <h1 class="title text-white">
+                            {{ __('about') }}
+                        </h1>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}" class="text-white">Accueil</a>
+                                <a href="{{ route('home') }}" class="text-white">
+                                    {{ __('accueil') }}
+                                </a>
                             </li>
-                            <li class="breadcrumb-item active text-white">à-propos</li>
+                            <li class="breadcrumb-item active text-white">
+                                {{ __('about') }}
+                            </li>
                         </ul>
                     </div>
 
@@ -67,11 +73,10 @@
                         <div class="inner">
                             <div class="content">
                                 <h6 class="title">
-                                    LIVRAISON GRATUITE
+                                    {{ __('about_1') }}
                                 </h6>
                                 <p>
-                                    Une fois votre commande reçue, nous retournerons vos produits dans un délai de 3 à 5
-                                    jours ouvrables.
+                                    {{ __('about_4') }}
                                 </p>
                             </div>
                         </div>
@@ -83,11 +88,10 @@
                         <div class="inner">
                             <div class="content">
                                 <h6 class="title">
-                                    RETOURS GRATUITS
+                                    {{ __('about_2') }}
                                 </h6>
                                 <p>
-                                    Nous acceptons les retours de produits fraîchement achetés dans les 7 jours suivant le
-                                    paiement.
+                                    {{ __('about_5') }}
                                 </p>
                             </div>
                         </div>
@@ -99,7 +103,7 @@
                         <div class="inner">
                             <div class="content">
                                 <h6 class="title">
-                                    PAIEMENT SÉCURISÉ
+                                    {{ __('about_3') }}
                                 </h6>
                                 <img width="224" height="32" src="https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay.png" class="vc_single_image-img attachment-full" alt="" decoding="async" title="pay" srcset="https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay.png 224w, https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay-220x32.png 220w" sizes="(max-width: 224px) 100vw, 224px">
                             </div>
@@ -127,46 +131,4 @@
         </div>
     </div>
     <!-- Video Banner Section End -->
-
-    <!-- Feature Section Start -->
-    <div class="section section-padding">
-        <div class="container">
-
-            <div class="row learts-mb-n30">
-
-                <div class="col-xl-3 col-lg-4 col-12 me-auto learts-mb-30">
-                    <h1 class="fw-400">The difference when you shop Learts!</h1>
-                </div>
-                <div class="col-lg-8 col-12 learts-mb-30">
-                    <div class="row learts-mb-n30">
-
-                        <div class="col-md-6 col-12 learts-mb-30">
-                            <p class="text-heading fw-600 learts-mb-10">Free Shipping</p>
-                            <p>Once receiving your order, we will turn your products around in 3-5 business days.</p>
-                        </div>
-
-                        <div class="col-md-6 col-12 learts-mb-30">
-                            <p class="text-heading fw-600 learts-mb-10">Free Returns</p>
-                            <p>We accept returns for freshly purchased products within 7 days from the payment.</p>
-                        </div>
-
-                        <div class="col-md-6 col-12 learts-mb-30">
-                            <p class="text-heading fw-600 learts-mb-10">Superb Quality</p>
-                            <p>We make commitments that the quality of our products will and always will be superb.</p>
-                        </div>
-
-                        <div class="col-md-6 col-12 learts-mb-30">
-                            <p class="text-heading fw-600 learts-mb-10">Free Wrapping</p>
-                            <p>Upon request, items bought as gifts from our store can receive free wrapping service.</p>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <!-- Feature Section End -->
-
 @endsection

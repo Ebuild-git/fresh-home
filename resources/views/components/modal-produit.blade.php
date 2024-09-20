@@ -29,7 +29,11 @@
             <table>
                 <tbody>
                     <tr>
-                        <td class="label"><span>Quantité</span></td>
+                        <td class="label">
+                            <span>
+                                {{ __('quantite') }}
+                            </span>
+                        </td>
                         <td class="value">
                             <div class="product-quantity">
                                 <span class="qty-btn minus"><i class="ti-minus"></i></span>
@@ -44,18 +48,18 @@
         <div class="product-buttons">
             <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark"><i class="far fa-heart"></i></a>
             <a href="#" class="btn btn-dark btn-outline-hover-dark"><i class="fas fa-shopping-cart"></i>
-                Ajouter au panier
+                {{ __('add_cart') }}
             </a>
         </div>
         <div class="product-meta mb-0">
             <table>
                 <tbody>
                     <tr>
-                        <td class="label"><span>REFERENCE </span></td>
+                        <td class="label"><span> {{ __('reference') }} </span></td>
                         <td class="value">{{ $produit->reference }}</td>
                     </tr>
                     <tr>
-                        <td class="label"><span>Categorie</span></td>
+                        <td class="label"><span> {{ __('categorie') }}</span></td>
                         <td class="value">
                             <ul class="product-category">
                                 <li><a href="#">{{ $produit->categorie->nom  }}</a></li>

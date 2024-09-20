@@ -1,5 +1,5 @@
 @extends('front.fixe')
-@section('titre', 'Panier')
+@section('titre', __('panier'))
 @section('body')
 
 
@@ -13,14 +13,16 @@
 
                     <div class="page-title">
                         <h1 class="title text-white">
-                            Panier
+                            {{ __('panier') }}
                         </h1>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item text-white">
-                                <a href="{{ route('home') }}">Accueil</a>
+                                <a href="{{ route('home') }}">
+                                    {{ __('accueil') }}
+                                </a>
                             </li>
                             <li class="breadcrumb-item active text-white">
-                                Panier
+                                {{ __('panier') }}
                             </li>
                         </ul>
                     </div>
@@ -38,9 +40,15 @@
                 <table class="cart-wishlist-table table">
                     <thead>
                         <tr>
-                            <th class="name" colspan="2">Produit</th>
-                            <th class="price">Prix</th>
-                            <th class="quantity">Quantité</th>
+                            <th class="name" colspan="2">
+                                {{ __('produit') }}
+                            </th>
+                            <th class="price">
+                                {{ __('prix') }}
+                            </th>
+                            <th class="quantity">
+                                {{ __('quantite') }}
+                            </th>
                             <th class="subtotal">Total</th>
                             <th class="remove">&nbsp;</th>
                         </tr>
@@ -85,7 +93,7 @@
                         <tr>
                             <td colspan="5">
                                 <div class="text-center p-3">
-                                     Aucun produit dans votre panier!
+                                    {{ __('panier_vide') }}
                                 </div>
                             </td>
                         </tr>
@@ -98,7 +106,7 @@
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-dark btn-outline-hover-dark mb-3" href="{{ route('checkout') }}">
-                            Continuer le paiement
+                            {{ __('continuer_paiement') }}
                         </a>
                     </div>
                 </div>

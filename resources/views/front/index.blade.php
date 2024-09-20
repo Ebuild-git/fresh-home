@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="link">
                                     <a href="{{ route('shop') }}" class="btn btn-black btn-outline-hover-black">
-                                        Acheter maintenant !
+                                        {{ __('shop_11') }}
                                     </a>
                                 </div>
                             </div>
@@ -48,12 +48,15 @@
                 <div class="col-xl-7 col-lg-8 col-12 mx-auto">
                     <div class="about-us2">
                         <div class="inner">
-                            <h5 class="title">Réveillez vos souvenirs</h5>
-                            <h5 class="sub-title">parfumez votre présent</h5>
+                            <h5 class="title">
+                                {{ __('home_1') }}
+                            </h5>
+                            <h5 class="sub-title">
+                                {{ __('home_2') }}
+                            </h5>
                             <div class="desc">
                                 <p>
-                                    Fresh Home est la première marque tunisienne spécialisée dans les parfums maisons, née
-                                    des souvenirs d'enfance gravés dans la mémoire de sa créatrice.
+                                    {{ __('home_3') }}
                                 </p>
                             </div>
                         </div>
@@ -91,6 +94,7 @@
     </div>
     <!-- Category Banner Section End -->
 
+    
 
 
     <!-- Product Section Start -->
@@ -324,7 +328,7 @@
             <!-- Product Tab End -->
             <div class="row g-0 justify-content-center learts-mt-50">
                 <a href="{{ route('shop') }}" class="btn p-0">
-                    <i class="ti-plus"></i> Voir plus
+                    <i class="ti-plus"></i> {{ __('voir_plus') }}
                 </a>
             </div>
 
@@ -347,12 +351,15 @@
             <div class="section-title2 row justify-content-between align-items-center">
                 <div class="col-md-auto col-12">
                     <!-- Section Title Start -->
-                    <h2 class="title title-icon-right">Découvrez nos gammes</h2>
+                    <h2 class="title title-icon-right">
+                        {{ __('home_4') }}
+                    </h2>
                     <!-- Section Title End -->
                 </div>
                 <div class="col-md-auto col-12 mt-4 mt-md-0">
                     <a href="{{ route('shop') }}" class="btn btn-light btn-hover-black">
-                        <i class="ti-plus"></i> Voir plus
+                        <i class="ti-plus"></i> 
+                        {{ __('voir_plus') }}
                     </a>
                 </div>
             </div>
@@ -374,7 +381,7 @@
                                 <div class="icon"><img src="/assets/images/icons/quote.webp" alt=""></div>
                                 <div class="content">
                                     <p>
-                                        Des gammes complètes pour chaque ambiance parfumant chaque coin de votre maison.
+                                        {{ __('home_5') }}
                                     </p>
                                 </div>
                             </blockquote>

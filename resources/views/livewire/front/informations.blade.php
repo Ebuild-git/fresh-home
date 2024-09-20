@@ -1,15 +1,15 @@
 <fieldset>
-    <legend>Changement de informations</legend>
+    <legend>
+        {{ __('changement_1') }}
+    </legend>
     <p class="alert alert-info">
-        Les informations saisies ne seront pas enregistrées tant que vous ne cliquez pas sur "mettre a jour". Vous
-        pourrez les
-        modifier à tout moment.
+        {{ __('infos_1') }}
     </p>
     <form wire:submit='update'>
         <div class="row learts-mb-n30">
             <div class="col-md-6 col-12 learts-mb-30">
                 <div class="single-input-item">
-                    <label for="nom">Nom <abbr class="required">*</abbr></label>
+                    <label for="nom">{{ __('nom') }} <abbr class="required">*</abbr></label>
                     <input type="text" id="nom" wire:model='nom'>
                     @error('nom')
                         <span class="invalid-feedback">
@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-6 col-12 learts-mb-30">
                 <div class="single-input-item">
-                    <label for="prenom">Prénom<abbr class="required">*</abbr></label>
+                    <label for="prenom">{{ __('prenom') }}<abbr class="required">*</abbr></label>
                     <input type="text" id="prenom" wire:model='prenom'>
                     @error('prenom')
                         <span class="invalid-feedback">
@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-6 col-12 learts-mb-30">
                 <div class="single-input-item">
-                    <label for="telphone">Téléphone<abbr class="required">*</abbr></label>
+                    <label for="telphone">{{ __('telephone') }}<abbr class="required">*</abbr></label>
                     <input type="text" id="telphone" wire:model="telephone">
                     @error('telephone')
                         <span class="invalid-feedback">
@@ -50,7 +50,7 @@
                 @enderror
             </div>
             <div class="col-12 col-md-6 learts-mb-30">
-                <label for="adresse">Adresse <abbr class="required">*</abbr></label>
+                <label for="adresse">{{ __('adresse') }} <abbr class="required">*</abbr></label>
                 <input type="text" id="adresse" wire:model='adresse'>
                 @error('adresse')
                     <span class="invalid-feedback">
@@ -59,7 +59,7 @@
                 @enderror
             </div>
             <div class="col-12 col-md-6 learts-mb-30">
-                <label for="adresse">Gouvernorat <abbr class="required">*</abbr></label>
+                <label for="adresse">{{ __('gouvernorat') }} <abbr class="required">*</abbr></label>
                 <select id="id_gouvernorat" wire:model='id_gouvernorat' class="form-control-select-x">
                     <option value=""></option>
                     @foreach ($gouvernorats as $item)
@@ -79,7 +79,7 @@
 
                 <button class="btn btn-dark btn-outline-hover-dark" type="submit">
                     <x-Loading></x-Loading>
-                    mettre a jour
+                    {{ __('update') }}
                 </button>
             </div>
         </div>

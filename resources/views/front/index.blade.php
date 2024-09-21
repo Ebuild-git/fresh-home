@@ -168,11 +168,11 @@
                                         </span>
                                         <div class="product-buttons">
                                             <a href="#quickViewModal" data-bs-toggle="modal" data-id="{{ $produit->id }}"
-                                                class="product-button hintT-top modal-view-open" data-hint="Regard rapide">
+                                                class="product-button hintT-top modal-view-open" data-hint="{{ __('regard_rapide') }}">
                                                 <i class="fas fa-search"></i>
                                             </a>
                                             <a href="javascript:void();" class="product-button hintT-top add-to-cart"
-                                                data-id="{{ $produit->id }}" data-hint="Add to Cart">
+                                                data-id="{{ $produit->id }}" data-hint="{{ __('add_cart') }}">
                                                 <i class="fas fa-shopping-cart"></i>
                                             </a>
                                         </div>

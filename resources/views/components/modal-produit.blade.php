@@ -46,8 +46,11 @@
             </table>
         </div>
         <div class="product-buttons">
-            <a href="#" class="btn btn-icon btn-outline-body btn-hover-dark"><i class="far fa-heart"></i></a>
-            <a href="#" class="btn btn-dark btn-outline-hover-dark"><i class="fas fa-shopping-cart"></i>
+            <a href="javascript:void();" class="btn btn-icon btn-outline-body btn-hover-dark">
+                <i class="far fa-heart"></i>
+            </a>
+            <a href="javascript:void();" class="btn btn-dark btn-outline-hover-dark add-to-cart" data-id="{{ $produit->id }}">
+                <i class="fas fa-shopping-cart"></i>
                 {{ __('add_cart') }}
             </a>
         </div>

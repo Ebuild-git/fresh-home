@@ -41,10 +41,10 @@
                 </span>
                 <div class="product-buttons">
                     <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top modal-view-open" data-id="{{ $produit->id }}"
-                        data-hint="Regard rapide">
+                        data-hint="{{ __('regard_rapide') }}">
                         <i class="fas fa-search"></i>
                     </a>
-                    <a href="javascript:void();" class="product-button hintT-top add-to-cart" data-id="{{ $produit->id }}" data-hint="Ajouter au panier">
+                    <a href="javascript:void();" class="product-button hintT-top add-to-cart" data-id="{{ $produit->id }}" data-hint="{{ __('add_cart') }}">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </div>

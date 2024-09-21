@@ -43,15 +43,6 @@
 
     @yield('SEO')
 
-    <style>
-        .form-control-select-x {
-            width: 100% !important;
-            border: solid 1px white !important;
-            height: 40px !important;
-            margin-top: 10px !important;
-            border-bottom: solid 1px rgba(68, 67, 67, 0.13) !important;
-        }
-    </style>
 
 </head>
 

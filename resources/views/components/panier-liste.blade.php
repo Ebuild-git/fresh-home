@@ -16,7 +16,7 @@
         </li>
     @empty
         <li class="empty-cart">
-            Aucun article disponible dans votre panier !
+            {{ __('panier_vide') }}
         </li>
     @endforelse
 </ul>

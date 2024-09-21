@@ -67,7 +67,7 @@
                                     <td class="add-to-cart">
                                         <a href="javascript:void();" class="btn btn-light btn-hover-dark">
                                             <i class="fas fa-shopping-cart mr-2"></i>
-                                            Ajouter au panier
+                                            {{ __('add_cart') }}
                                         </a>
                                     </td>
                                     <td class="remove">

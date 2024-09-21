@@ -1,6 +1,6 @@
 {
     "accueil": "Accueil",
-    "about": "A propos",
+    "about": "à-propos",
     "shop": "Boutique",
     "contact": "Contact",
     "all_rights": "Tous droits réservés",
@@ -67,6 +67,10 @@
     "update" : "METTRE A JOUR",
     "new_password" : "Nouveau mot de passe",
     "confirm_password": "Confirmation du nouveau mot de passe",
+    "regard_rapide" : "Regard rapide",
+    "produit_ajouter" : "Produit ajouté au panier !",
+    "echec_operation" : "Echec de l'éxécution !",
+    "merci" : "Merci et à bientôt sur Mystory-Cosmetics.",
 
 
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nouvelle Commande - Mystory-Cosmetics</title>
+    <title>Nouvelle Commande - Fresh Home</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -48,15 +48,15 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <img src="{{ url('/icons/icon-black.png') }}" alt="Mystory-Cosmetics Logo">
-            <h1>Merci pour votre commande</h1>
+            <img src="{{ url('/icons/icon-black.png') }}" alt="Fresh Home Logo">
+            <h1>{{ __('commandes') }}</h1>
             <h4>
-                Référence : {{ $commande->id }}
+                {{ __('reference') }} : {{ $commande->id }}
             </h4>
         </div>
         <div class="content">
             <p>Bonjour {{ $commande->prenom }},</p>
-            <p>Merci pour votre commande chez Mystory-Cosmetics. Nous préparons votre commande avec soin et vous
+            <p>Merci pour votre commande chez Fresh Home. Nous préparons votre commande avec soin et vous
                 tiendrons informé dès qu'elle sera expédiée.</p>
             <p>Détails de la commande :</p>
             <ul>
@@ -74,15 +74,15 @@
                     @endphp
                 @endforeach
             </ul>
-            <p>Frais de livraison : {{ $commande->frais }} <x-devise></x-devise> </p>
+            <p>{{ __('frais_livraison') }} : {{ $commande->frais }} <x-devise></x-devise> </p>
             <p>Timbre : {{ $commande->timbre }} <x-devise></x-devise> </p>
             <p>Total: {{ $total }} <x-devise></x-devise> </p>
-            <p>Adresse de livraison :</p>
+            <p>{{ __('adresse_livraison') }} :</p>
             <p>{{ $commande->adesse }}</p>
-            <p>Merci et à bientôt sur Mystory-Cosmetics.</p>
+            <p>{{ __('merci') }}</p>
         </div>
         <div class="footer">
-            <p>&copy; 2024 Mystory-Cosmetics. Tous droits réservés.</p>
+            <p>&copy; 2024 Fresh Home. {{ __('all_rights') }}</p>
         </div>
     </div>
 </body>

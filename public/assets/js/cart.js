@@ -38,7 +38,6 @@ $(document).on("click", ".add-to-cart", function (e) {
             if (response.status) {
                 fetch_cart();
                 Swal.fire({
-                    title: "Félicitation !",
                     text: response.message,
                     icon: "success",
                     timer: 2000,
@@ -47,7 +46,6 @@ $(document).on("click", ".add-to-cart", function (e) {
                 });
             } else {
                 Swal.fire({
-                    title: "Echec !",
                     text: response.message,
                     icon: "error",
                     timer: 2000,
@@ -78,7 +76,6 @@ $(document).on("click", ".delete-item-to-cart", function (e) {
             if (response.status) {
                 fetch_cart();
                 Swal.fire({
-                    title: "Félicitation !",
                     text: response.message,
                     icon: "success",
                     timer: 2000,
@@ -87,7 +84,6 @@ $(document).on("click", ".delete-item-to-cart", function (e) {
                 });
             } else {
                 Swal.fire({
-                    title: "Echec !",
                     text: response.message,
                     icon: "error",
                     timer: 2000,

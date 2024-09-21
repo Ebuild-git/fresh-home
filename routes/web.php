@@ -73,15 +73,9 @@ Route::middleware(['check.country.cookie'])->group(function () {
 
     // Route du client
     Route::middleware(['auth'])->group(function () {
-
         Route::get('/profile', [FrontController::class, 'profile'])->name('profile');
-
-        //paiement et facture
         Route::get('/payment-success/{token}', [PayementController::class, 'payment_success'])->name('payment-success');
         Route::get('/payment-failure', [PayementController::class, 'payment_failure'])->name('payment-failure');
-
-
-        //gestions des favoris
         Route::get('/favoris', [FavorisController::class, 'index'])->name('favoris_index');
         Route::post('/favoris/add', [FavorisController::class, 'add'])->name('favoris_add');
         Route::get('/favoris/get', [FavorisController::class, 'get'])->name('favoris_get');

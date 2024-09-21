@@ -28,14 +28,16 @@ class PanierController extends Controller
         if (!$produit) {
             return response()->json([
                 'status' => false,
-                'message' => "Produit introuvable !",
+                'message'=> __('echec_operation'),
+                'errors' => "Produit introuvable !",
             ]);
         }
 
         if ($produit->stock < $quantite) {
             return response()->json([
                 'status' => false,
-                'message' => "Stock indisponible !",
+                'message'=> __('echec_operation'),
+                'errors' => "Stock indisponible !",
             ]);
         }
 
@@ -64,7 +66,7 @@ class PanierController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => "Produit ajouté"
+            'message' => __('produit_ajouter')
         ]);
     }
 

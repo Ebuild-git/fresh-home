@@ -105,7 +105,12 @@
                                 <h6 class="title">
                                     {{ __('about_3') }}
                                 </h6>
-                                <img width="224" height="32" src="https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay.png" class="vc_single_image-img attachment-full" alt="" decoding="async" title="pay" srcset="https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay.png 224w, https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay-220x32.png 220w" sizes="(max-width: 224px) 100vw, 224px">
+                                <img width="224" height="32"
+                                    src="https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay.png"
+                                    class="vc_single_image-img attachment-full" alt="" decoding="async"
+                                    title="pay"
+                                    srcset="https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay.png 224w, https://learts-4437.kxcdn.com/wp-content/uploads/2019/01/pay-220x32.png 220w"
+                                    sizes="(max-width: 224px) 100vw, 224px">
                             </div>
                         </div>
                     </div>
@@ -116,19 +121,22 @@
     </div>
     <!-- Feature Section End -->
 
-    <!-- Video Banner Section Start -->
-    <div class="section">
-        <div class="container">
-            <div class="video-banner2" data-bg-image="{{ Storage::url($infos->about_cover_video) }}">
-                <div class="content">
-                    @if ($infos->about_video)
-                        <a href="{{ Storage::url($infos->about_video) }}" class="video-popup">
-                            <img src="{{ Storage::url($infos->about_cover_video) }}" alt="">
-                        </a>
-                    @endif
+    @if ($infos->about_video)
+        <!-- Video Banner Section Start -->
+        <div class="section">
+            <div class="container">
+                <div class="video-banner2" data-bg-image="{{ Storage::url($infos->about_cover_video) }}">
+                    <div class="content">
+                        @if ($infos->about_video)
+                            <a href="{{ Storage::url($infos->about_video) }}" class="video-popup">
+                                <img src="{{ Storage::url($infos->about_cover_video) }}" alt="">
+                            </a>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Video Banner Section End -->
+        <!-- Video Banner Section End -->
+    @endif
+
 @endsection

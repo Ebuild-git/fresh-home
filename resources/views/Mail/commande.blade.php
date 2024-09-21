@@ -55,10 +55,11 @@
             </h4>
         </div>
         <div class="content">
-            <p>Bonjour {{ $commande->prenom }},</p>
-            <p>Merci pour votre commande chez Fresh Home. Nous préparons votre commande avec soin et vous
-                tiendrons informé dès qu'elle sera expédiée.</p>
-            <p>Détails de la commande :</p>
+            <p>{{ __('bonjour') }} {{ $commande->prenom }},</p>
+            <p>
+                {{ __('mail_2') }}
+            </p>
+            <p>{{ __('mail_1') }} :</p>
             <ul>
                 @php
                     $total = $commande->frais + $commande->timbre;
@@ -75,11 +76,21 @@
                 @endforeach
             </ul>
             <p>{{ __('frais_livraison') }} : {{ $commande->frais }} <x-devise></x-devise> </p>
-            <p>Timbre : {{ $commande->timbre }} <x-devise></x-devise> </p>
-            <p>Total: {{ $total }} <x-devise></x-devise> </p>
-            <p>{{ __('adresse_livraison') }} :</p>
-            <p>{{ $commande->adesse }}</p>
-            <p>{{ __('merci') }}</p>
+            <p>
+                {{ __('timbre') }} : {{ $commande->timbre }} <x-devise></x-devise> 
+            </p>
+            <p>
+                Total: {{ $total }} <x-devise></x-devise> 
+            </p>
+            <p>
+                {{ __('adresse_livraison') }} :
+            </p>
+            <p>
+                {{ $commande->adesse }}
+            </p>
+            <p>
+                {{ __('merci') }}
+            </p>
         </div>
         <div class="footer">
             <p>&copy; 2024 Fresh Home. {{ __('all_rights') }}</p>

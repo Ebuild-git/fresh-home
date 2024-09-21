@@ -40,16 +40,24 @@
     <div class="email-container">
         <div class="header">
             <img src="{{ url('/icons/icon-black.png') }}" alt="{{ url('/icons/logo.png') }}">
-            <h1>Bienvenue chez {{ config('app.name') }}</h1>
+            <h1>{{ __('mail_1') }} {{ config('app.name') }}</h1>
         </div>
         <div class="content">
-            <p>Bonjour {{ $user->nom }},</p>
-            <p>Merci de vous être inscrit sur {{ config('app.name') }}. Nous sommes ravis de vous compter parmi nos clients.</p>
-            <p>Vus pouvez des a présent faire des achats</p>
-            <p>Merci et à bientôt sur {{ config('app.name') }}.</p>
+            <p>{{ __('bonjour') }} {{ $user->nom }},</p>
+            <p>
+                {{ __('mail_5') }} {{ config('app.name') }}. 
+                {{ __('mail_6') }}
+            </p>
+            <p>
+                {{ __('mail_7') }}
+            </p>
+            <p>{{ __('mail_8') }} {{ config('app.name') }}.</p>
         </div>
         <div class="footer">
-            <p>&copy; 2024 {{ config('app.name') }}. Tous droits réservés.</p>
+            <p>
+                &copy; 2024 {{ config('app.name') }}.
+                {{ __('all_rights') }}.
+            </p>
         </div>
     </div>
 </body>

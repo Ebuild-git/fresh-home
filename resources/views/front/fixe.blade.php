@@ -634,22 +634,14 @@
 
 
     @auth
-        <script src="/assets/js/wishlist.js"></script>
+        <script src="/assets/js/wishlist.js?v={{ time() }}"></script>
     @endauth
-    <script src="/assets/js/cart.js"></script>
+    <script src="/assets/js/cart.js?v={{ time() }}"></script>
     @yield('scripts')
 
     <script>
         $(window).on('load', function() {
             $('body').addClass('loaded');
-        });
-        $(document).ready(function() {
-            $(document).on('mousemove', function(e) {
-                $('.custom-cursor').css({
-                    top: e.clientY + 'px',
-                    left: e.clientX + 'px'
-                });
-            });
         });
     </script>
 

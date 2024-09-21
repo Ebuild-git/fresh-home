@@ -8,6 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
     <title> @yield('titre') - (Admin) {{ config('app.name') }}</title>
     <!--favicon-->
     <link rel="icon" href="{{ Storage::url($config->icon) }}" type="image/png" />

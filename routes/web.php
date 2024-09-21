@@ -182,6 +182,9 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('role:admin');
 
     Route::resource('banners', BannerController::class)->middleware('role:admin');
+    Route::post('/admin/banners.update_show_text', [BannerController::class, 'update_show_text'])
+        ->name('banners.update_show_text')
+        ->middleware('role:admin');
 
     Route::post('/admin/update-personnel-permissions', [AdminController::class, 'update_permission'])
         ->name('update-personnel-permissions')

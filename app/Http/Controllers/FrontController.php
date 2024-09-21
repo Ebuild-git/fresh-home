@@ -26,6 +26,7 @@ class FrontController extends Controller
                 'photo' => Storage::url($ban->photo),
                 'titre' => $this->addBreaksAfterWords($ban->titre),
                 'titre_complet' => $ban->titre,
+                "show_text" => $ban->show_text,
             ];
         }
         $categories = categories::all();

@@ -27,13 +27,13 @@ class BannerController extends Controller
             $rules['titre'] = 'required|max:255';
         }
         $request->validate($rules);
-        
+
 
 
         //si on a une autre image que de type banner alors on supprime avant de ajouter la nouvelle
         if ($request->type != 'banner') {
-            $found  = Banners::where('type', $request->type )->first();
-            if($found){
+            $found  = Banners::where('type', $request->type)->first();
+            if ($found) {
                 Storage::disk('public')->delete($found->photo);
                 $found->delete();
             }
@@ -60,5 +60,23 @@ class BannerController extends Controller
         } else {
             return back()->with('error', 'Erreur lors de la suppression du banner');
         }
+    }
+
+
+
+    public function update_show_text(Request $request)
+    {
+        $banner = Banners::find($request->id);
+
+        if (!$banner) {
+            return response()->json(['error' => 'Banner introuvable'], 404);
+        }
+
+        // Convertir la valeur de show_text en booléen
+        $banner->show_text = filter_var($request->show_text, FILTER_VALIDATE_BOOLEAN);
+
+        $banner->save();
+
+        return response()->json(['success' => 'Texte affiché mis à jour']);
     }
 }

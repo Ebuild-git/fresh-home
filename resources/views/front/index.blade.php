@@ -94,7 +94,23 @@
     </div>
     <!-- Category Banner Section End -->
 
-    
+
+
+
+    <div class="container">
+        <div class="as-container">
+            <div class="as-carousel">
+                @foreach ($categories as $categorie)
+                    <div class="as-item">
+                        <label for="">
+                            {{ $categorie->nom }}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
 
 
     <!-- Product Section Start -->
@@ -104,224 +120,66 @@
             <!-- Product Tab Start -->
             <div class="row">
                 <div class="col-12">
-                    <ul class="product-tab-list nav">
-                        <li><a class="active" data-bs-toggle="tab" href="#tab-new-sale">Nouveautés</a></li>
-                        <li><a data-bs-toggle="tab" href="#tab-sale-items">Articles en solde</a></li>
-                        <li><a data-bs-toggle="tab" href="#tab-best-sellers">Meilleures ventes</a></li>
-                    </ul>
-                    <div class="prodyct-tab-content1 tab-content">
-                        <div class="tab-pane fade show active" id="tab-new-sale">
-                            <!-- Products Start -->
-                            <div class="products row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
-
-                                @foreach ($news as $produit)
-                                    <div class="col">
-                                        <div class="product">
-                                            <div class="product-thumb">
-                                                <a href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}"
-                                                    class="image">
-                                                    @if ($produit->id_promotion)
-                                                        <span class="product-badges">
-                                                            <span class="onsale">
-                                                                {{ $produit->inPromotion->pourcentage }} %
-                                                            </span>
-                                                        </span>
-                                                    @endif
-                                                    <img src="{{ Storage::url($produit->photo) }}"
-                                                        alt="{{ $produit->nom }}" alt="{{ $produit->nom }}">
-                                                    <img class="image-hover " src="{{ Storage::url($produit->photo) }}"
-                                                        alt="{{ $produit->nom }}" alt="Product Image">
-                                                </a>
-                                                @auth
-                                                    <a href="javascript:void();" class="add-to-wishlist hintT-left add-to-wish"
-                                                        data-id="{{ $produit->id }}" data-hint="Ajouter aux favoris">
-                                                        <i class="far fa-heart"></i>
-                                                    </a>
-                                                @endauth
-                                            </div>
-                                            <div class="product-info">
-                                                <h6 class="title">
-                                                    <a
-                                                        href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}">
-                                                        {{ Str::limit($produit->nom, 30) }}
-                                                    </a>
-                                                </h6>
-                                                <span class="price">
-                                                    @if ($produit->id_promotion)
-                                                        <span class="old">
-                                                            {{ $produit->prix }}
-                                                            <x-devise></x-devise>
-                                                        </span>
-                                                    @endif
-
-                                                    <span class="new">
-                                                        {{ $produit->getPrice() }}
-                                                        <x-devise></x-devise>
+                    <div class="products row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
+                        @foreach ($news as $produit)
+                            <div class="col">
+                                <div class="product">
+                                    <div class="product-thumb">
+                                        <a href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}"
+                                            class="image">
+                                            @if ($produit->id_promotion)
+                                                <span class="product-badges">
+                                                    <span class="onsale">
+                                                        {{ $produit->inPromotion->pourcentage }} %
                                                     </span>
                                                 </span>
-                                                <div class="product-buttons">
-                                                    <a href="#quickViewModal" data-bs-toggle="modal"
-                                                        data-id="{{ $produit->id }}"
-                                                        class="product-button hintT-top modal-view-open"
-                                                        data-hint="Regard rapide">
-                                                        <i class="fas fa-search"></i>
-                                                    </a>
-                                                    <a href="javascript:void();"
-                                                        class="product-button hintT-top add-to-cart"
-                                                        data-id="{{ $produit->id }}" data-hint="Add to Cart">
-                                                        <i class="fas fa-shopping-cart"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            @endif
+                                            <img src="{{ Storage::url($produit->photo) }}" alt="{{ $produit->nom }}"
+                                                alt="{{ $produit->nom }}">
+                                            <img class="image-hover " src="{{ Storage::url($produit->photo) }}"
+                                                alt="{{ $produit->nom }}" alt="Product Image">
+                                        </a>
+                                        @auth
+                                            <a href="javascript:void();" class="add-to-wishlist hintT-left add-to-wish"
+                                                data-id="{{ $produit->id }}" data-hint="Ajouter aux favoris">
+                                                <i class="far fa-heart"></i>
+                                            </a>
+                                        @endauth
                                     </div>
-                                @endforeach
-
-                            </div>
-                            <!-- Products End -->
-                        </div>
-                        <div class="tab-pane fade" id="tab-sale-items">
-                            <!-- Products Start -->
-                            <div class="products row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
-                                @foreach ($randoms as $produit)
-                                    <div class="col">
-                                        <div class="product">
-                                            <div class="product-thumb">
-                                                <a href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}"
-                                                    class="image">
-                                                    @if ($produit->id_promotion)
-                                                        <span class="product-badges">
-                                                            <span class="onsale">
-                                                                {{ $produit->inPromotion->pourcentage }} %
-                                                            </span>
-                                                        </span>
-                                                    @endif
-                                                    <img src="{{ Storage::url($produit->photo) }}"
-                                                        alt="{{ $produit->nom }}" alt="{{ $produit->nom }}">
-                                                    <img class="image-hover " src="{{ Storage::url($produit->photo) }}"
-                                                        alt="{{ $produit->nom }}" alt="Product Image">
-                                                </a>
-                                                @auth
-                                                    <a href="javascript:void();"
-                                                        class="add-to-wishlist hintT-left add-to-wish"
-                                                        data-id="{{ $produit->id }}" data-hint="Ajouter aux favoris">
-                                                        <i class="far fa-heart"></i>
-                                                    </a>
-                                                @endauth
-                                            </div>
-                                            <div class="product-info">
-                                                <h6 class="title">
-                                                    <a
-                                                        href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}">
-                                                        {{ Str::limit($produit->nom, 30) }}
-                                                    </a>
-                                                </h6>
-                                                <span class="price">
-                                                    @if ($produit->id_promotion)
-                                                        <span class="old">
-                                                            {{ $produit->prix }}
-                                                            <x-devise></x-devise>
-                                                        </span>
-                                                    @endif
-
-                                                    <span class="new">
-                                                        {{ $produit->getPrice() }}
-                                                        <x-devise></x-devise>
-                                                    </span>
+                                    <div class="product-info">
+                                        <h6 class="title">
+                                            <a
+                                                href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}">
+                                                {{ Str::limit($produit->nom, 30) }}
+                                            </a>
+                                        </h6>
+                                        <span class="price">
+                                            @if ($produit->id_promotion)
+                                                <span class="old">
+                                                    {{ $produit->prix }}
+                                                    <x-devise></x-devise>
                                                 </span>
-                                                <div class="product-buttons">
-                                                    <a href="#quickViewModal" data-bs-toggle="modal"
-                                                        data-id="{{ $produit->id }}"
-                                                        class="product-button hintT-top modal-view-open"
-                                                        data-hint="Regard rapide">
-                                                        <i class="fas fa-search"></i>
-                                                    </a>
-                                                    <a href="javascript:void();"
-                                                        class="product-button hintT-top add-to-cart"
-                                                        data-id="{{ $produit->id }}" data-hint="Ajouter au panier">
-                                                        <i class="fas fa-shopping-cart"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            @endif
+
+                                            <span class="new">
+                                                {{ $produit->getPrice() }}
+                                                <x-devise></x-devise>
+                                            </span>
+                                        </span>
+                                        <div class="product-buttons">
+                                            <a href="#quickViewModal" data-bs-toggle="modal" data-id="{{ $produit->id }}"
+                                                class="product-button hintT-top modal-view-open" data-hint="Regard rapide">
+                                                <i class="fas fa-search"></i>
+                                            </a>
+                                            <a href="javascript:void();" class="product-button hintT-top add-to-cart"
+                                                data-id="{{ $produit->id }}" data-hint="Add to Cart">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
-                            <!-- Products End -->
-                        </div>
-                        <div class="tab-pane fade" id="tab-best-sellers">
-                            <!-- Products Start -->
-                            <div class="products row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
-
-                                @foreach ($topProduits as $item)
-                                    @php
-                                        $produit = $item->produit;
-                                    @endphp
-                                    <div class="col">
-                                        <div class="product">
-                                            <div class="product-thumb">
-                                                <a href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}"
-                                                    class="image">
-                                                    @if ($produit->id_promotion)
-                                                        <span class="product-badges">
-                                                            <span class="onsale">
-                                                                {{ $produit->inPromotion->pourcentage }} %
-                                                            </span>
-                                                        </span>
-                                                    @endif
-                                                    <img src="{{ Storage::url($produit->photo) }}"
-                                                        alt="{{ $produit->nom }}" alt="{{ $produit->nom }}">
-                                                    <img class="image-hover " src="{{ Storage::url($produit->photo) }}"
-                                                        alt="{{ $produit->nom }}" alt="Product Image">
-                                                </a>
-                                                @auth
-                                                    <a href="javascript:void();"
-                                                        class="add-to-wishlist hintT-left add-to-wish"
-                                                        data-id="{{ $produit->id }}" data-hint="Ajouter aux favoris">
-                                                        <i class="far fa-heart"></i>
-                                                    </a>
-                                                @endauth
-                                            </div>
-                                            <div class="product-info">
-                                                <h6 class="title">
-                                                    <a
-                                                        href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}">
-                                                        {{ Str::limit($produit->nom, 30) }}
-                                                    </a>
-                                                </h6>
-                                                <span class="price">
-                                                    @if ($produit->id_promotion)
-                                                        <span class="old">
-                                                            {{ $produit->prix }}
-                                                            <x-devise></x-devise>
-                                                        </span>
-                                                    @endif
-
-                                                    <span class="new">
-                                                        {{ $produit->getPrice() }}
-                                                        <x-devise></x-devise>
-                                                    </span>
-                                                </span>
-                                                <div class="product-buttons">
-                                                    <a href="#quickViewModal" data-bs-toggle="modal"
-                                                        data-id="{{ $produit->id }}"
-                                                        class="product-button hintT-top modal-view-open"
-                                                        data-hint="Regard rapide">
-                                                        <i class="fas fa-search"></i>
-                                                    </a>
-                                                    <a href="javascript:void();"
-                                                        class="product-button hintT-top add-to-cart"
-                                                        data-id="{{ $produit->id }}" data-hint="Ajouter au panier">
-                                                        <i class="fas fa-shopping-cart"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <!-- Products End -->
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -358,7 +216,7 @@
                 </div>
                 <div class="col-md-auto col-12 mt-4 mt-md-0">
                     <a href="{{ route('shop') }}" class="btn btn-light btn-hover-black">
-                        <i class="ti-plus"></i> 
+                        <i class="ti-plus"></i>
                         {{ __('voir_plus') }}
                     </a>
                 </div>
@@ -432,6 +290,16 @@
 
             $('.cat-scroll-button.right').click(function() {
                 $('.cat-scroll-container').scrollLeft($('.cat-scroll-container').scrollLeft() + 300);
+            });
+        });
+        $(document).ready(function() {
+            var $carousel = $('.as-carousel');
+            var items = $carousel.children('.as-item');
+            $carousel.append(items.clone());
+            $carousel.hover(function() {
+                $(this).css("animation-play-state", "paused");
+            }, function() {
+                $(this).css("animation-play-state", "running");
             });
         });
     </script>

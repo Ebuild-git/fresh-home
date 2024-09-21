@@ -118,3 +118,43 @@ a:hover + .custom-cursor, button:hover + .custom-cursor {
     height: 100%;
     object-fit: cover;
 }
+
+.as-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.as-carousel {
+    display: flex;
+    animation: as-scroll 30s linear infinite;
+    width: max-content;
+}
+
+.as-item {
+    flex: 0 0 auto;
+    width: 300px; /* Forcer les carrés */
+    margin: 0 10px;
+    border:solid 4px rgba(0, 0, 0, 0.171);
+    text-align: center;
+    cursor: pointer;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.as-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Animation de défilement fluide */
+@keyframes as-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}

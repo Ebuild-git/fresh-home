@@ -21,7 +21,7 @@
         @endif
     @empty
         <li class="empty-cart text-center p-3">
-            vous n'avez pas de produit en favoris !
+            {{ __('favoris_2') }}
         </li>
     @endforelse
 </ul>

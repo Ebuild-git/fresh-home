@@ -71,6 +71,7 @@
     "produit_ajouter" : "Produit ajouté au panier !",
     "echec_operation" : "Echec de l'éxécution !",
     "merci" : "Merci et à bientôt sur Mystory-Cosmetics.",
+    "aussi_aimer" : "Vous pourriez aussi aimer",
 
 
 
@@ -95,31 +96,19 @@
     "shop_10": "Trier par prix : du plus cher au moins cher",
     "shop_11": "ACHETER MAINTNANT !",
     "shop_12": "Tapez au moins 1 caractère pour rechercher # Appuyez sur Entrée pour rechercher ou ESC pour fermer",
-    "shop_13": "",
-    "shop_14": "",
-
 
     "about_1":"LIVRAISON GRATUITE",
     "about_2":"RETOURS GRATUITS",
     "about_3":"PAIEMENT SÉCURISÉ",
     "about_4":"Une fois votre commande reçue, nous retournerons vos produits dans un délai de 3 à 5 jours ouvrables.",
     "about_5":"Nous acceptons les retours de produits fraîchement achetés dans les 7 jours suivant le paiement.",
-    "about_6":"",
-    "about_7":"",
-    "about_8":"",
-    "about_9":"",
 
 
     "home_1" : "Réveillez vos souvenirs",
     "home_2" : "parfumez votre présent",
     "home_3" : "Fresh Home est la première marque tunisienne spécialisée dans les parfums maisons, née des souvenirs d'enfance gravés dans la mémoire de sa créatrice.",
     "home_4" : "Découvrez nos gammes",
-    "home_5" : "Des gammes complètes pour chaque ambiance parfumant chaque coin de votre maison.",
-    "home_6" : "",
-    "home_7" : "",
-    "home_8" : "",
-    "home_9" : "",
-    "home_10" : ""
+    "home_5" : "Des gammes complètes pour chaque ambiance parfumant chaque coin de votre maison."
 
     
 

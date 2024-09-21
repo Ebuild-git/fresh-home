@@ -14,13 +14,19 @@
                 <div class="col">
 
                     <div class="page-title">
-                        <h1 class="title text-white">Shop</h1>
+                        <h1 class="title text-white">
+                            {{ __('shop') }}
+                        </h1>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item text-white">
-                                <a href="{{ route('home') }}">Accueil</a>
+                                <a href="{{ route('home') }}">
+                                    {{ __('accueil') }}
+                                </a>
                             </li>
                             <li class="breadcrumb-item text-white">
-                                <a href="{{ route('shop') }}">Produits</a>
+                                <a href="{{ route('shop') }}">
+                                    {{ __('produit') }}
+                                </a>
                             </li>
                             <li class="breadcrumb-item text-white active">
                                 {{ $produit->nom }}
@@ -102,7 +108,7 @@
                                             <tr>
                                                 <td class="label">
                                                     <b>
-                                                        <span>Quantité</span>
+                                                        <span>{{ __('quantite') }}</span>
                                                         &nbsp; &nbsp; &nbsp; &nbsp;
                                                     </b>
                                                 </td>
@@ -146,7 +152,7 @@
                                     <tr>
                                         <td class="label">
                                             <b>
-                                                <span>Référence </span> :
+                                                <span>{{ __('reference') }} </span> :
                                             </b>
                                         </td>
                                         <td class="value">{{ $produit->reference }}</td>
@@ -154,7 +160,7 @@
                                     <tr>
                                         <td class="label">
                                             <b>
-                                                <span>Categorie</span> :
+                                                <span>{{ __('categorie') }}</span> :
                                             </b>
                                         </td>
                                         <td class="value">
@@ -208,7 +214,7 @@
             <!-- Section Title Start -->
             <div class="section-title2 text-center">
                 <h2 class="title">
-                    Vous pourriez aussi aimer
+                    {{ __('aussi_aimer') }}
                 </h2>
             </div>
             <!-- Section Title End -->

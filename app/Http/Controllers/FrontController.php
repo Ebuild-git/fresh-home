@@ -20,7 +20,9 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         $banners = [];
-        $bans = Banners::where('type', "banner")->get();
+        $bans = Banners::where('type', "banner")
+            ->select('photo', 'titre', 'show_text')
+            ->get();
         foreach ($bans as $ban) {
             $banners[] = [
                 'photo' => Storage::url($ban->photo),
@@ -31,7 +33,11 @@ class FrontController extends Controller
         }
         $categories = categories::all();
         $news = produits::Orderby('id', 'desc')->take(8)->get();
-        $randoms = produits::inRandomOrder()->whereNotNull('id_promotion')->limit(8)->get();
+        $randoms = produits::inRandomOrder()
+        ->select('nom','prix','photo','id_categorie','id_promotion')
+        ->whereNotNull('id_promotion')
+        ->limit(8)
+        ->get();
         $topProduits = contenu_commande::select('id_produit', DB::raw('SUM(quantite) as total_quantite'))
             ->groupBy('id_produit')
             ->orderByDesc('total_quantite')
@@ -135,7 +141,11 @@ class FrontController extends Controller
             $message = "Produit non disponible!";
             abort(404, $message);
         }
-        $autres = produits::where('id_categorie', $produit->id_categorie)->where('id', '!=', $produit->id)->take(20)->get();
+        $autres = produits::where('id_categorie', $produit->id_categorie)
+        ->where('id', '!=', $produit->id)
+        ->select('nom','prix','photo','id_categorie','id_promotion')
+        ->take(20)
+        ->get();
         $banner = Banners::where('type', "contact")->first();
         return view('front.produit')
             ->with('produit', $produit)
@@ -170,7 +180,7 @@ class FrontController extends Controller
                 $produits->orderBy('created_at', 'desc');
             }
         }
-        if($promotion == "true"){
+        if ($promotion == "true") {
             $produits->whereNotNull('id_promotion');
         }
         if ($id_categorie) {

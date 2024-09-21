@@ -45,7 +45,7 @@
     <div class="section section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-xl-7 col-lg-8 col-12 mx-auto">
+                <div class="col-12 mx-auto">
                     <div class="about-us2">
                         <div class="inner">
                             <h5 class="title">

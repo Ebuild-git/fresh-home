@@ -83,7 +83,9 @@
                                         <img src="{{ Storage::url($categorie->photo) }}" alt="{{ $categorie->nom }}">
                                     </div>
                                     <div class="content p-2 text-center" data-bg-color="#f4ede7">
-                                        <h6 class="title">{{ $categorie->nom }}</h6>
+                                        <h6 class="title">
+                                            {{ \App\Helpers\TranslationHelper::TranslateText($categorie->nom) }}
+                                        </h6>
                                     </div>
                                 </a>
                             </div>
@@ -105,7 +107,7 @@
                 @foreach ($categories as $categorie)
                     <div class="as-item">
                         <label for="">
-                            {{ $categorie->nom }}
+                            {{ \App\Helpers\TranslationHelper::TranslateText($categorie->nom) }}
                         </label>
                     </div>
                 @endforeach

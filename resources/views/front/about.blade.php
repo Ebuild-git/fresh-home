@@ -44,11 +44,11 @@
                             {{ config('app.name') }}
                         </span>
                         <h2 class="title">
-                            {{ $infos->about_titre ?? '' }}
+                            {{ \App\Helpers\TranslationHelper::TranslateText( $infos->about_titre ?? '' ) }}
                         </h2>
                         <div class="desc">
                             <p>
-                                {{ $infos->about_description ?? '' }}
+                                {{ \App\Helpers\TranslationHelper::TranslateText( $infos->about_description ?? '') }}
                             </p>
                         </div>
                     </div>

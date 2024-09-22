@@ -23,7 +23,7 @@
             <div class="product-info">
                 <h6 class="title">
                     <a href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}">
-                        {{ Str::limit($produit->nom, 30) }}
+                        {{ \App\Helpers\TranslationHelper::TranslateText( Str::limit($produit->nom, 30)) }}
                     </a>
                 </h6>
                 <span class="price">

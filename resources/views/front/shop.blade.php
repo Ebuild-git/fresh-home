@@ -147,7 +147,7 @@
                                 @foreach ($categories as $categorie)
                                     <li class="cusor">
                                         <span onclick="select_categorie({{ $categorie->id }})">
-                                            {{ $categorie->nom }}
+                                            {{ \App\Helpers\TranslationHelper::TranslateText( $categorie->nom) }}
                                         </span>
                                         <span class="count">
                                             {{ $categorie->produits->count() }}

@@ -14,7 +14,7 @@
 <div class="col-lg-7 col-12 overflow-hidden position-relative ">
     <div class="product-summery customScroll">
         <h3 class="product-title">
-            {{ $produit->nom }}
+            {{ \App\Helpers\TranslationHelper::TranslateText( $produit->nom ) }}
         </h3>
         <div class="product-price">
             {{ $produit->getPrice() }}
@@ -22,7 +22,7 @@
         </div>
         <div class="product-description">
             <p>
-                {{ $produit->description }}
+                {{ \App\Helpers\TranslationHelper::TranslateText( $produit->description ) }}
             </p>
         </div>
         <div class="product-variations">
@@ -49,7 +49,8 @@
             <a href="javascript:void();" class="btn btn-icon btn-outline-body btn-hover-dark">
                 <i class="far fa-heart"></i>
             </a>
-            <a href="javascript:void();" class="btn btn-dark btn-outline-hover-dark add-to-cart" data-id="{{ $produit->id }}">
+            <a href="javascript:void();" class="btn btn-dark btn-outline-hover-dark add-to-cart"
+                data-id="{{ $produit->id }}">
                 <i class="fas fa-shopping-cart"></i>
                 {{ __('add_cart') }}
             </a>
@@ -65,7 +66,11 @@
                         <td class="label"><span> {{ __('categorie') }}</span></td>
                         <td class="value">
                             <ul class="product-category">
-                                <li><a href="#">{{ $produit->categorie->nom  }}</a></li>
+                                <li>
+                                    <a href="#">
+                                        {{ \App\Helpers\TranslationHelper::TranslateText($produit->categorie->nom) }}
+                                    </a>
+                                </li>
                             </ul>
                         </td>
                     </tr>

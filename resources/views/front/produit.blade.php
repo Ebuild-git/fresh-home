@@ -167,7 +167,7 @@
                                             <ul class="product-category">
                                                 <li>
                                                     <a href="#">
-                                                        {{ $produit->categorie->nom }}
+                                                        {{ \App\Helpers\TranslationHelper::TranslateText($produit->categorie->nom) }}
                                                     </a>
                                                 </li>
                                             </ul>
@@ -197,7 +197,9 @@
                 <div class="tab-pane fade show active" id="tab-description">
                     <div class="row">
                         <div class="col-lg-10 col-12 mx-auto">
-                            <p>{{ $produit->description }}</p>
+                            <p>
+                                {{ \App\Helpers\TranslationHelper::TranslateText( $produit->description) }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -250,7 +252,7 @@
                                 <h6 class="title">
                                     <a
                                         href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}">
-                                        {{ Str::limit($produit->nom, 30) }}
+                                        {{ \App\Helpers\TranslationHelper::TranslateText(Str::limit($produit->nom, 30)) }}
                                     </a>
                                 </h6>
                                 <span class="price">

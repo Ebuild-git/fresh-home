@@ -143,7 +143,7 @@ class FrontController extends Controller
         }
         $autres = produits::where('id_categorie', $produit->id_categorie)
         ->where('id', '!=', $produit->id)
-        ->select('nom','prix','photo','id_categorie','id_promotion')
+        ->select('id','nom','prix','photo','id_categorie','id_promotion')
         ->take(20)
         ->get();
         $banner = Banners::where('type', "contact")->first();

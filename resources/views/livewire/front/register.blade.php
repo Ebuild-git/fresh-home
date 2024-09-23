@@ -9,7 +9,7 @@
                         <span class="text-danger"> * </span>
                     </label>
                     <input type="text" class="form-control input-h rounded-0" name="name" wire:model='nom'
-                        id="name" placeholder="Nom" required>
+                        id="name" placeholder="{{ __('nom') }}" required>
                     @error('nom')
                         <span class="text-danger small">
                             {{ $message }}
@@ -23,8 +23,8 @@
                         {{ __('prenom') }}
                         <span class="text-danger"> * </span>
                     </label>
-                    <input type="text" class="form-control input-h rounded-0" name="name" wire:model='prenom'
-                        id="name" placeholder="prénom">
+                    <input type="text" class="form-control input-h rounded-0" name="name" wire:model='renom'
+                        id="name" placeholder="{{ __('Prenom') }}">
                     @error('prenom')
                         <span class="text-danger small">
                             {{ $message }}
@@ -47,7 +47,7 @@
                     {{ __('telephone') }}
                     <span class="text-danger"> * </span>
                 </label>
-                <input type="number" class="form-control input-h rounded-0" name="mobile" wire:model='telephone'
+                <input type="number" class="form-control input-h rounded-0" name="mobile" wire:model='{{ __('telephone') }}'
                     id="mobile" required>
                 @error('telephone')
                     <span class="text-danger small">
@@ -61,7 +61,7 @@
                     <span class="text-danger"> * </span>
                 </label>
                 <input type="password" class="form-control input-h rounded-0" name="password" wire:model='password'
-                    id="password" required>
+                    id="password" required placeholder="{{ __('password') }}" >
                 @error('password')
                     <span class="text-danger small">
                         {{ $message }}

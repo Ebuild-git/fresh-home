@@ -75,8 +75,9 @@
                     <div class="contact-info">
                         <h4 class="title"> {{ __('disponibilite') }}</h4>
                         <span class="info">
-                            <i class="icon far fa-clock"></i> Lundi - vendredi : 09:00 – 20:00 <br> samedi
-                            - Dimande : 10:30 – 22:00
+                            <i class="icon far fa-clock"></i> 
+                            {{ \App\Helpers\TranslationHelper::TranslateText("Lundi - vendredi") }} : 09:00 – 20:00 <br> 
+                            {{ \App\Helpers\TranslationHelper::TranslateText("samedi - Dimande ") }} : 10:30 – 22:00
                         </span>
                     </div>
                 </div>
@@ -116,13 +117,13 @@
                             @csrf
                             <div class="row learts-mb-n30">
                                 <div class="col-md-6 col-12 learts-mb-30">
-                                    <input type="text" placeholder="Votre nom *" name="nom">
+                                    <input type="text" placeholder="{{ __('nom') }}" name="nom">
                                 </div>
                                 <div class="col-md-6 col-12 learts-mb-30">
                                     <input type="email" placeholder="Email *" name="email">
                                 </div>
                                 <div class="col-md-12 col-12 learts-mb-30">
-                                    <input type="tel" placeholder="Numéro de téléphone *" name="telepone">
+                                    <input type="tel" placeholder="{{ __('telephone') }} *" name="telepone">
                                 </div>
                                 <div class="col-12 learts-mb-30">
                                     <textarea name="message" placeholder="Message"></textarea>

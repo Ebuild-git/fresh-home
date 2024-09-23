@@ -11,7 +11,7 @@ class TranslationHelper
         $locale = app()->getLocale();
 
         // Si la langue est déjà "fr", pas besoin de traduire
-        if ($locale == "fr") {
+        if ($locale == "fr" || $text == "") {
             return $text;
         }
 

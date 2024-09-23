@@ -55,30 +55,50 @@
                 <div class="col-sm-10">
                     @if ($infos->header_text)
                         <p class="text-center my-2 text-white">
-                            {{ \App\Helpers\TranslationHelper::TranslateText( $infos->header_text) }}
+                            {{ \App\Helpers\TranslationHelper::TranslateText($infos->header_text) }}
                         </p>
                     @endif
                 </div>
                 <div class="col-sm-2">
                     <p class="text-end my-2 text-white">
-                        <select name="lang" id="lang" onchange="changeLanguage()">
-                            <option value=""></option>
-                            <option value="fr" {{ app()->getLocale() == 'fr' ? 'selected' : '' }}>Français</option>
-                            <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
-                        </select>
 
-                        <script>
-                            function changeLanguage() {
-                                var lang = document.getElementById("lang").value;
-                                window.location.href = "/change-lang/" + lang;
-                            }
-                        </script>
+                        <select name="lang" id="lang" onchange="changeLanguage()" class="lang-select">
+                            <option value="fr" {{ app()->getLocale() == 'fr' ? 'selected' : '' }}>Français &nbsp;&nbsp;&nbsp;</option>
+                            <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English &nbsp;&nbsp;&nbsp;</option>
+                        </select>
                     </p>
                 </div>
             </div>
         </div>
     </div>
     <!-- Topbar Section End -->
+
+    <script>
+        function changeLanguage() {
+            var lang = document.getElementById("lang").value;
+            window.location.href = "/change-lang/" + lang;
+        }
+        document.getElementById('lang').addEventListener('change', function() {
+            var select = this;
+            var value = select.value;
+            var imgUrl = '';
+            console.log(select.value);
+
+            if (value == 'fr') {
+                imgUrl = 'https://img.icons8.com/color/20/france-circular.png';
+            } else if (value == 'en') {
+                imgUrl = 'https://img.icons8.com/color/20/great-britain-circular.png';
+            }
+
+            select.style.backgroundImage = `url(${imgUrl})`;
+        });
+        var actu = "{{ app()->getLocale() }}";
+        if (actu == "fr") {
+            document.getElementById("lang").style.backgroundImage = 'url(https://img.icons8.com/color/20/france-circular.png)';
+        } else {
+            document.getElementById("lang").style.backgroundImage = 'url(https://img.icons8.com/color/20/great-britain-circular.png)';
+        }
+    </script>
 
     <!-- Header Section Start -->
     <div class="header-section header-menu-center section bg-white d-none d-xl-block">

@@ -60,12 +60,32 @@
                     @endif
                 </div>
                 <div class="col-sm-2">
-                    <p class="text-end my-2 text-white">
-
-                        <select name="lang" id="lang" onchange="changeLanguage()" class="lang-select">
-                            <option value="fr" {{ app()->getLocale() == 'fr' ? 'selected' : '' }}>Français &nbsp;&nbsp;&nbsp;</option>
-                            <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English &nbsp;&nbsp;&nbsp;</option>
-                        </select>
+                    <p class="text-end my-2 ">
+                    <div class="drp-dropdown">
+                        <button class="drp-dropbtn">
+                            @if (app()->getLocale() == 'fr')
+                                <img src="https://img.icons8.com/color/20/france-circular.png" alt="fr"
+                                    srcset="">
+                                Français
+                            @else
+                                <img src="https://img.icons8.com/color/20/great-britain-circular.png" alt="en"
+                                    srcset="">
+                                English
+                            @endif
+                        </button>
+                        <div class="drp-dropdown-content">
+                            <a href="/change-lang/fr" class="{{ app()->getLocale() == 'fr' ? 'selected' : '' }}">
+                                <img src="https://img.icons8.com/color/20/france-circular.png" alt="fr"
+                                    srcset="">
+                                Français
+                            </a>
+                            <a href="/change-lang/en" class="{{ app()->getLocale() == 'en' ? 'selected' : '' }}">
+                                <img src="https://img.icons8.com/color/20/great-britain-circular.png" alt="en"
+                                    srcset="">
+                                English
+                            </a>
+                        </div>
+                    </div>
                     </p>
                 </div>
             </div>
@@ -73,32 +93,7 @@
     </div>
     <!-- Topbar Section End -->
 
-    <script>
-        function changeLanguage() {
-            var lang = document.getElementById("lang").value;
-            window.location.href = "/change-lang/" + lang;
-        }
-        document.getElementById('lang').addEventListener('change', function() {
-            var select = this;
-            var value = select.value;
-            var imgUrl = '';
-            console.log(select.value);
 
-            if (value == 'fr') {
-                imgUrl = 'https://img.icons8.com/color/20/france-circular.png';
-            } else if (value == 'en') {
-                imgUrl = 'https://img.icons8.com/color/20/great-britain-circular.png';
-            }
-
-            select.style.backgroundImage = `url(${imgUrl})`;
-        });
-        var actu = "{{ app()->getLocale() }}";
-        if (actu == "fr") {
-            document.getElementById("lang").style.backgroundImage = 'url(https://img.icons8.com/color/20/france-circular.png)';
-        } else {
-            document.getElementById("lang").style.backgroundImage = 'url(https://img.icons8.com/color/20/great-britain-circular.png)';
-        }
-    </script>
 
     <!-- Header Section Start -->
     <div class="header-section header-menu-center section bg-white d-none d-xl-block">

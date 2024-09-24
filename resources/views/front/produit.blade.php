@@ -98,7 +98,9 @@
                             </span>
                         </div>
                         <div class="product-description">
-                            <p>{{ $produit->description }}</p>
+                            <p>
+                                {{ \App\Helpers\TranslationHelper::TranslateText($produit->description) }}
+                            </p>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">

@@ -81,11 +81,15 @@
                     <!-- Products Start -->
                     <div id="shop-products" class=" row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
                     </div>
+                    <br><br>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-12 bg-light pt-3 learts-mb-10 order-lg-1">
+            <div class="col-lg-3 col-12 learts-mb-10 order-lg-1">
 
+                <div class="bg-light  pt-3 p-3">
+
+                
                 <div class="isotope-filter  shop-product-filter" data-target="#shop-products">
                     <button class="active" type="button" onclick="show_normal()">
                         {{ __('shop_1') }}
@@ -129,7 +133,7 @@
                 <!-- Categories End -->
 
                 <!-- Price Range Start -->
-                <div class="single-widget learts-mb-40">
+                <div class=" learts-mb-40">
                     <h3 class="widget-title product-filter-widget-title">
                         {{ __('prix') }}
                     </h3>
@@ -138,6 +142,7 @@
                             data-max="{{ $max_price + 350 }}" data-from="0" data-to="350" />
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

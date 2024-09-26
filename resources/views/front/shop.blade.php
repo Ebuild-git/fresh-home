@@ -5,7 +5,8 @@
     <div class="offcanvas-overlay"></div>
 
     <!-- Page Title/Header Start -->
-    <div class="page-title-section section" data-bg-image="{{ isset($banner) && $banner->photo ? Storage::url($banner->photo) : '/assets/images/bg/page-title-1.webp' }}">
+    <div class="page-title-section section"
+        data-bg-image="{{ isset($banner) && $banner->photo ? Storage::url($banner->photo) : '/assets/images/bg/page-title-1.webp' }}">
 
         <div class="container">
             <div class="row">
@@ -34,31 +35,13 @@
     <!-- Page Title/Header End -->
 
     <!-- Shop Products Section Start -->
-    <div class="section section-padding pt-0">
-
-        <!-- Shop Toolbar Start -->
-        <div class="shop-toolbar border-bottom">
-            <div class="container">
-                <div class="row learts-mb-n20">
-
-                    <!-- Isotop Filter Start -->
-                    <div class="col-md col-12 align-self-center learts-mb-20">
-                        <div class="isotope-filter shop-product-filter" data-target="#shop-products">
-                            <button class="active" type="button" onclick="show_normal()">
-                                {{ __('shop_1') }}
-                            </button>
-                          <button type="button" onclick="show_promotion()" >
-                            {{ __('shop_2') }}
-                          </button>
-                           {{--    <button data-filter=".new">New Products</button>
-                            <button data-filter=".sales">Sales Products</button> --}}
-                        </div>
-                    </div>
-                    <!-- Isotop Filter End -->
-
-                    <div class="col-md-auto col-12 learts-mb-20">
-                        <ul class="shop-toolbar-controls">
-
+    <div class="container">
+        <div class="row learts-mb-n50">
+            <div class="col-lg-9  col-12 learts-mb-50 order-lg-2 pl-3">
+                <div class="bg-light p-2">
+                   <div class="row">
+                    <div class="col-sm-4 ms-auto">
+                        <ul class="shop-toolbar-controls ">
                             <li>
                                 <div class="product-sorting">
                                     <select class="nice-select" id="nice-select" onchange="nice_select()">
@@ -94,92 +77,88 @@
 
                         </ul>
                     </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- Shop Toolbar End -->
-
-        <!-- Product Filter Start -->
-        <div id="product-filter" class="product-filter bg-light">
-            <div class="container">
-                <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-1 learts-mb-n30">
-
-
-                </div>
-            </div>
-        </div>
-        <!-- Product Filter End -->
-
-        <div class="section learts-mt-70">
-            <div class="container">
-                <div class="row learts-mb-n50">
-
-                    <div class="col-lg-9 col-12 learts-mb-50 order-lg-2">
-                        <!-- Products Start -->
-                        <div id="shop-products"
-                            class=" row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
-
-
-                        </div>
+                   </div>
+                    <!-- Products Start -->
+                    <div id="shop-products" class=" row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
                     </div>
+                </div>
+            </div>
 
-                    <div class="col-lg-3 col-12 learts-mb-10 order-lg-1">
+            <div class="col-lg-3 col-12 bg-light pt-3 learts-mb-10 order-lg-1">
 
-                        <!-- Search Start -->
-                        <div class="single-widget learts-mb-40">
-                            <div class="widget-search">
-                                <form action="{{ route('shop') }}" method="get">
-                                    <input type="text" placeholder="{{ __('shop_3') }}"
-                                        value="{{ $key }}" id="key-shop">
-                                    <button><i class="fas fa-search"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- Search End -->
+                <div class="isotope-filter  shop-product-filter" data-target="#shop-products">
+                    <button class="active" type="button" onclick="show_normal()">
+                        {{ __('shop_1') }}
+                    </button>
+                    <button type="button" onclick="show_promotion()">
+                        {{ __('shop_2') }}
+                    </button>
+                </div>  
+                <br>
 
-                        <!-- Categories Start -->
-                        <div class="single-widget learts-mb-40">
-                            <h3 class="widget-title product-filter-widget-title">
-                                {{ __('shop_4') }}
-                            </h3>
-                            <ul class="widget-list">
-                                @foreach ($categories as $categorie)
-                                    <li class="cusor">
-                                        <span onclick="select_categorie({{ $categorie->id }})">
-                                            {{ \App\Helpers\TranslationHelper::TranslateText( $categorie->nom) }}
-                                        </span>
-                                        <span class="count">
-                                            {{ $categorie->produits->count() }}
-                                        </span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <!-- Categories End -->
-
-                        <!-- Price Range Start -->
-                        <div class="single-widget learts-mb-40">
-                            <h3 class="widget-title product-filter-widget-title">
-                                {{ __('shop_4') }}
-                            </h3>
-                            <div class="widget-price-range">
-                                <input class="range-slider" type="text" data-min="{{ $min_price }}" data-max="{{ $max_price+350 }}" data-from="0"
-                                    data-to="350" />
-                            </div>
-                        </div>
-
+                <!-- Search Start -->
+                <div class="single-widget learts-mb-40">
+                    <div class="widget-search">
+                        <form action="{{ route('shop') }}" method="get">
+                            <input type="text" placeholder="{{ __('shop_3') }}" value="{{ $key }}"
+                                id="key-shop">
+                            <button><i class="fas fa-search"></i></button>
+                        </form>
                     </div>
+                </div>
+                <!-- Search End -->
 
+                <!-- Categories Start -->
+                <div class="learts-mb-40">
+                    <h3 class="widget-title product-filter-widget-title">
+                        {{ __('shop_4') }}
+                    </h3>
+                    <ul class="widget-list">
+                        @foreach ($categories as $categorie)
+                            <li class="cusor">
+                                <span onclick="select_categorie({{ $categorie->id }})">
+                                    {{ \App\Helpers\TranslationHelper::TranslateText($categorie->nom) }}
+                                </span>
+                                <span class="count">
+                                    {{ $categorie->produits->count() }}
+                                </span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <!-- Categories End -->
+
+                <!-- Price Range Start -->
+                <div class="single-widget learts-mb-40">
+                    <h3 class="widget-title product-filter-widget-title">
+                        {{ __('prix') }}
+                    </h3>
+                    <div class="widget-price-range">
+                        <input class="range-slider" type="text" data-min="{{ $min_price }}"
+                            data-max="{{ $max_price + 350 }}" data-from="0" data-to="350" />
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
     <!-- Shop Products Section End -->
     <input type="hidden" name="IDcategorie" id="IDcategorie" value="{{ $IDcategorie }}">
 
+
+    <style>
+        body {
+            background: url('/icons/motif.webp')no-repeat;
+            background-size: cover;
+        }
+
+        .bg-light {
+            background-color: white !important;
+        }
+    </style>
+<br><br><br>
 @endsection
+
 @section('scripts')
     <script src="/assets/js/shop.js"></script>
+
 @endsection

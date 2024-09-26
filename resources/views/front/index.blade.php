@@ -17,7 +17,7 @@
                             </div>
                             <div class="home4-slide-content">
                                 @if ($banner['show_text'])
-                                    <div class=" p-3" style="background-color: #00000056;">
+                                    <div class=" p-3">
                                         <span class="category text-white">
                                             {{ config('app.name') }}
                                         </span>

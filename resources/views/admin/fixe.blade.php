@@ -110,7 +110,7 @@
         <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
                 <div class="">
-                    <img src="{{ Storage::url($config->icon) }}" class="logo-icon-2" alt="" />
+                    <img src="{{ $infos->logo ? Storage::url($infos->logo) : ''}}" class="logo-icon-2" alt="" />
                 </div>
                 <div>
                     <h4 class="logo-text">

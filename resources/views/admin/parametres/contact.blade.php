@@ -40,21 +40,51 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="mb-3">
-                                            <label for="">Logo </label>
-                                            <input type="file" name="logo" accept="image/*" class="form-control">
-                                            @error('logo')
-                                                <span class="text-danger small"> {{ $message }} </span>
-                                            @enderror
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <div class="mb-3">
+                                                    <label for="">Logo </label>
+                                                    <input type="file" name="logo" accept="image/*"
+                                                        class="form-control">
+                                                    @error('logo')
+                                                        <span class="text-danger small"> {{ $message }} </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-4 my-auto text-center">
+                                                @if ($infos->logo)
+                                                    <img src="{{ Storage::url($infos->logo) }}" height="60"
+                                                        alt="" srcset="">
+                                                @else
+                                                    <i class="text-muted">
+                                                        Aucune image.
+                                                    </i>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="mb-3">
-                                            <label for="">Icone</label>
-                                            <input type="file" name="icon" accept="image/*" class="form-control">
-                                            @error('icon')
-                                                <span class="text-danger small"> {{ $message }} </span>
-                                            @enderror
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <div class="mb-3">
+                                                    <label for="">Icone</label>
+                                                    <input type="file" name="icon" accept="image/*"
+                                                        class="form-control">
+                                                    @error('icon')
+                                                        <span class="text-danger small"> {{ $message }} </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-4 my-auto">
+                                                @if ($infos->icon)
+                                                    <img src="{{ Storage::url($infos->logo) }}" height="60"
+                                                        alt="" srcset="">
+                                                @else
+                                                    <i class="text-muted text-center">
+                                                        Aucune image.
+                                                    </i>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -191,7 +221,8 @@
                                         <div class="mb-3">
                                             <label for="">Texte de l'entête </label>
                                             <input type="texte" name="header_text"
-                                                value="{{ old('header_text', $config->header_text) }}" class="form-control">
+                                                value="{{ old('header_text', $config->header_text) }}"
+                                                class="form-control">
                                             @error('header_text')
                                                 <span class="text-danger small"> {{ $message }} </span>
                                             @enderror

@@ -104,7 +104,7 @@
                 <div class="col">
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
-                            <img src="/icons/logo-black.png" height="55" alt="{{ config('app.name') }} Logo">
+                            <img src="{{ $infos->logo ? Storage::url($infos->logo) : ''}}" height="55" alt="{{ config('app.name') }} Logo">
                         </a>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                 <div class="col">
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
-                            <img src="/icons/logo-black.png" height="40" alt="{{ config('app.name') }} Logo">
+                            <img src="{{ $infos->logo ? Storage::url($infos->logo) : ''}}" height="40" alt="{{ config('app.name') }} Logo">
                         </a>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
                             <img src="/icons/logo-black.png" height="30" alt="{{ config('app.name') }} Logo">
                         </a>
                     </div>
-                </div>
+                </div>x²x²
                 <!-- Header Logo End -->
 
                 <!-- Header Tools Start -->
@@ -316,7 +316,7 @@
                 <div class="col">
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
-                            <img src="/icons/logo-black.png" height="30" alt="{{ config('app.name') }} Logo">
+                            <img src="{{ $infos->logo ? Storage::url($infos->logo) : ''}}" height="30" alt="{{ config('app.name') }} Logo">
                         </a>
                     </div>
                 </div>
@@ -529,7 +529,7 @@
 
                 <div class="col-lg-6 {{ config('app.name') }}-mb-40">
                     <div class="widget-about">
-                        <img src="/icons/logo-black.png" height="50" alt="">
+                        <img src="{{ $infos->logo ? Storage::url($infos->logo) : ''}}" height="50" alt="">
                         <p>
                             {{ $infos->footer_text ?? '' }}
                         </p>

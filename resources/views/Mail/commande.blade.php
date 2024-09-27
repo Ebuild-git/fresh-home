@@ -48,7 +48,7 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <img src="{{ url('/icons/icon-black.png') }}" alt="Fresh Home Logo">
+            <img src="{{ $infos->logo ? Storage::url($infos->logo) : ''}}" alt="Fresh Home Logo">
             <h1>{{ __('commandes') }}</h1>
             <h4>
                 {{ __('reference') }} : {{ $commande->id }}

@@ -39,7 +39,7 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <img src="{{ url('/icons/icon-black.png') }}" alt="{{ url('/icons/logo.png') }}">
+            <img src="{{ $infos->logo ? Storage::url($infos->logo) : ''}}" alt="{{ url('/icons/logo.png') }}">
             <h1>{{ __('mail_1') }} {{ config('app.name') }}</h1>
         </div>
         <div class="content">

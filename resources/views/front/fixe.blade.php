@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="/assets/css/plugins/photoswipe-default-skin.css">
     <link rel="stylesheet" href="/assets/css/plugins/magnific-popup.css">
     <link rel="stylesheet" href="/assets/css/plugins/slick.css">
-    <link rel="stylesheet" href="/assets/css/style.min.css?v=4">
+    <link rel="stylesheet" href="/assets/css/style.min.css?v={{ time() }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -523,7 +523,7 @@
 
 
     @yield('body')
-    
+
 
 
 

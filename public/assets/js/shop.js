@@ -23,6 +23,7 @@ function show_normal(){
 }
 
 function fetch_shop() {
+    $('#loading-div').show("slow");
     $.get(
         "/shop_live",
         {
@@ -34,6 +35,7 @@ function fetch_shop() {
             promotion: promotion,
         },
         function (response) {
+            $('#loading-div').hide("slow");
             $("#shop-products").html(response.html);
         }
     ).fail(function (xhr, status, error) {
@@ -59,6 +61,6 @@ $(document).ready(function () {
         fetch_shop();
     });
 
-  
+
 
 });

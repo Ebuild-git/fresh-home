@@ -79,7 +79,13 @@
                         </div>
                     </div>
                     <!-- Products Start -->
-                    <div id="shop-products" class=" row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
+                    <div class="text-center" id="loading-div">
+                        <img src="/icons/ZKZg.gif" height="40" alt="loading" srcset=""> <br>
+                        <i>
+                            Chargement des articles
+                        </i>
+                    </div>
+                    <div id="shop-products">
                     </div>
                     <br><br>
                     <x-footer></x-footer>

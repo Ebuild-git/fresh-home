@@ -139,4 +139,7 @@
         <!-- Video Banner Section End -->
     @endif
 
+
+    <x-footer></x-footer>
+
 @endsection

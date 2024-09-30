@@ -81,7 +81,7 @@
                                 </td>
                                 <td class="subtotal">
                                     <span>
-                                        {{ $produit['quantite'] * $produit['prix'] }} 
+                                        {{ $produit['quantite'] * $produit['prix'] }}
                                         <x-devise></x-devise>
                                     </span>
                                 </td>
@@ -102,7 +102,7 @@
                 </table>
                 <div class="row justify-content-between mb-n3">
                     <div class="col-auto mb-3">
-                       
+
                     </div>
                     <div class="col-auto">
                         <a class="btn btn-dark btn-outline-hover-dark mb-3" href="{{ route('checkout') }}">
@@ -115,5 +115,8 @@
 
     </div>
     <!-- Shopping Cart Section End -->
+
+
+    <x-footer></x-footer>
 
 @endsection

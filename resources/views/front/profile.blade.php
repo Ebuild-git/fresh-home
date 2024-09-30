@@ -203,4 +203,7 @@
         }
     </style>
 
+
+<x-footer></x-footer>
+
 @endsection

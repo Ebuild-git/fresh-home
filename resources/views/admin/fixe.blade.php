@@ -212,7 +212,7 @@
                         Settings
                     </li>
                     <li>
-                        <a href="javascript:;" class="has-arrow"> 
+                        <a href="javascript:;" class="has-arrow">
                             <div class="parent-icon icon-color-6">
                                 <i class="ri-settings-2-line"></i>
                             </div>
@@ -300,7 +300,7 @@
                                     </div>
                                 </a>
                                 @livewire('AdminNotifications')
-                                
+
                             </div>
                         </li>
 
@@ -361,14 +361,16 @@
     <!--start overlay-->
     <div class="overlay toggle-btn-mobile"></div>
     <!--end overlay-->
-    <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
-            class='bx bxs-up-arrow-alt'></i></a>
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top">
+        <i class='bx bxs-up-arrow-alt'></i>
+    </a>
     <!--End Back To Top Button-->
     <!--footer -->
     <div class="footer">
         <p class="mb-0">@ {{ date('Y') }} | Developed By :
             <a href="{{ config('app.auteur_url') }}" target="_blank">
-                <strong style="color: #ec0000 !important;">    
+                <strong style="color: #ec0000 !important;">
                     {{ config('app.auteur') }}
                 </strong>
             </a>
@@ -379,7 +381,6 @@
     <!-- end wrapper -->
     <!-- Bootstrap JS -->
     <script src="/admin/assets/js/bootstrap.bundle.min.js"></script>
-
     <!--plugins-->
     <script src="/admin/assets/js/jquery.min.js"></script>
 

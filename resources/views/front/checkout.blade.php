@@ -150,7 +150,7 @@
                                             <p>
                                                 {{ $user->email ?? '' }} <br>
                                                 {{ $user->adresse ?? '' }} <br>
-                                                <b>{{ __('telephone') }}</b> 
+                                                <b>{{ __('telephone') }}</b>
                                                 {{ $user->phone }} <br>
                                                 <b>{{ __('gouvernorat') }} : </b>
                                                 @if ($user->gouvernorat)
@@ -239,5 +239,9 @@
         </div>
     </div>
     <!-- Checkout Section End -->
+
+
+
+    <x-footer></x-footer>
 
 @endsection

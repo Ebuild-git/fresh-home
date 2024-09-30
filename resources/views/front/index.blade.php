@@ -287,6 +287,8 @@
     <!-- Separator -->
 
 
+    <x-footer></x-footer>
+
     <script>
         $(document).ready(function() {
             $('.cat-scroll-button.left').click(function() {
@@ -310,3 +312,7 @@
     </script>
 
 @endsection
+
+
+
+

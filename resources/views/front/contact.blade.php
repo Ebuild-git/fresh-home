@@ -75,8 +75,8 @@
                     <div class="contact-info">
                         <h4 class="title"> {{ __('disponibilite') }}</h4>
                         <span class="info">
-                            <i class="icon far fa-clock"></i> 
-                            {{ \App\Helpers\TranslationHelper::TranslateText("Lundi - vendredi") }} : 09:00 – 20:00 <br> 
+                            <i class="icon far fa-clock"></i>
+                            {{ \App\Helpers\TranslationHelper::TranslateText("Lundi - vendredi") }} : 09:00 – 20:00 <br>
                             {{ \App\Helpers\TranslationHelper::TranslateText("samedi - Dimande ") }} : 10:30 – 22:00
                         </span>
                     </div>
@@ -152,5 +152,8 @@
         </div>
     </div>
     <!-- Contact Form Section End -->
+
+
+    <x-footer></x-footer>
 
 @endsection

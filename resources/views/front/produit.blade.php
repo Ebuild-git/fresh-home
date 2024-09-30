@@ -292,6 +292,9 @@
     </div>
     <!-- Recommended Products Section End -->
 
+
+    <x-footer></x-footer>
+
 @endsection
 
 
@@ -339,4 +342,9 @@
             border: solid 1px black;
         }
     </style>
+
+
+
+
+
 @endsection

@@ -103,4 +103,7 @@
     </div>
     <!-- Wishlist Section End -->
 
+
+    <x-footer></x-footer>
+
 @endsection

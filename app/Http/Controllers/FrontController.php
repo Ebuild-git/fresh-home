@@ -31,7 +31,7 @@ class FrontController extends Controller
                 "show_text" => $ban->show_text,
             ];
         }
-        $categories = categories::all();
+        $categories = categories::orderby('order_column',"asc")->get();
         $news = produits::Orderby('id', 'desc')->take(8)->get();
         $randoms = produits::inRandomOrder()
         ->select('nom','prix','photo','id_categorie','id_promotion')
@@ -117,7 +117,7 @@ class FrontController extends Controller
             }
         }
         $produits = $produits->paginate(25);
-        $categories = categories::all();
+        $categories = categories::orderby('order_column',"asc")->get();
         $banner = Banners::where('type', "shop")->first();
 
         // recuperer le prix de l'article le plus couteux

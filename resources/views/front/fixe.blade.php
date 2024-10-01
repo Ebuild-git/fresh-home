@@ -107,8 +107,8 @@
                 <div class="col">
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
-                            <img src="{{ $infos->logo ? Storage::url($infos->logo) : '' }}" height="55"
-                                alt="{{ config('app.name') }} Logo">
+                            <img src="{{ $infos->logo ? Storage::url($infos->logo) : '' }}" height="75"
+                                alt="{{ config('app.name') }} Logo" class="logo-up-option">
                         </a>
                     </div>
                 </div>

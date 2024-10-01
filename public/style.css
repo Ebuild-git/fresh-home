@@ -218,3 +218,8 @@ a:hover + .custom-cursor, button:hover + .custom-cursor {
     font-style: normal !important;
     font-weight: 1000 !important;
   }
+.logo-up-option
+{
+    position: absolute;
+    bottom: -20px;
+}

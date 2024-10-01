@@ -210,3 +210,11 @@ a:hover + .custom-cursor, button:hover + .custom-cursor {
 .drp-dropdown-content a:hover {
     background-color: #f1f1f1;
 }
+
+
+.mada-font {
+    font-family: "Mada", sans-serif !important;
+    font-optical-sizing: auto !important;
+    font-style: normal !important;
+    font-weight: 1000 !important;
+  }

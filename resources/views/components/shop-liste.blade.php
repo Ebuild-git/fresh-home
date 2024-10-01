@@ -27,7 +27,7 @@
                     <div class="product-info">
                         <h6 class="title">
                             <a
-                                href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}">
+                                href="{{ route('produit', ['id' => $produit->id, 'slug' => Str::slug($produit->nom)]) }}" class="mada-font">
                                 {{ \App\Helpers\TranslationHelper::TranslateText(Str::limit($produit->nom, 30)) }}
                             </a>
                         </h6>

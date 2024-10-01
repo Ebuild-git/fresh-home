@@ -25,18 +25,20 @@
                         </thead>
                         <tbody>
                             @forelse ($categories as $categorie)
-                                <tr>
+                                <tr data-id="{{ $categorie->id }}" class="cusor">
                                     <td>
                                         <div>
                                             <img src="{{ Storage::url($categorie->photo) }}"
-                                                class="img-fluid rounded-circle" alt="Image" height="30" width="30">
+                                                class="img-fluid rounded-circle" alt="Image" height="30"
+                                                width="30">
                                         </div>
                                     </td>
                                     <td> {{ $categorie->nom }} </td>
                                     <td> {{ $categorie->produits->count() }} </td>
                                     <td> {{ $categorie->created_at->format('d/m/Y') }} </td>
                                     <td class="text-end">
-                                        <button class="btn btn-sm btn-dark" type="button" onclick="OpenModelUpdateCategorie({{ $categorie->id }})">
+                                        <button class="btn btn-sm btn-dark" type="button"
+                                            onclick="OpenModelUpdateCategorie({{ $categorie->id }})">
                                             <i class="ri-edit-box-line"></i>
                                         </button>
                                         <button class="btn btn-sm btn-danger"

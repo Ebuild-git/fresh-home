@@ -14,7 +14,7 @@ class Categories extends Component
 
     public function render()
     {
-        $categories = ModelsCategories::all();
+        $categories = ModelsCategories::orderby('order_column',"asc")->get();
         return view('livewire.categories.categories')
             ->with('categories', $categories);
     }

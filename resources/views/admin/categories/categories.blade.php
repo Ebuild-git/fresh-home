@@ -53,9 +53,40 @@
 
     <script>
         function OpenModelUpdateCategorie(id) {
-            Livewire.dispatch('openUpdateCategorie', {id : id});
+            Livewire.dispatch('openUpdateCategorie', {
+                id: id
+            });
             $('#modalUpdateCategorie').modal('show');
         }
+        new Sortable(document.getElementById('basic-datatable').querySelector('tbody'), {
+            animation: 150,
+            onEnd: function(event) {
+                let data = Array.from(event.to.children).map((item, index) => {
+                    return item.getAttribute('data-id');
+                }).join(',');
+
+                let idsArray = data.split(',');
+
+                fetch('{{ route('categories.reorder') }}?ids=' + idsArray.join(','), {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    })
+                    .then(response => {
+                        console.log('Ordre mis à jour avec succès.');
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors de la mise à jour de l\'ordre : ', error);
+                    });
+            }
+        });
     </script>
+
+@endsection
+
+
+@section('header')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 
 @endsection

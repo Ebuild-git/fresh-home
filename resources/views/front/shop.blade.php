@@ -92,7 +92,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-12 learts-mb-10 order-lg-1">
+            <div class="col-lg-3 col-12 learts-mb-10 order-lg-1 bg-body">
                 <div class="row">
                     <div class="col-sm-10 mx-auto">
                         <div class="bg-light  pt-3 p-3">
@@ -111,8 +111,8 @@
                             <div class="single-widget learts-mb-40">
                                 <div class="widget-search">
                                     <form action="{{ route('shop') }}" method="get">
-                                        <input type="text" placeholder="{{ __('shop_3') }}" value="{{ $key }}"
-                                            id="key-shop">
+                                        <input type="text" placeholder="{{ __('shop_3') }}"
+                                            value="{{ $key }}" id="key-shop">
                                         <button><i class="fas fa-search"></i></button>
                                     </form>
                                 </div>
@@ -162,7 +162,7 @@
 
 
     <style>
-        body {
+        .bg-body {
             background: url('/icons/motif.webp')no-repeat;
             background-size: cover;
         }

@@ -36,6 +36,9 @@
     <link rel="stylesheet" href="/assets/css/plugins/magnific-popup.css">
     <link rel="stylesheet" href="/assets/css/plugins/slick.css">
     <link rel="stylesheet" href="/assets/css/style.min.css?v={{ time() }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mada:wght@200..900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

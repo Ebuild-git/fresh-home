@@ -198,4 +198,6 @@ Route::middleware(['auth'])->group(function () {
     //gestion des categories
     Route::get('/admin/categories', [CategoriesController::class, 'categories'])
         ->name('categories');
+    Route::get('/admin/categories.reorder', [CategoriesController::class, 'reorder'])
+        ->name('categories.reorder');
 });

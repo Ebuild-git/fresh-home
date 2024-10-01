@@ -519,9 +519,12 @@
 
 
     <div class="preloader-container">
-        <div class="preloader-circle"></div>
-        <div class="preloader-logo">Fresh Home</div>
+        <div class="preloader-circle">
+            <img src="{{ $infos->logo ? Storage::url($infos->logo) : '' }}" height="80"
+                 alt="{{ config('app.name') }} Logo">
+        </div>
     </div>
+
 
 
 

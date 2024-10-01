@@ -1,34 +1,48 @@
+/* Préchargeur conteneur */
 .preloader-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh; /* Hauteur de l'écran */
+    background-color: rgba(255, 255, 255, 0.9); /* Couleur de fond avec transparence */
     position: fixed;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
-    background-color: #f8f9fa;
-    z-index: 9999;
-    flex-direction: column;
+    right: 0;
+    bottom: 0;
+    z-index: 9999; /* Toujours au-dessus des autres éléments */
 }
 
+/* Cercle de préchargeur */
 .preloader-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     width: 80px;
     height: 80px;
-    border: 8px solid #ccc;
-    border-top: 8px solid #333333; /* Couleur primaire */
+}
+
+/* Animation de rotation */
+.preloader-circle::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 4px solid #383538; /* Couleur de la bordure */
+    border-top-color: transparent; /* Cacher le bord supérieur */
     border-radius: 50%;
-    animation: preloader-spin 1.5s linear infinite;
+    animation: spin 1s linear infinite; /* Animation infinie de rotation */
 }
 
-.preloader-logo {
-    margin-top: 20px;
-    font-size: 1.5rem;
-    color: #333;
-    font-family: "Modestyss";
+/* Logo à l'intérieur du préchargeur */
+.preloader-circle img {
+    position: relative;
+    z-index: 10; /* Au-dessus de l'animation */
 }
 
-@keyframes preloader-spin {
+/* Animation de rotation */
+@keyframes spin {
     0% {
         transform: rotate(0deg);
     }
@@ -36,6 +50,8 @@
         transform: rotate(360deg);
     }
 }
+
+
 
 /* Masquer le préchargeur après le chargement */
 body.loaded .preloader-container {
@@ -60,7 +76,8 @@ body.loaded .preloader-container {
 }
 
 /* Effet lors du survol des liens */
-a:hover + .custom-cursor, button:hover + .custom-cursor {
+a:hover + .custom-cursor,
+button:hover + .custom-cursor {
     width: 30px;
     height: 30px;
     transform: translate(-50%, -50%) scale(1.2);
@@ -113,7 +130,7 @@ a:hover + .custom-cursor, button:hover + .custom-cursor {
     height: 300px;
     overflow: hidden;
 }
-.cat-image img{
+.cat-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -135,7 +152,7 @@ a:hover + .custom-cursor, button:hover + .custom-cursor {
     flex: 0 0 auto;
     width: 300px; /* Forcer les carrés */
     margin: 0 10px;
-    border:solid 4px rgba(0, 0, 0, 0.171);
+    border: solid 4px rgba(0, 0, 0, 0.171);
     text-align: center;
     cursor: pointer;
     align-items: center;
@@ -189,7 +206,7 @@ a:hover + .custom-cursor, button:hover + .custom-cursor {
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -211,15 +228,13 @@ a:hover + .custom-cursor, button:hover + .custom-cursor {
     background-color: #f1f1f1;
 }
 
-
 .mada-font {
     font-family: "Mada", sans-serif !important;
     font-optical-sizing: auto !important;
     font-style: normal !important;
     font-weight: 1000 !important;
-  }
-.logo-up-option
-{
+}
+.logo-up-option {
     position: absolute;
     bottom: -20px;
 }

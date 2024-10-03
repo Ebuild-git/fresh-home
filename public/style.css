@@ -270,6 +270,7 @@ button:hover + .custom-cursor {
 .product-card-shop{
     background-color: #f6f4f2;
     padding: 10px;
+    margin-bottom: 10px;
 }
 .product-card-shop .btn-add{
     font-weight: bold;

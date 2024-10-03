@@ -47,7 +47,7 @@
                         </span>
                     </div>
                     <div class="text-center mt-2">
-                        <a href="javascript:void();" class="btn-add"
+                        <a href="javascript:void();" class="btn-add add-to-cart"
                             data-id="{{ $produit->id }}" data-hint="{{ __('add_cart') }}">
                             {{ __('add_cart') }}
                         </a>

@@ -20,8 +20,11 @@
                     <td>
                         {{ $item->nom }}
                     </td>
+                    <td>
+                        {{ $item->categorie->nom }}
+                    </td>
                     <td style="text-align: right;">
-                        <button class="btn btn-sm " wire:click="copier({{ $item->id }})">
+                        <button class="btn btn-sm btn-outline-black" wire:click="copier({{ $item->id }})">
                             <i class="ri-file-copy-2-line small"></i>
                             Ajouter
                         </button>
@@ -29,7 +32,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="2">
+                    <td colspan="6">
                         <div class="text-center">
                             Aucun produit trouvé !
                         </div>

@@ -18,7 +18,7 @@ class AddStock extends Component
         $this->quantite = null;
 
         $this->produits = produits::where('nom', 'like', '%' . $value . '%')
-            ->select('id', 'nom', 'photo')
+            ->select('id', 'nom', 'photo','id_categorie')
             ->take(10)
             ->get();
 
@@ -55,17 +55,17 @@ class AddStock extends Component
         $pro->stock = $pro->stock + $this->quantite;
         $pro->save();
 
-        //enregistrer lhistorique du stock 
+        //enregistrer lhistorique du stock
         $historique_stock = new historiques_stock();
         $historique_stock->quantite = $this->quantite;
         $historique_stock->id_produit = $pro->id;
         $historique_stock->by = Auth::id();
         $historique_stock->save();
 
-        
+
         //reset input
         $this->produit = null;
-        
+
         //flash message
         session()->flash('success', 'Stock ajouté avec succès');
         $this->id =null;

@@ -201,7 +201,9 @@ button:hover + .custom-cursor {
     align-items: center;
     justify-content: center;
 }
-
+.drp-dropbtn img{
+    margin-bottom: 3px;
+}
 /* Dropdown content (hidden by default) */
 .drp-dropdown-content {
     display: none;

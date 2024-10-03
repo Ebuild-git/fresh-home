@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh; /* Hauteur de l'écran */
-    background-color: rgba(255, 255, 255, 0.9); /* Couleur de fond avec transparence */
+    background-color: rgba(3, 3, 3, 0.9); /* Couleur de fond avec transparence */
     position: fixed;
     top: 0;
     left: 0;
@@ -52,7 +52,9 @@
 }
 
 
-
+body{
+    font-family: "Scala Sans OT Regular", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
 /* Masquer le préchargeur après le chargement */
 body.loaded .preloader-container {
     display: none;
@@ -237,4 +239,44 @@ button:hover + .custom-cursor {
 .logo-up-option {
     position: absolute;
     bottom: -20px;
+}
+.card-image-categorie-home img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+.card-image-categorie-home img:hover{
+    border: solid 2px rgba(252, 153, 153, 0.5);
+    transition: border 0.3s ease;
+}
+.card-image-categorie-home{
+    overflow: hidden;
+    height: 300px;
+    border:solid 2px rgba(173, 170, 170, 0.173);
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+.card-home-cat{
+    background-color: #f6f4f2;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.card-home-cat .btns{
+    font-weight: bold;
+    font-size: 12px;
+    border:solid 1px rgba(0, 0, 0, 0.655);
+    padding: 5px 20px;
+}
+.product-card-shop{
+    background-color: #f6f4f2;
+    padding: 10px;
+}
+.product-card-shop .btn-add{
+    font-weight: bold;
+    font-size: 12px;
+    border:solid 1px rgba(0, 0, 0, 0.655);
+    padding: 5px 20px;
+}
+.product-card-shop img{
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1) !important;
 }

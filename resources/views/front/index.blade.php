@@ -70,7 +70,7 @@
     <!-- About us Section End -->
 
     <!-- Category Banner Section Start -->
-    <div class="section section-padding pt-0">
+    {{-- <div class="section section-padding pt-0">
         <div class="container">
             <div class="cat-scroll-wrapper">
                 <button class="cat-scroll-button left">&lt;</button>
@@ -93,6 +93,35 @@
                     @endforeach
                 </div>
                 <button class="cat-scroll-button right">&gt;</button>
+            </div>
+        </div>
+    </div> --}}
+    <div class="section section-padding pt-0">
+        <div class="container">
+            <div class="row">
+                @foreach ($categories as $categorie)
+                    <div class="col-4 col-sm-4">
+                        <div class="card-home-cat">
+                            <div class="text-center">
+                                <h6 class="title">
+                                    {{ \App\Helpers\TranslationHelper::TranslateText($categorie->nom) }}
+                                </h6>
+                                <p>
+                                    {{ \App\Helpers\TranslationHelper::TranslateText(Str::limit($categorie->description,50)) }}
+                                </p>
+                                <a href="{{ route('shop') }}?IDcategorie={{ $categorie->id }}"
+                                    class="btns">
+                                    {{ __('shop_11') }}
+                                </a>
+                                <br>
+                                <br>
+                            </div>
+                            <div class="card-image-categorie-home">
+                                <img src="{{ Storage::url($categorie->photo) }}" alt="{{ $categorie->nom }}">
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -312,7 +341,3 @@
     </script>
 
 @endsection
-
-
-
-

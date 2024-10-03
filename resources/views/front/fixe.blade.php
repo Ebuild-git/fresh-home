@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/assets/css/vendor/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/css/vendor/themify-icons.css">
     <link rel="stylesheet" href="/assets/css/vendor/customFonts.css">
-    <link rel="stylesheet" href="/style.css?v={{ time() }}">
+
 
     <!-- Plugins CSS (All Plugins Files) -->
     <link rel="stylesheet" href="/assets/css/plugins/select2.min.css">
@@ -41,6 +41,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mada:wght@200..900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/style.css?v={{ time() }}">
 
     @livewireStyles
 

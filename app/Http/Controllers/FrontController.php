@@ -197,7 +197,7 @@ class FrontController extends Controller
                 ->orWhere('reference', 'like', '%' . $key . '%')
                 ->orWhere('description', 'like', '%' . $key . '%');
         }
-        $produits = $produits->select('nom', 'photo', 'id', 'prix')->paginate(25);
+        $produits = $produits->select('nom', 'photo', 'id', 'prix', 'id_categorie')->paginate(25);
 
         $html = "";
         $html .= view('components.shop-liste', compact('produits'))->render();

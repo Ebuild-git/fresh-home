@@ -4,6 +4,7 @@ let key = null;
 let max_price = null;
 let min_price = null;
 let promotion = "false";
+let best_sell = "false";
 
 function set_price(max,min) {
     max_price = max;
@@ -13,6 +14,11 @@ function set_price(max,min) {
 
 function show_promotion(){
     promotion = "true";
+    fetch_shop();
+}
+
+function show_best_sell(){
+    best_sell = "true";
     fetch_shop();
 }
 
@@ -33,6 +39,7 @@ function fetch_shop() {
             max_price: max_price,
             min_price: min_price,
             promotion: promotion,
+            best_sell: best_sell,
         },
         function (response) {
             $('#loading-div').hide("slow");

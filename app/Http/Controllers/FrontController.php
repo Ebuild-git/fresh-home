@@ -167,6 +167,8 @@ class FrontController extends Controller
         $max_price = $request->input('max_price') ?? null;
         $min_price = $request->input('min_price') ?? null;
         $promotion = $request->input('promotion') ?? "false";
+        $best_sell = $request->input('best_sell') ?? "false";
+
 
         $produits = produits::query();
         if ($ordre) {
@@ -182,6 +184,9 @@ class FrontController extends Controller
         }
         if ($promotion == "true") {
             $produits->whereNotNull('id_promotion');
+        }
+        if ($best_sell == "true") {
+            $produits->where('best_sell', true);
         }
         if ($id_categorie) {
             $produits->where('id_categorie', $id_categorie);

@@ -18,6 +18,14 @@ class ListProduit extends Component
 
 
 
+    public function toggleBestSell($produitId)
+    {
+        $produit = produits::findOrFail($produitId);
+        $produit->best_sell = !$produit->best_sell;
+        $produit->save();
+    }
+
+
     public function render()
     {
         $Query = produits::orderBy('id',"Desc");

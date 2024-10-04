@@ -43,31 +43,7 @@
     </div>
     <!-- Slider main container End -->
 
-    <!-- About us Section Start -->
-    <div class="section section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 mx-auto">
-                    <div class="about-us2">
-                        <div class="inner">
-                            <h5 class="title">
-                                {{ __('home_1') }}
-                            </h5>
-                            <h5 class="sub-title">
-                                {{ __('home_2') }}
-                            </h5>
-                            <div class="desc">
-                                <p>
-                                    {{ __('home_3') }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About us Section End -->
+
 
     <!-- Category Banner Section Start -->
     {{-- <div class="section section-padding pt-0">
@@ -98,9 +74,10 @@
     </div> --}}
     <div class="section section-padding pt-0">
         <div class="container">
+            <br>
             <div class="row">
                 @foreach ($categories as $categorie)
-                    <div class="col-4 col-sm-4">
+                    <div class="col-12 col-sm-4">
                         <div class="card-home-cat">
                             <div class="text-center">
                                 <h6 class="title">
@@ -129,7 +106,7 @@
 
 
 
-
+{{--
     <div class="container">
         <div class="as-container">
             <div class="as-carousel">
@@ -142,7 +119,7 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
 

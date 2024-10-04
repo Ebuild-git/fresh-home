@@ -63,9 +63,10 @@
                         </p>
                     @endif
                 </div>
-                <div class="col-sm-2">
-                    <p class="text-end my-2 ">
+                <div class="col-sm-2" >
+                    <p class="text-end my-2 " >
                     <div class="drp-dropdown">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button class="drp-dropbtn">
                             @if (app()->getLocale() == 'fr')
                                 <img src="https://img.icons8.com/color/20/france-circular.png" alt="fr"
@@ -109,7 +110,7 @@
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
                             <img src="{{ $infos->logo ? Storage::url($infos->logo) : '' }}" height="75"
-                                alt="{{ config('app.name') }} Logo" class="logo-up-option">
+                                alt="{{ config('app.name') }} Logo" class="logo-up-optionxx">
                         </a>
                     </div>
                 </div>

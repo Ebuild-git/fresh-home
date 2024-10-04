@@ -104,6 +104,9 @@
                                 <button type="button" onclick="show_promotion()">
                                     {{ __('shop_2') }}
                                 </button>
+                                <button type="button" onclick="show_best_sell()">
+                                    {{ __('best_sell') }}
+                                </button>
                             </div>
                             <br>
 
@@ -163,8 +166,7 @@
 
     <style>
         .bg-body {
-            background: url('/icons/motif.webp')no-repeat;
-            background-size: cover;
+            background: url('/icons/motif.webp');
         }
 
         .bg-light {

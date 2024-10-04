@@ -42,6 +42,7 @@
                     <th>Prix vente</th>
                     <th>Prix achat</th>
                     <th>Ventes</th>
+                    <th>Meilleur</th>
                     <th>création</th>
                     <th style="text-align: right;">
                         <span wire:loading>
@@ -99,6 +100,15 @@
                             <i class="ri-wallet-2-line vert"></i>
                             {{ $produit->vendus->count() }}
                         </td>
+                        <td>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input"
+                                type="checkbox"
+                                id="flexSwitchCheckChecked-{{ $produit->id }}"
+                                wire:click="toggleBestSell({{ $produit->id }})"
+                                @checked($produit->best_sell)>
+                            </div>
+                        </td>
                         <td>{{ $produit->created_at->format('d/m/Y') }} </td>
                         <td style="text-align: right;">
                             <div class="btn-group">
@@ -153,7 +163,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Réference :</td>
-                                                    <td> 
+                                                    <td>
                                                         {{ $produit->reference }}
                                                     </td>
                                                 </tr>
@@ -191,7 +201,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8" class="text-center">
+                        <td colspan="9" class="text-center">
                             <div>
                                 <img src="/icons/icons8-ticket-100.png" height="100" width="100" alt=""
                                     srcset="">

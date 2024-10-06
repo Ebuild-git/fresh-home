@@ -73,7 +73,7 @@
             </div>
         </div>
     </div> --}}
-    <div class="section section-padding pt-0">
+   {{--  <div class="section section-padding pt-0">
         <div class="container">
             <br>
             <div class="row">
@@ -102,7 +102,7 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Category Banner Section End -->
 
 

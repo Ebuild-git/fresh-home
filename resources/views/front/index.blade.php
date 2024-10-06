@@ -16,21 +16,20 @@
                                 <img src="{{ $banner['photo'] }}" alt="{{ $banner['titre_complet'] }}">
                             </div>
                             <div class="home4-slide-content">
-                                @if ($banner['show_text'])
                                     <div class=" p-3">
+                                        @if ($banner['show_text'])
                                         <span class="category text-white">
                                             {{ config('app.name') }}
                                         </span>
                                         <h2 class="title text-white">
                                             {!! $banner['titre'] !!}
                                         </h2>
+                                        <br>
+                                        @endif
+                                        <a href="{{ route('shop') }}" class="btn btn-black btn-outline-hover-black">
+                                            {{ __('shop_11') }}
+                                        </a>
                                     </div>
-                                @endif
-                                <div class="link">
-                                    <a href="{{ route('shop') }}" class="btn btn-black btn-outline-hover-black">
-                                        {{ __('shop_11') }}
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     @endforeach

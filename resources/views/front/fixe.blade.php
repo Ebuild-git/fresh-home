@@ -58,7 +58,7 @@
             <div class="row">
                 <div class="col-sm-10">
                     @if ($infos->header_text)
-                        <p class="text-center my-2 text-white">
+                        <p class="text-center my-2 text-white small">
                             {{ \App\Helpers\TranslationHelper::TranslateText($infos->header_text) }}
                         </p>
                     @endif

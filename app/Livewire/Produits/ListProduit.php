@@ -13,7 +13,7 @@ class ListProduit extends Component
 
     protected $listeners = ['add-stock' => '$refresh'];
     use WithPagination;
-    public $key;
+    public $key, $id_categorie;
 
 
 
@@ -28,15 +28,20 @@ class ListProduit extends Component
 
     public function render()
     {
-        $Query = produits::orderBy('id',"Desc");
-        if(!is_null($this->key)){
-            $Query->where('nom', 'like', '%'.$this->key.'%');
+        $Query = produits::orderBy('id', "Desc");
+        if (!is_null($this->key)) {
+            $Query->where('nom', 'like', '%' . $this->key . '%');
         }
-        $produits = $Query->paginate(30);
+        if (!is_null($this->id_categorie)) {
+            $Query->where('id_categorie', $this->id_categorie);
+        }
+        $produits = $Query
+            ->select('id', 'id_categorie', 'nom', 'prix', 'prix_achat', 'created_at', 'frais_inclu', 'best_sell', 'stock', 'photo', 'reference', 'id_promotion')
+            ->paginate(30);
         $total = produits::count();
         $total_supprimers = produits::onlyTrashed()->count();
-        $categories = categories::select("id","nom")->get();
-        return view('livewire.produits.list-produit',compact('produits','total','total_supprimers','categories'));
+        $categories = categories::select("id", "nom")->get();
+        return view('livewire.produits.list-produit', compact('produits', 'total', 'total_supprimers', 'categories'));
     }
 
 

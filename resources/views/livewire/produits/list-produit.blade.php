@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="input-group mb-3">
-                    <select wire:model="id_categorie" class="form-control btn-sm">
+                    <select wire:model="id_categorie" name="id_categorie" class="form-control btn-sm">
                         <option value="">Catégorie</option>
                         @foreach ($categories as $item)
                             <option value="{{ $item->id }}">
@@ -38,6 +38,7 @@
                 <tr>
                     <th>Photo</th>
                     <th>Nom</th>
+                    <th>Catégorie</th>
                     <th>Stock</th>
                     <th>Prix vente</th>
                     <th>Prix achat</th>
@@ -70,6 +71,11 @@
                             <i class="ri-money-dollar-circle-line text-success" title="Frais Ajouté !"></i>
                             @endif
                             {{ Str::limit($produit->nom ,30) }}
+                        </td>
+                        <td>
+                            <span class="small badge bg-success text-white">
+                                {{ $produit->categorie->nom }}
+                            </span>
                         </td>
                         <td class="cusor">
                             <b onclick="url('{{ route('produits.historique', ['id' => $produit->id]) }}')">
@@ -201,7 +207,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="9" class="text-center">
+                        <td colspan="10" class="text-center">
                             <div>
                                 <img src="/icons/icons8-ticket-100.png" height="100" width="100" alt=""
                                     srcset="">

@@ -24,12 +24,14 @@
                                         <h2 class="title text-white">
                                             {!! $banner['titre'] !!}
                                         </h2>
-                                        <br>
                                         @endif
-                                        <a href="{{ route('shop') }}" class="btn btn-black btn-outline-hover-black">
-                                            {{ __('shop_11') }}
-                                        </a>
                                     </div>
+
+                                <div class="link">
+                                    <a href="{{ route('shop') }}" class="btn btn-black btn-outline-hover-black hide-mobile">
+                                        {{ __('shop_11') }}
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     @endforeach

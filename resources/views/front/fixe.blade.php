@@ -63,31 +63,31 @@
                         </p>
                     @endif
                 </div>
-                <div class="col-sm-2" >
-                    <p class="text-end my-2 " >
+                <div class="col-sm-2">
+                    <p class="text-end my-2 ">
                     <div class="drp-dropdown">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <button class="drp-dropbtn">
                             @if (app()->getLocale() == 'fr')
                                 <img src="https://img.icons8.com/color/20/france-circular.png" alt="fr"
                                     srcset="">
-                                Français
+                                <span class="hide-mobile">Français</span>
                             @else
                                 <img src="https://img.icons8.com/color/20/great-britain-circular.png" alt="en"
                                     srcset="">
-                                English
+                                <span class="hide-mobile">English</span>
                             @endif
                         </button>
                         <div class="drp-dropdown-content">
                             <a href="/change-lang/fr" class="{{ app()->getLocale() == 'fr' ? 'selected' : '' }}">
                                 <img src="https://img.icons8.com/color/20/france-circular.png" alt="fr"
                                     srcset="">
-                                Français
+                                <span class="hide-mobile">Français</span>
                             </a>
                             <a href="/change-lang/en" class="{{ app()->getLocale() == 'en' ? 'selected' : '' }}">
                                 <img src="https://img.icons8.com/color/20/great-britain-circular.png" alt="en"
                                     srcset="">
-                                English
+                                <span class="hide-mobile">English</span>
                             </a>
                         </div>
                     </div>
@@ -257,7 +257,7 @@
                             <img src="/icons/logo-black.png" height="30" alt="{{ config('app.name') }} Logo">
                         </a>
                     </div>
-                </div>  
+                </div>
                 <!-- Header Logo End -->
 
                 <!-- Header Tools Start -->
@@ -523,7 +523,7 @@
     <div class="preloader-container">
         <div class="preloader-circle">
             <img src="{{ $infos->logo ? Storage::url($infos->logo) : '' }}" height="80"
-                 alt="{{ config('app.name') }} Logo">
+                alt="{{ config('app.name') }} Logo">
         </div>
     </div>
 

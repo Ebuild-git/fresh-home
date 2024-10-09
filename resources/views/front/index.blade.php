@@ -5,6 +5,20 @@
 
     <div class="offcanvas-overlay"></div>
 
+    <style>
+        .btn-link{
+            width: 100% !important;
+            text-align: center !important;
+            position: relative !important;
+            bottom: 10px !important;
+        }
+        .btn-link .btn{
+            position: absolute !important;
+            bottom: 100px !important;
+            left: 40% !important;
+        }
+    </style>
+
     <!-- Slider main container Start -->
     <div class="section">
         <div>
@@ -27,11 +41,11 @@
                                         @endif
                                     </div>
 
-                                <div class="link">
-                                    <a href="{{ route('shop') }}" class="btn btn-black btn-outline-hover-black hide-mobile">
-                                        {{ __('shop_11') }}
-                                    </a>
-                                </div>
+                            </div>
+                            <div class=" btn-link">
+                                <a href="{{ route('shop') }}" class="btn btn-black btn-outline-hover-black hide-mobile">
+                                    {{ __('shop_11') }}
+                                </a>
                             </div>
                         </div>
                     @endforeach

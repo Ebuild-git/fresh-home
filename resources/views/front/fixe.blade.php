@@ -257,7 +257,7 @@
                             <img src="/icons/logo-black.png" height="30" alt="{{ config('app.name') }} Logo">
                         </a>
                     </div>
-                </div>x²x²
+                </div>  
                 <!-- Header Logo End -->
 
                 <!-- Header Tools Start -->

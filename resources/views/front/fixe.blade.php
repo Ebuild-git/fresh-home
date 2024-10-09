@@ -67,6 +67,11 @@
                     <p class="text-end my-2 ">
                     <div class="drp-dropdown">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="hide-pc">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>
                         <button class="drp-dropbtn">
                             @if (app()->getLocale() == 'fr')
                                 <img src="https://img.icons8.com/color/20/france-circular.png" alt="fr"
@@ -82,12 +87,12 @@
                             <a href="/change-lang/fr" class="{{ app()->getLocale() == 'fr' ? 'selected' : '' }}">
                                 <img src="https://img.icons8.com/color/20/france-circular.png" alt="fr"
                                     srcset="">
-                                <span class="hide-mobile">Français</span>
+                                <span>Français</span>
                             </a>
                             <a href="/change-lang/en" class="{{ app()->getLocale() == 'en' ? 'selected' : '' }}">
                                 <img src="https://img.icons8.com/color/20/great-britain-circular.png" alt="en"
                                     srcset="">
-                                <span class="hide-mobile">English</span>
+                                <span>English</span>
                             </a>
                         </div>
                     </div>

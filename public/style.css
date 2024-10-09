@@ -291,3 +291,8 @@ button:hover + .custom-cursor {
         display: none;
     }
 }
+@media only screen and (min-width: 768px) {
+    .hide-pc {
+         display: none;
+     }
+ }

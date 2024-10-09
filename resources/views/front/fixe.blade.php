@@ -254,7 +254,7 @@
                 <div class="col">
                     <div class="header-logo">
                         <a href="{{ route('home') }}">
-                            <img src="/icons/logo-black.png" height="30" alt="{{ config('app.name') }} Logo">
+                            <img src="{{ $infos->logo ? Storage::url($infos->logo) : '' }}" height="30" alt="{{ config('app.name') }} Logo">
                         </a>
                     </div>
                 </div>

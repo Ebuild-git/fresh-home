@@ -85,7 +85,7 @@
                         <td>
                             @if ($produit->inPromotion())
                                 <span class=" small">
-                                    - {{ $produit->inPromotion()->pourcentage }} %
+                                    - {{ $produit->inPromotion->pourcentage }} %
                                 </span>
                                 <b class="text-success">
                                     {{ $produit->getPrice() }} <x-devise></x-devise>

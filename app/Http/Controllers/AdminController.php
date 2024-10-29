@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
 use App\Services\JaxService;
+use App\Exports\ProduitsExport;
 
 
 class AdminController extends Controller
@@ -130,7 +131,7 @@ class AdminController extends Controller
         $totalUser = clients::whereBetween('created_at', [$date_debut, $date_fin])->count();
 
 
-        //get all command group by gouvernorrant collun Asc 
+        //get all command group by gouvernorrant collun Asc
         $top_gouvernorat = [];
         $gouvernorats = commandes::select('id_gouvernorat', DB::raw('COUNT(*) as count'))
             ->whereBetween('commandes.created_at', [$date_debut, $date_fin])
@@ -341,7 +342,7 @@ class AdminController extends Controller
 
 
     public function historique(Request $request,$id)
-    {   
+    {
         $date = $request->input('date') ?? null;
         $produit = produits::find($id);
         if (!$produit) {
@@ -434,11 +435,11 @@ class AdminController extends Controller
 
     public function contact_admin_update(Request $request){
         $this->validate($request, [
-            'logo' =>  'image|nullable|max:3024', 
-            'photo_contact' =>  'image|nullable|max:3024',  
-            'photo_commande' =>  'image|nullable|max:3024', 
-            'photo_login' =>  'image|nullable|max:3024', 
-            'photo_register' =>  'image|nullable|max:3024', 
+            'logo' =>  'image|nullable|max:3024',
+            'photo_contact' =>  'image|nullable|max:3024',
+            'photo_commande' =>  'image|nullable|max:3024',
+            'photo_login' =>  'image|nullable|max:3024',
+            'photo_register' =>  'image|nullable|max:3024',
             'icon' =>  'image|nullable|max:3024',
             'frais' => 'nullable|numeric',
             'tva' => 'nullable|numeric',
@@ -456,8 +457,8 @@ class AdminController extends Controller
 
         // update the user
         $config = config::first();
-       
-        
+
+
         if($request->file('icon')){
             if ($config->icon) {
                 Storage::disk('public')->delete($config->icon);
@@ -491,7 +492,7 @@ class AdminController extends Controller
             }
             $config->photo_login= $request->file('photo_login')->store('photo_login', 'public');
         }
-        
+
 
         if($request->file('photo_register')){
             if ($config->photo_register) {
@@ -501,8 +502,8 @@ class AdminController extends Controller
         }
 
 
-      
-        
+
+
         $config->frais = $request->frais;
         $config->tva = $request->tva;
         $config->timbre = $request->timbre;
@@ -543,7 +544,7 @@ class AdminController extends Controller
         foreach ($notifs as $key => $notif) {
             $notif->update(["statut"=>"read"]);
         }
-       
+
 
         return redirect($url);
     }
@@ -572,7 +573,7 @@ class AdminController extends Controller
     }
 
 
-   
+
 
 
     public function config_about(){
@@ -585,11 +586,11 @@ class AdminController extends Controller
             'about_titre' =>'nullable|string',
             'footer_text' => "required|string",
             'about_description' =>'nullable|string',
-            'about_cover' =>  'image|nullable|max:3024', 
-            'about_cover_video' =>  'image|nullable|max:3024', 
-            'about_video' =>  'file|mimetypes:video/mp4|max:50024', 
-            'photo_commande' =>  'image|nullable|max:3024', 
-            'about_image' =>  'image|nullable|max:3024', 
+            'about_cover' =>  'image|nullable|max:3024',
+            'about_cover_video' =>  'image|nullable|max:3024',
+            'about_video' =>  'file|mimetypes:video/mp4|max:50024',
+            'photo_commande' =>  'image|nullable|max:3024',
+            'about_image' =>  'image|nullable|max:3024',
         ]);
 
         // update the user
@@ -643,6 +644,13 @@ class AdminController extends Controller
                 ]
             );
         }
+    }
+
+
+
+    public function export_produits(Request $request){
+        $filename = 'produits_' . now()->format('YmdHis') . '.xlsx';
+        return Excel::download(new ProduitsExport, $filename);
     }
 
 

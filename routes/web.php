@@ -96,6 +96,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', [AdminController::class, 'dashboard'])
         ->name('dashboard');
+
+
+    Route::post('/export_produits', [AdminController::class, 'export_produits'])
+        ->name('export_produits');
+
+
+
     Route::post('/dashboard/filtre', [AdminController::class, 'dashboard'])
         ->name('filtre-dashboard');
 

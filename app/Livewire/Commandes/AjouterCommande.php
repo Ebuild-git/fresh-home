@@ -19,6 +19,9 @@ class AjouterCommande extends Component
     public $gouvernoratsTunisie;
     public $pays = "Tunisie";
     protected $listeners = ['ProduitAdded' => '$refresh'];
+    public $remise = null;
+    public $remise_appliquee = false;
+    public $total_remise = 0;
 
     public function updatedRecherche($recherche)
     {
@@ -62,6 +65,23 @@ class AjouterCommande extends Component
         return view('livewire.commandes.ajouter-commande', compact('paniers','config'));
     }
 
+
+    public function appliquerRemise(){
+        $this->validate([
+            'remise' => 'required|numeric|min:0|max:100',
+        ],[
+            'remise.required' => 'La remise est obligatoire',
+            'remise.numeric' => 'La remise doit être un nombre',
+            'remise.min' => 'La remise doit être supérieure à 0',
+            'remise.max' => 'La remise doit être inférieure à 100',
+        ]);
+        $this->remise_appliquee = true;
+    }
+
+    public function annulerRemise(){
+        $this->remise_appliquee = false;
+        $this->remise = null;
+    }
 
 
 
@@ -119,6 +139,7 @@ class AjouterCommande extends Component
             $commande->id_gouvernorat = $this->gouvernorat;
             $commande->canal_vente = $this->canal_vente;
             $commande->etat = "confirmé";
+            $commande->reduction = $this->remise ? $this->remise : null;
             if($this->frais){
                 $commande->frais = $config->getFrais();
             }

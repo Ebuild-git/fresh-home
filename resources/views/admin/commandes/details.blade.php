@@ -129,7 +129,13 @@
                                             </h6>
                                             <b>Montant total :</b>
                                             <b>{{ $commande->montant() }} {{ $commande->devise }}</b>
-                                            @if ($commande->frais > 0) <br>
+                                            @if ($commande->reduction)
+                                                <br>
+                                                <div class="text-danger">
+                                                    <b>Remise : </b> -{{ $commande->reduction }} %
+                                                </div>
+                                            @endif
+                                            @if ($commande->frais > 0) 
                                                 <b>Frais de livraison : </b> {{ $commande->frais ?? 0 }}
                                                 @if ($commande->devise == 'dinar')
                                                     DT

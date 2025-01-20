@@ -27,6 +27,9 @@ class commandes extends Model
         foreach ($this->contenus as $contenu){
             $total += $contenu->prix_unitaire * $contenu->quantite;
         }
+        if($this->reduction){
+            $total -= $total * $this->reduction / 100;
+        }
         return $total ?? 0;
     }
 

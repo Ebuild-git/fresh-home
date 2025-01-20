@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-sm-6">
                                 <label for="">Numéro de téléphone *</label>
                                 <input type="tel" placeholder="Numéro de téléphone du client" wire:model="phone"
                                     class="form-control">
@@ -118,7 +118,7 @@
                                     <span class="small text-danger" role="alert"> {{ $message }} </span>
                                 @enderror
                             </div>
-                            <div class="col">
+                            <div class="col-sm-6">
                                 <label for="">Gouvernorat *</label>
                                 <select wire:model="gouvernorat" class="form-control" required>
                                     <option value="">Gouvernorat</option>
@@ -132,7 +132,7 @@
                                     <span class="small text-danger" role="alert"> {{ $message }} </span>
                                 @enderror
                             </div>
-                            <div class="col">
+                            <div class="col-sm-6">
                                 <label for="">Canal de vente *</label>
                                 <select wire:model="canal_vente" class="form-control" required>
                                     <option value=""></option>
@@ -167,6 +167,26 @@
                                 Appliquer les frais de timbre. <b>( + {{ $config->getTimbre() }} <x-devise></x-devise> )</b> 
                                 @error('timbre')
                                     <br> <span class="small text-danger" role="alert"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                            <div class="alert alert-info mt-2">
+                                <label for="">Ajouter une remise</label>
+                                <div class="input-group">
+                                    <input type="number" wire:model="remise" placeholder="Montant en pourcentage" min="0" max="100" step="0.01" class="form-control">
+                                    <div class="input-group-text">%</div>
+                                    <button class="btn btn-sm btn-primary" type="button" wire:click="appliquerRemise">
+                                        <i class="ri-check-line"></i>
+                                        Appliquer
+                                    </button>
+                                    @if ($remise_appliquee)
+                                        <button class="btn btn-sm btn-danger" type="button" wire:click="annulerRemise">
+                                            <i class="ri-close-line"></i>
+                                            Annuler
+                                        </button>
+                                    @endif
+                                </div>
+                                @error('remise')
+                                    <span class="small text-danger" role="alert"> {{ $message }} </span>
                                 @enderror
                             </div>
                         </div>
@@ -232,8 +252,16 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h6>
-                            Montant de la commande : <b> {{ $total }} <x-devise></x-devise></b>
+                            Montant  : <b> {{ $total }} <x-devise></x-devise></b>
                         </h6>
+                        @if ($remise_appliquee)
+                            <h6 class="text-danger">
+                                Remise appliquée : <b> -{{ $remise }} <x-devise></x-devise></b>
+                            </h6>
+                            <h6>
+                                Montant après remise : <b> {{ $total - ($remise * $total / 100) }} <x-devise></x-devise></b>
+                            </h6>
+                        @endif
                     </div>
                     <div>
                         <button type="submit" class="btn btn-primary btn-sm">

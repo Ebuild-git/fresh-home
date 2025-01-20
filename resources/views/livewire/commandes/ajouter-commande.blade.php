@@ -256,7 +256,7 @@
                         </h6>
                         @if ($remise_appliquee)
                             <h6 class="text-danger">
-                                Remise appliquée : <b> -{{ $remise }} <x-devise></x-devise></b>
+                                Remise appliquée : <b> -{{ $remise }} %</b>
                             </h6>
                             <h6>
                                 Montant après remise : <b> {{ $total - ($remise * $total / 100) }} <x-devise></x-devise></b>

@@ -242,7 +242,7 @@
                     </td>
                     <td>
                         <div class="div-border">
-                            {{ $prix_ttc }}
+                            {{ $commande->montant()  }}
                             <x-devise></x-devise>
                         </div>
                     </td>

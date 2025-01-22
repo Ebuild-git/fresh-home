@@ -107,8 +107,8 @@ class PayementController extends Controller
         $commande->id_user = $user['id'];
         $commande->by = $user['id'];
         $commande->mode_paiement = "offline";
+        $commande->token = $token;
         if ($commande->save()) {
-            $commande->update(['token' => $token]);
 
             foreach ($panier_temporaire as $key => $item) {
                 $produit = produits::find($item['id_produit']);

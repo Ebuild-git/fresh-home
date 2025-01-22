@@ -80,3 +80,4 @@ class BannerController extends Controller
         return response()->json(['success' => 'Texte affiché mis à jour']);
     }
 }
+

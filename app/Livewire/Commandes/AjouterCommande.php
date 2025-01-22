@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 use App\Services\JaxService;
-
+use Illuminate\Support\Str;
 class AjouterCommande extends Component
 {
     public $key, $nom, $prenom, $frais, $timbre, $tva, $adresse, $gouvernorat, $phone, $recherche,$canal_vente, $clients = [];
@@ -123,6 +123,7 @@ class AjouterCommande extends Component
             $client->save();
         }
 
+        $token = strtolower(str()->random(45));
 
 
         $panier = session()->get('panier', []);
@@ -133,6 +134,7 @@ class AjouterCommande extends Component
             $commande->prenom = $this->prenom;
             $commande->adresse = $this->adresse;
             $commande->phone = $this->phone;
+            $commande->token = $token;
             $commande->by = Auth::id();
             $commande->id_user = Auth::id();
             $commande->pays = $this->pays;

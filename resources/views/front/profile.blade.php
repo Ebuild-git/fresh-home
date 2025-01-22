@@ -141,10 +141,16 @@
                                                         @endif
                                                     </td>
                                                     <td>
+                                                        @if ($commande->token)
                                                         <a href="{{ route('print_commande2', $commande->token) }}"
                                                             class="btn btn-sm btn-dark">
                                                             Télécharger
                                                         </a>
+                                                        @else
+                                                            <span class="text-danger">
+                                                                Erreur de génération du PDF
+                                                            </span>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @empty

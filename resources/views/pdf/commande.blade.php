@@ -168,7 +168,7 @@
                     @endphp
                 @endforeach
                 <tr>
-                    <td rowspan="5" class="no-border" border="0"></td>
+                    <td rowspan="{{ $commande->reduction ? 6 : 5 }}" class="no-border" border="0"></td>
                     <td>
                         <div class="div-border">
                             Sous-Total HT
@@ -207,6 +207,7 @@
                         </div>
                     </td>
                 </tr>
+
                 <tr>
                     <td>
                         <div class="div-border">
@@ -219,6 +220,20 @@
                         </div>
                     </td>
                 </tr>
+                @if ($commande->reduction)
+                    <tr>
+                        <td>
+                            <div class="div-border">
+                                Remise
+                            </div>
+                        </td>
+                        <td>
+                            <div class="div-border">
+                                -{{ $commande->reduction }} %
+                            </div>
+                        </td>
+                    </tr>
+                @endif
                 <tr>
                     <td>
                         <div class="div-border">
@@ -238,7 +253,7 @@
             <b>Direction</b>
         </div>
         <footer class="footer">
-            {{config("app.name") }} <br> <br>
+            {{ config('app.name') }} <br> <br>
             {{ $config->adresse ?? '' }} <br>
             Tél : {{ $config->telephone ?? '' }} <br>
             @if ($config->matricule)

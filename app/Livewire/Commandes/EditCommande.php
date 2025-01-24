@@ -11,6 +11,9 @@ use Livewire\Component;
 class EditCommande extends Component
 {
     public $commande, $gouvernoratsTunisie, $nom, $prenom, $adresse, $id_gouvernorat, $phone, $frais,$timbre,$tva;
+    public $remise = null;
+    public $remise_appliquee = false;
+    public $total_remise = 0;
 
     public function mount($commande)
     {
@@ -23,6 +26,9 @@ class EditCommande extends Component
         $this->timbre = $commande->timbre;
         $this->tva = $commande->tva;
         $this->frais = $commande->frais;
+        $this->remise = $commande->reduction;
+        $this->remise_appliquee = $commande->reduction ? true : false;
+        $this->total_remise = $commande->total_reduction;
     }
 
     public function render()
@@ -32,6 +38,26 @@ class EditCommande extends Component
         return view('livewire.commandes.edit-commande')
             ->with('config', $config);
     }
+
+
+
+    public function appliquerRemise(){
+        $this->validate([
+            'remise' => 'required|numeric|min:0|max:100',
+        ],[
+            'remise.required' => 'La remise est obligatoire',
+            'remise.numeric' => 'La remise doit être un nombre',
+            'remise.min' => 'La remise doit être supérieure à 0',
+            'remise.max' => 'La remise doit être inférieure à 100',
+        ]);
+        $this->remise_appliquee = true;
+    }
+
+    public function annulerRemise(){
+        $this->remise_appliquee = false;
+        $this->remise = null;
+    }
+
 
 
     public function update_user_info()
@@ -45,6 +71,7 @@ class EditCommande extends Component
             'frais' => 'nullable',
             'timbre' => 'nullable',
             'tva' => 'nullable',
+
         ]);
         $config = config::first();
         $this->commande->nom = $this->nom;
@@ -53,6 +80,7 @@ class EditCommande extends Component
         $this->commande->phone = $this->phone;
         $this->commande->id_gouvernorat = $this->id_gouvernorat;
         $this->commande->frais = $this->frais ? $config->frais : null;
+        $this->commande->reduction = $this->remise_appliquee ? $this->remise : null;
         if($this->frais){
             $this->commande->frais = $config->getFrais();
         }else{

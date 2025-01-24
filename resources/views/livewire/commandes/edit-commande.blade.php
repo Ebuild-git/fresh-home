@@ -144,6 +144,26 @@
                             <br> <span class="small text-danger" role="alert"> {{ $message }} </span>
                         @enderror
                     </div>
+                    <div class="alert alert-info mt-2">
+                        <label for="">Ajouter une remise</label>
+                        <div class="input-group">
+                            <input type="number" wire:model="remise" placeholder="Montant en pourcentage" min="0" max="100" step="0.01" class="form-control">
+                            <div class="input-group-text">%</div>
+                            <button class="btn btn-sm btn-primary" type="button" wire:click="appliquerRemise">
+                                <i class="ri-check-line"></i>
+                                Appliquer
+                            </button>
+                            @if ($remise_appliquee)
+                                <button class="btn btn-sm btn-danger" type="button" wire:click="annulerRemise">
+                                    <i class="ri-close-line"></i>
+                                    Annuler
+                                </button>
+                            @endif
+                        </div>
+                        @error('remise')
+                            <span class="small text-danger" role="alert"> {{ $message }} </span>
+                        @enderror
+                    </div>
                 </div>
                 <br>
                 <hr>

@@ -10,9 +10,7 @@ use App\Models\gouvernorats;
 use App\Models\produits;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Illuminate\Support\Facades\Http;
 use App\Services\JaxService;
-use Illuminate\Support\Str;
 class AjouterCommande extends Component
 {
     public $key, $nom, $prenom, $frais, $timbre, $tva, $adresse, $gouvernorat, $phone, $recherche,$canal_vente, $clients = [];
@@ -158,9 +156,8 @@ class AjouterCommande extends Component
                     //il s'agit d'un produit
                     $article = produits::find($panier["id"]);
                     if ($article) {
-
                         if ($article->autres_prix()) {
-                            $total = $article->getPrice_with_autre_prix($quantite);
+                            $total = $article->getPrice_with_autre_prix($quantite) * $quantite;
                             $prix_unitaire = $total / $quantite;
                         } else {
                             $total = $article->getPrice() * $quantite;

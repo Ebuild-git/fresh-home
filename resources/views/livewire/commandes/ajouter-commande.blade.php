@@ -23,7 +23,7 @@
                             </td>
                             <td> {{ $panier['quantite'] ?? 1 }} </td>
                             <td> {{ $panier['prix'] }} <x-devise></x-devise> </td>
-                            <td> {{ $panier['total'] }} <x-devise></x-devise> </td>
+                            <td> {{  $panier['prix'] * $panier['quantite'] }} <x-devise></x-devise> </td>
                             <td class="text-end">
                                 <button class="btn btn-sm btn-danger" type="danger"
                                     wire:click="delete_from_session({{ $key }})">
@@ -32,7 +32,7 @@
                             </td>
                         </tr>
                         @php
-                            $total += $panier['total'];
+                            $total += $panier['prix'] * $panier['quantite'];
                         @endphp
                     @empty
                         <tr>
